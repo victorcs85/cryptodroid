@@ -1,4 +1,4 @@
-package br.com.victorcs.cryptodroid.data.source.remote.entity
+package br.com.victorcs.cryptodroid.data.entity
 
 import com.squareup.moshi.Json
 

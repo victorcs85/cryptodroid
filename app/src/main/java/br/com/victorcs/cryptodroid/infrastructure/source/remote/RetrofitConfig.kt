@@ -1,8 +1,9 @@
-package br.com.victorcs.cryptodroid.data.source.remote
+package br.com.victorcs.cryptodroid.infrastructure.source.remote
 
 import br.com.victorcs.cryptodroid.BuildConfig
 import br.com.victorcs.cryptodroid.core.interceptor.ConnectivityInterceptor
 import br.com.victorcs.cryptodroid.core.services.WifiService
+import br.com.victorcs.cryptodroid.infrastructure.source.MoshiBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response

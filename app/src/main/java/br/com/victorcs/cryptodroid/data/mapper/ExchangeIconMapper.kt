@@ -1,6 +1,6 @@
-package br.com.victorcs.cryptodroid.data.source.remote.mapper
+package br.com.victorcs.cryptodroid.data.mapper
 
-import br.com.victorcs.cryptodroid.data.source.remote.entity.IconResponse
+import br.com.victorcs.cryptodroid.data.entity.IconResponse
 import br.com.victorcs.cryptodroid.domain.mapper.DomainMapper
 import br.com.victorcs.cryptodroid.domain.model.Icon
 

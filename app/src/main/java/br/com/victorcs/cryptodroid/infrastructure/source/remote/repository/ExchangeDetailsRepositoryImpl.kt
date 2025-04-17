@@ -1,12 +1,12 @@
-package br.com.victorcs.cryptodroid.data.source.remote.repository
+package br.com.victorcs.cryptodroid.infrastructure.source.remote.repository
 
 import br.com.victorcs.cryptodroid.core.extensions.safeApiCall
 import br.com.victorcs.cryptodroid.core.model.Response
-import br.com.victorcs.cryptodroid.data.source.remote.CoinAPI
-import br.com.victorcs.cryptodroid.data.source.remote.entity.ExchangeResponse
+import br.com.victorcs.cryptodroid.data.entity.ExchangeResponse
 import br.com.victorcs.cryptodroid.domain.mapper.DomainMapper
 import br.com.victorcs.cryptodroid.domain.model.Exchange
 import br.com.victorcs.cryptodroid.domain.repository.IExchangeDetailsRepository
+import br.com.victorcs.cryptodroid.infrastructure.source.remote.CoinAPI
 
 class ExchangeDetailsRepositoryImpl(
     private val service: CoinAPI,

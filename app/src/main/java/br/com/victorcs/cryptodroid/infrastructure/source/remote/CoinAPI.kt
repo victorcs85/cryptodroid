@@ -1,7 +1,7 @@
-package br.com.victorcs.cryptodroid.data.source.remote
+package br.com.victorcs.cryptodroid.infrastructure.source.remote
 
-import br.com.victorcs.cryptodroid.data.source.remote.entity.ExchangeResponse
-import br.com.victorcs.cryptodroid.data.source.remote.entity.IconResponse
+import br.com.victorcs.cryptodroid.data.entity.ExchangeResponse
+import br.com.victorcs.cryptodroid.data.entity.IconResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 

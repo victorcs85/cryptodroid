@@ -1,4 +1,4 @@
-package br.com.victorcs.cryptodroid.data.source.remote
+package br.com.victorcs.cryptodroid.infrastructure.source
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

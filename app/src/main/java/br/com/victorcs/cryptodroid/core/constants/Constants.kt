@@ -9,6 +9,10 @@ const val TOO_MANY_REQUESTS_MESSAGE_ERROR = "Foram realizadas muitas solicita√ß√
 const val PULL_TO_REFRESH_TAG = "pullToRefresh"
 const val EXCHANGE_ID = "exchangeId"
 const val ICON_MAPPER = "ICON_MAPPER"
+const val UTF_8 = "UTF-8"
+
+const val REMOTE_NAMED = "remote_source"
+const val LOCAL_NAMED = "local_source"
 
 const val ZERO = 0
 const val ONE = 1
