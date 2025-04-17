@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CryptoDroid</string>
+    <string name="exchange_id">ID: %1$s</string>
+    <string name="volume_one_day_usd">Volume 1 dia USD: %1$f</string>
+    <string name="back_button">Voltar</string>
+    <string name="exchange_details_title">Detalhes</string>
+    <string name="exchange_details">Detalhes do câmbio</string>
+    <string name="no_data_available">Não foram localizados dados para amostragem.</string>
+    <string name="reload">Recarregar</string>
+
+    <string name="website">Website:</string>
+    <string name="data_quote_start">Início da cotação de dados:</string>
+    <string name="data_quote_end">Fim da cotação de dados:</string>
+    <string name="volume_one_hour">Volume (1 hora):</string>
+    <string name="volume_one_day">Volume (1 dia):</string>
+    <string name="volume_one_month">Volume (1 mês):</string>
+    <string name="rank">Rank:</string>
+    <string name="integration_status">Status de integração:</string>
+</resources>
