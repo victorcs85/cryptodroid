@@ -79,7 +79,7 @@ class ExchangesViewModelTest : BaseViewModelTest() {
         val mockResponse = DataMockTest.mockSuccessExchangeResponse
 
         coEvery { repository.getExchanges() } returns mockResponse
-        coEvery { repository.getIcons() } returns Response.Error(DataMockTest.DEFAULT_ERROR_MOCK)
+        coEvery { repository.getIcons() } returns Response.Error(DataMockTest.MOCK_DEFAULT_ERROR)
 
         viewModel.execute(
             ExchangesCommand.FetchExchanges
@@ -100,7 +100,7 @@ class ExchangesViewModelTest : BaseViewModelTest() {
     @Test
     fun givenFailRequest_whenGetExchanges_thenReturnFail() = runTest {
 
-        val expected = Response.Error(DataMockTest.DEFAULT_ERROR_MOCK)
+        val expected = Response.Error(DataMockTest.MOCK_DEFAULT_ERROR)
         coEvery { repository.getExchanges() } returns expected
 
         coEvery { repository.getIcons() } returns expected
@@ -113,7 +113,7 @@ class ExchangesViewModelTest : BaseViewModelTest() {
             val failResponse = awaitItem()
             assertTrue(
                 failResponse.exchanges == null &&
-                        failResponse.errorMessage == DataMockTest.DEFAULT_ERROR_MOCK
+                        failResponse.errorMessage == DataMockTest.MOCK_DEFAULT_ERROR
             )
             cancelAndIgnoreRemainingEvents()
         }

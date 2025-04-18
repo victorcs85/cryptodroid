@@ -1,4 +1,4 @@
-package br.com.victorcs.cryptodroid.data.source.remote.repository
+package br.com.victorcs.cryptodroid.infrastructure.source.remote.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.filters.SmallTest

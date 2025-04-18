@@ -79,7 +79,7 @@ class ExchangeDetailsViewModelTest : BaseViewModelTest() {
 
     @Test
     fun givenWrongExchangeId_whenGetDetails_thenReturnFail() = runTest {
-        val expected = Response.Error(DataMockTest.DEFAULT_ERROR_MOCK)
+        val expected = Response.Error(DataMockTest.MOCK_DEFAULT_ERROR)
         viewModel = ExchangeDetailsViewModel(repository, savedState, testDispatcherProvider)
         coEvery { repository.getExchangeDetails(any<String>()) } returns expected
 
@@ -91,7 +91,7 @@ class ExchangeDetailsViewModelTest : BaseViewModelTest() {
             val failResponse = awaitItem()
             assertTrue(
                 failResponse.exchange == null &&
-                        failResponse.errorMessage == DataMockTest.DEFAULT_ERROR_MOCK
+                        failResponse.errorMessage == DataMockTest.MOCK_DEFAULT_ERROR
             )
             cancelAndIgnoreRemainingEvents()
         }
