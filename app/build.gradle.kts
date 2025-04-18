@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
+    id("io.gitlab.arturbosch.detekt")
 }
 
 val localProperties = Properties().apply {
@@ -69,6 +70,24 @@ android {
     testOptions {
         animationsDisabled = true
     }
+}
+
+allprojects {
+    beforeEvaluate {
+        android {
+            lint {
+                abortOnError = false
+                xmlReport = true
+                htmlReport = true
+                warningsAsErrors = true
+                lintConfig = file("$rootDir/lint/config.xml")
+            }
+        }
+        // Static Analyze
+        apply(from = "$rootDir/analytic_code/detekt/detekt.gradle")
+        apply(from = "$rootDir/analytic_code/spotless/spotless.gradle")
+    }
+
 }
 
 dependencies {
