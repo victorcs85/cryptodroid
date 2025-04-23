@@ -3,7 +3,7 @@ package br.com.victorcs.cryptodroid.presentation.theme
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
 
-data class CustomColors(
+data class AppCustomColors(
     val appBarBackground: Color,
     val appBarInfo: Color,
     val pullToRefreshBackground: Color,
@@ -19,7 +19,7 @@ data class CustomColors(
     val buttonBackground: Color
 )
 
-val LightCustomColors = CustomColors(
+val LightAppCustomColors = AppCustomColors(
     appBarBackground = LightAppBarBackground,
     appBarInfo = LightAppBarInfo,
     pullToRefreshBackground = LightPullToRefreshBackground,
@@ -35,7 +35,7 @@ val LightCustomColors = CustomColors(
     buttonBackground = LightButtonBackground
 )
 
-val DarkCustomColors = CustomColors(
+val DarkAppCustomColors = AppCustomColors(
     appBarBackground = DarkAppBarBackground,
     appBarInfo = DarkAppBarInfo,
     pullToRefreshBackground = DarkPullToRefreshBackground,
@@ -51,4 +51,4 @@ val DarkCustomColors = CustomColors(
     buttonBackground = DarkButtonBackground
 )
 
-val LocalCustomColors = compositionLocalOf { LightCustomColors }
+val LocalCustomColors = compositionLocalOf { LightAppCustomColors }

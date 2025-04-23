@@ -61,6 +61,7 @@ fun ExchangesPreview() {
     )
 }
 
+@Suppress("LongMethod")
 internal fun getMockExchangeList(): List<Exchange> {
     val json = """[
     {

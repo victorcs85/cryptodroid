@@ -27,7 +27,7 @@ import coil.compose.rememberAsyncImagePainter
 
 @Composable
 fun ExchangeItem(exchange: Exchange, onClick: () -> Unit) {
-    Row (
+    Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
@@ -35,16 +35,39 @@ fun ExchangeItem(exchange: Exchange, onClick: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
-            painter = exchange.icons?.firstOrNull()?.url?.let { rememberAsyncImagePainter(it) } ?: painterResource(id = R.drawable.logo_mb_icon_color),
+            painter = exchange.icons?.firstOrNull()?.url?.let {
+                rememberAsyncImagePainter(it)
+            } ?: painterResource(
+                id = R.drawable.logo_mb_icon_color
+            ),
             contentDescription = null,
-            modifier = Modifier.size(48.dp).padding(top = 8.dp, bottom = 8.dp, start = 8.dp, end = 16.dp)
+            modifier = Modifier
+                .size(48.dp)
+                .padding(
+                    top = 8.dp,
+                    bottom = 8.dp,
+                    start = 8.dp,
+                    end = 16.dp
+                )
         )
         Column(modifier = Modifier.weight(1f)) {
-            Text(text = exchange.name, fontSize= 16.sp, fontWeight = FontWeight.Bold, color = LocalCustomColors.current.exchangeTitle)
-            Text(text = stringResource(R.string.exchange_id, exchange.exchangeId), fontSize = 14.sp, color = LocalCustomColors.current.exchangeInfo)
+            Text(
+                text = exchange.name,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                color = LocalCustomColors.current.exchangeTitle
+            )
+            Text(
+                text = stringResource(R.string.exchange_id, exchange.exchangeId),
+                fontSize = 14.sp,
+                color = LocalCustomColors.current.exchangeInfo,
+            )
             Spacer(modifier = Modifier.height(8.dp))
-            Text(text = stringResource(R.string.volume_one_day_usd, exchange.volume1DayUsd),
-                style = MaterialTheme.typography.bodyLarge, color = LocalCustomColors.current.exchangeVolume)
+            Text(
+                text = stringResource(R.string.volume_one_day_usd, exchange.volume1DayUsd),
+                style = MaterialTheme.typography.bodyLarge,
+                color = LocalCustomColors.current.exchangeVolume
+            )
         }
         Image(
             painter = painterResource(R.drawable.chevron_right_24px),

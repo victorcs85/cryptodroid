@@ -15,5 +15,4 @@ interface CoinAPI {
     @GET("v1/exchanges/{exchange_id}")
     suspend fun getExchange(@Path("exchange_id") exchangeId: String): List<ExchangeResponse>
 
-
 }

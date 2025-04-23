@@ -19,7 +19,7 @@ fun CoinTheme(
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) DarkColors else LightColors
-    val customColors = remember { if (darkTheme) DarkCustomColors else LightCustomColors }
+    val customColors = remember { if (darkTheme) DarkAppCustomColors else LightAppCustomColors }
 
     val view = LocalView.current
     if (!view.isInEditMode) {

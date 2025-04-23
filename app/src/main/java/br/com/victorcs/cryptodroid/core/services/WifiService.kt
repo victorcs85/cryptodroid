@@ -4,21 +4,17 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.wifi.WifiManager
+import br.com.victorcs.cryptodroid.core.extensions.orFalse
 
-class WifiService(private val context: Context) {
+class WifiService(context: Context) {
 
-    private val wifiManager: WifiManager = context.getSystemService(Context.WIFI_SERVICE) as WifiManager
-    private val connectivityManager: ConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    private val connectivityManager: ConnectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
     fun isOnline(): Boolean {
         val capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-        if (capabilities != null) {
-            when {
-                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> return true
-                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> return true
-                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> return true
-            }
-        }
-        return false
+        return capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR).orFalse() ||
+                capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI).orFalse() ||
+                capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET).orFalse()
     }
 }

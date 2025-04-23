@@ -2,15 +2,25 @@ package br.com.victorcs.cryptodroid.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
-internal val MercadoBitcoinOrange = Color(0xFFD14C0C)
-internal val MercadoBitcoinOrangeAlpha30 = MercadoBitcoinOrange.copy(alpha = 0.3f)
-internal val MercadoBitcoinOrangeAlpha80 = MercadoBitcoinOrange.copy(alpha = 0.8f)
-internal val Black = Color(0xFF000000)
-internal val Transparent = Color(0x00000000)
-internal val YellowGold = Color(0xFF5E531B)
-internal val White = Color(0xFFFFFFFF)
-internal val GrayAlpha30 = Color(0x4D989898)
-internal val WhiteAlpha30 = Color(0x4DFFFFFF)
+private const val MERCADO_BITCOIN_ORANGE = 0xFFD14C0C
+private const val ALPHA_30_PERCENTAGE = 0.3f
+private const val ALPHA_80_PERCENTAGE = 0.8f
+private const val BLACK = 0xFF000000
+private const val TRANSPARENT = 0x00000000
+private const val YELLOW_GOLD = 0xFF5E531B
+private const val WHITE = 0xFFFFFFFF
+private const val GRAY_30_ALPHA = 0x4D989898
+private const val WHITE_30_ALPHA = 0x4DFFFFFF
+
+internal val MercadoBitcoinOrange = Color(MERCADO_BITCOIN_ORANGE)
+internal val MercadoBitcoinOrangeAlpha30 = MercadoBitcoinOrange.copy(alpha = ALPHA_30_PERCENTAGE)
+internal val MercadoBitcoinOrangeAlpha80 = MercadoBitcoinOrange.copy(alpha = ALPHA_80_PERCENTAGE)
+internal val Black = Color(BLACK)
+internal val Transparent = Color(TRANSPARENT)
+internal val YellowGold = Color(YELLOW_GOLD)
+internal val White = Color(WHITE)
+internal val GrayAlpha30 = Color(GRAY_30_ALPHA)
+internal val WhiteAlpha30 = Color(WHITE_30_ALPHA)
 
 val LightBackground = White
 val DarkBackground = Black

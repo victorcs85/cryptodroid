@@ -22,7 +22,14 @@ import br.com.victorcs.cryptodroid.presentation.theme.LocalCustomColors
 @Composable
 fun ExchangeTopAppBar(title: String, onBackPressed: (() -> Unit)? = null) {
     TopAppBar(
-        title = { Text(text = title, maxLines = ONE, overflow = TextOverflow.Ellipsis, color = LocalCustomColors.current.appBarInfo) },
+        title = {
+            Text(
+                text = title,
+                maxLines = ONE,
+                overflow = TextOverflow.Ellipsis,
+                color = LocalCustomColors.current.appBarInfo,
+            )
+        },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = LocalCustomColors.current.appBarBackground
         ),

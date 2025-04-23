@@ -203,6 +203,9 @@ exceptions:
 
 naming:
   active: true
+  FunctionNaming:
+    active: true
+    functionPattern: '^[a-zA-Z][a-zA-Z0-9]*'
   excludes: [
     '**/src/test/kotlin/**',
     '**/src/test/java/**',
@@ -489,4 +492,3 @@ coroutines:
     active: true
   SuspendFunWithCoroutineScopeReceiver:
     active: true
-
