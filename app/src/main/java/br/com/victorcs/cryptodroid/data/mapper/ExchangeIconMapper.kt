@@ -10,7 +10,7 @@ class ExchangeIconMapper : DomainMapper<IconResponse, Icon> {
         Icon(
             exchangeId = exchangeId.orEmpty(),
             assetId = assetId.orEmpty(),
-            url = url.orEmpty()
+            url = url.orEmpty(),
         )
     }
 }

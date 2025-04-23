@@ -3,7 +3,6 @@ package br.com.victorcs.cryptodroid.core.services
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.net.wifi.WifiManager
 import br.com.victorcs.cryptodroid.core.extensions.orFalse
 
 class WifiService(context: Context) {
@@ -14,7 +13,7 @@ class WifiService(context: Context) {
     fun isOnline(): Boolean {
         val capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
         return capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR).orFalse() ||
-                capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI).orFalse() ||
-                capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET).orFalse()
+            capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI).orFalse() ||
+            capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET).orFalse()
     }
 }

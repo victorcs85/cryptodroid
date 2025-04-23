@@ -23,13 +23,13 @@ import com.squareup.moshi.Types
 fun ExchangeList(
     exchanges: List<Exchange>,
     navController: NavController,
-    listState: LazyListState
+    listState: LazyListState,
 ) {
     LazyColumn(
         state = listState,
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
         items(
             count = exchanges.size,
@@ -40,8 +40,9 @@ fun ExchangeList(
                 ExchangeItem(exchange) {
                     navController.navigate("details/${exchange.exchangeId}")
                 }
-                if (index < exchanges.lastIndex)
+                if (index < exchanges.lastIndex) {
                     HorizontalDivider(color = LocalCustomColors.current.divider, thickness = 1.dp)
+                }
             },
         )
     }
@@ -57,7 +58,7 @@ fun ExchangesPreview() {
     ExchangeList(
         getMockExchangeList(),
         fakeNavController,
-        listState
+        listState,
     )
 }
 

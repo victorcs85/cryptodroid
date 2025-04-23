@@ -16,7 +16,7 @@ import androidx.core.view.WindowCompat
 @Composable
 fun CoinTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val colors = if (darkTheme) DarkColors else LightColors
     val customColors = remember { if (darkTheme) DarkAppCustomColors else LightAppCustomColors }
@@ -36,18 +36,17 @@ fun CoinTheme(
     CompositionLocalProvider(LocalCustomColors provides customColors) {
         MaterialTheme(
             colorScheme = colors,
-            content = content
+            content = content,
         )
     }
 }
 
-
 val LightColors = lightColorScheme(
     background = LightBackground,
-    primary = LightAppBarBackground
+    primary = LightAppBarBackground,
 )
 
 val DarkColors = darkColorScheme(
     background = DarkBackground,
-    primary = DarkAppBarBackground
+    primary = DarkAppBarBackground,
 )

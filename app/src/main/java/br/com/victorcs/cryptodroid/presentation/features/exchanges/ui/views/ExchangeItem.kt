@@ -32,13 +32,13 @@ fun ExchangeItem(exchange: Exchange, onClick: () -> Unit) {
             .fillMaxWidth()
             .padding(8.dp)
             .clickable { onClick() },
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
             painter = exchange.icons?.firstOrNull()?.url?.let {
                 rememberAsyncImagePainter(it)
             } ?: painterResource(
-                id = R.drawable.logo_mb_icon_color
+                id = R.drawable.logo_mb_icon_color,
             ),
             contentDescription = null,
             modifier = Modifier
@@ -47,15 +47,15 @@ fun ExchangeItem(exchange: Exchange, onClick: () -> Unit) {
                     top = 8.dp,
                     bottom = 8.dp,
                     start = 8.dp,
-                    end = 16.dp
-                )
+                    end = 16.dp,
+                ),
         )
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = exchange.name,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
-                color = LocalCustomColors.current.exchangeTitle
+                color = LocalCustomColors.current.exchangeTitle,
             )
             Text(
                 text = stringResource(R.string.exchange_id, exchange.exchangeId),
@@ -66,7 +66,7 @@ fun ExchangeItem(exchange: Exchange, onClick: () -> Unit) {
             Text(
                 text = stringResource(R.string.volume_one_day_usd, exchange.volume1DayUsd),
                 style = MaterialTheme.typography.bodyLarge,
-                color = LocalCustomColors.current.exchangeVolume
+                color = LocalCustomColors.current.exchangeVolume,
             )
         }
         Image(
@@ -77,12 +77,11 @@ fun ExchangeItem(exchange: Exchange, onClick: () -> Unit) {
     }
 }
 
-
 @Preview
 @Composable
 fun ExchangeItemPreview() {
     ExchangeItem(
         exchange = getMockExchangeList().first(),
-        onClick = {}
+        onClick = {},
     )
 }

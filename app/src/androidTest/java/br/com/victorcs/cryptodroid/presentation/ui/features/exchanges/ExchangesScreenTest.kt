@@ -50,11 +50,9 @@ class ExchangesScreenTest {
 
     @Test
     fun givenScreen_whenLoadedData_thenSuccessfullyData() {
-
         composeTestRule.run {
             onNodeWithText(PresentationMockTest.BINANCE).assertIsDisplayed()
         }
-
     }
 
     @Test
@@ -62,7 +60,6 @@ class ExchangesScreenTest {
         coEvery { repository.getExchanges() } returns PresentationMockTest.mockSuccessExchangeResponse
 
         composeTestRule.run {
-
             onNodeWithText(PresentationMockTest.BINANCE).assertIsDisplayed()
 
             coEvery { repository.getExchanges() } returns PresentationMockTest.mockSuccessExchangeRefreshResponse

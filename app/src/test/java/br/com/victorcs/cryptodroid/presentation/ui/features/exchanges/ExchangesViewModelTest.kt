@@ -59,14 +59,14 @@ class ExchangesViewModelTest : BaseViewModelTest() {
         coEvery { repository.getIcons() } returns DataMockTest.mockSuccessExchangeIconsResponse
 
         viewModel.execute(
-            ExchangesCommand.FetchExchanges
+            ExchangesCommand.FetchExchanges,
         )
 
         viewModel.screenState.test {
             val successResponse = awaitItem()
             assertTrue(
                 successResponse.exchanges != null && successResponse.exchanges?.isEmpty()?.not().orFalse() &&
-                        successResponse.exchanges?.first() == DataMockTest.mockExchangeDetails.first()
+                    successResponse.exchanges?.first() == DataMockTest.mockExchangeDetails.first(),
             )
             cancelAndIgnoreRemainingEvents()
         }
@@ -82,14 +82,14 @@ class ExchangesViewModelTest : BaseViewModelTest() {
         coEvery { repository.getIcons() } returns Response.Error(DataMockTest.MOCK_DEFAULT_ERROR)
 
         viewModel.execute(
-            ExchangesCommand.FetchExchanges
+            ExchangesCommand.FetchExchanges,
         )
 
         viewModel.screenState.test {
             val successResponse = awaitItem()
             assertTrue(
                 successResponse.exchanges != null && successResponse.exchanges?.isEmpty()?.not().orFalse() &&
-                        successResponse.exchanges?.first() == DataMockTest.mockExchangeDetails.first()
+                    successResponse.exchanges?.first() == DataMockTest.mockExchangeDetails.first(),
             )
             cancelAndIgnoreRemainingEvents()
         }
@@ -99,21 +99,20 @@ class ExchangesViewModelTest : BaseViewModelTest() {
 
     @Test
     fun givenFailRequest_whenGetExchanges_thenReturnFail() = runTest {
-
         val expected = Response.Error(DataMockTest.MOCK_DEFAULT_ERROR)
         coEvery { repository.getExchanges() } returns expected
 
         coEvery { repository.getIcons() } returns expected
 
         viewModel.execute(
-            ExchangesCommand.FetchExchanges
+            ExchangesCommand.FetchExchanges,
         )
 
         viewModel.screenState.test {
             val failResponse = awaitItem()
             assertTrue(
                 failResponse.exchanges == null &&
-                        failResponse.errorMessage == DataMockTest.MOCK_DEFAULT_ERROR
+                    failResponse.errorMessage == DataMockTest.MOCK_DEFAULT_ERROR,
             )
             cancelAndIgnoreRemainingEvents()
         }

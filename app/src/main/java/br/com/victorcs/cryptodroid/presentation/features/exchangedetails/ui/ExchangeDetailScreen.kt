@@ -34,7 +34,7 @@ import br.com.victorcs.cryptodroid.presentation.views.ShowErrorMessage
 fun ExchangeDetailScreen(
     navController: NavController,
     state: ExchangeDetailsScreenState,
-    execute: (ExchangeDetailsCommand) -> Unit
+    execute: (ExchangeDetailsCommand) -> Unit,
 ) {
     val exchange = state.exchange
     val exchangeId = rememberSaveable() {
@@ -45,22 +45,23 @@ fun ExchangeDetailScreen(
         topBar = {
             ExchangeTopAppBar(
                 title = exchange?.name ?: stringResource(R.string.exchange_details_title),
-                onBackPressed = { navController.popBackStack() }
+                onBackPressed = { navController.popBackStack() },
             )
-        }
+        },
     ) { contentPadding ->
         when {
             state.isLoading -> LoadingView()
             state.errorMessage != null -> ShowErrorMessage(
-                state.errorMessage, buttonText = stringResource(R.string.reload),
+                state.errorMessage,
+                buttonText = stringResource(R.string.reload),
                 buttonAction = {
                     execute(
                         ExchangeDetailsCommand.GetExchangeDetails(
-                            exchangeId
-                        )
+                            exchangeId,
+                        ),
                     )
                 },
-                modifier = null
+                modifier = null,
             )
 
             exchange != null -> DetailsContent(contentPadding, exchange)
@@ -74,24 +75,24 @@ private fun DetailsContent(contentPadding: PaddingValues, exchange: Exchange) {
         modifier = Modifier
             .fillMaxSize()
             .padding(contentPadding)
-            .padding(16.dp)
+            .padding(16.dp),
     ) {
         Column(
             modifier = Modifier
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(rememberScrollState()),
         ) {
             Text(
                 text = stringResource(R.string.exchange_details),
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Bold,
                 color = LocalCustomColors.current.exchangeDetailsTitle,
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier.padding(bottom = 16.dp),
             )
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Color.White.copy(alpha = 0.7f))
-                    .padding(16.dp)
+                    .padding(16.dp),
             ) {
                 Column {
                     listOf(
@@ -102,21 +103,21 @@ private fun DetailsContent(contentPadding: PaddingValues, exchange: Exchange) {
                         R.string.volume_one_day to "${exchange.volume1DayUsd} USD",
                         R.string.volume_one_month to "${exchange.volume1MthUsd} USD",
                         R.string.rank to exchange.rank.toString(),
-                        R.string.integration_status to exchange.integrationStatus
+                        R.string.integration_status to exchange.integrationStatus,
                     ).forEach { (resId, value) ->
                         Text(
                             text = stringResource(resId),
                             fontWeight = FontWeight.Bold,
-                            color = LocalCustomColors.current.exchangeInfo
+                            color = LocalCustomColors.current.exchangeInfo,
                         )
                         Text(
                             text = value,
                             modifier = Modifier.padding(bottom = 8.dp),
-                            color = LocalCustomColors.current.exchangeInfo
+                            color = LocalCustomColors.current.exchangeInfo,
                         )
                         HorizontalDivider(
                             thickness = 1.dp,
-                            color = LocalCustomColors.current.divider
+                            color = LocalCustomColors.current.divider,
                         )
                     }
                 }

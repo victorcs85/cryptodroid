@@ -44,7 +44,7 @@ class ExchangeDetailsScreenTest : KoinTest {
         every { savedState.get<String>(EXCHANGE_ID) } returns testExchangeId
         viewModel = ExchangeDetailsViewModel(repository, savedState, TestDispatchersProvider)
         coEvery { repository.getExchangeDetails(any<String>()) } returns
-                PresentationMockTest.mockSuccessExchangeDetailsResponse
+            PresentationMockTest.mockSuccessExchangeDetailsResponse
 
         composeTestRule.activity.setContent {
             val state = viewModel.screenState.collectAsStateWithLifecycle().value

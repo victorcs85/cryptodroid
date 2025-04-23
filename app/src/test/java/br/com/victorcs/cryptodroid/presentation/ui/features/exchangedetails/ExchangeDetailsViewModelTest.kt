@@ -62,14 +62,14 @@ class ExchangeDetailsViewModelTest : BaseViewModelTest() {
         coEvery { repository.getExchangeDetails(any<String>()) } returns mockResponse
 
         viewModel.execute(
-            ExchangeDetailsCommand.GetExchangeDetails(UUID.randomUUID().toString())
+            ExchangeDetailsCommand.GetExchangeDetails(UUID.randomUUID().toString()),
         )
 
         viewModel.screenState.test {
             val successResponse = awaitItem()
             assertTrue(
                 successResponse.exchange != null &&
-                        successResponse.exchange == DataMockTest.mockExchangeDetails.first()
+                    successResponse.exchange == DataMockTest.mockExchangeDetails.first(),
             )
             cancelAndIgnoreRemainingEvents()
         }
@@ -84,14 +84,14 @@ class ExchangeDetailsViewModelTest : BaseViewModelTest() {
         coEvery { repository.getExchangeDetails(any<String>()) } returns expected
 
         viewModel.execute(
-            ExchangeDetailsCommand.GetExchangeDetails(UUID.randomUUID().toString())
+            ExchangeDetailsCommand.GetExchangeDetails(UUID.randomUUID().toString()),
         )
 
         viewModel.screenState.test {
             val failResponse = awaitItem()
             assertTrue(
                 failResponse.exchange == null &&
-                        failResponse.errorMessage == DataMockTest.MOCK_DEFAULT_ERROR
+                    failResponse.errorMessage == DataMockTest.MOCK_DEFAULT_ERROR,
             )
             cancelAndIgnoreRemainingEvents()
         }

@@ -16,7 +16,7 @@ data class AppCustomColors(
     val cardExchangesShaderGradient: List<Color>,
     val cardExchangeDetailsShaderGradient: List<Color>,
     val divider: Color,
-    val buttonBackground: Color
+    val buttonBackground: Color,
 )
 
 val LightAppCustomColors = AppCustomColors(
@@ -32,7 +32,7 @@ val LightAppCustomColors = AppCustomColors(
     cardExchangesShaderGradient = LightCardExchangesShaderGradient,
     cardExchangeDetailsShaderGradient = LightCardExchangeDetailsShaderGradient,
     divider = GrayAlpha30,
-    buttonBackground = LightButtonBackground
+    buttonBackground = LightButtonBackground,
 )
 
 val DarkAppCustomColors = AppCustomColors(
@@ -48,7 +48,7 @@ val DarkAppCustomColors = AppCustomColors(
     cardExchangesShaderGradient = DarkCardExchangesShaderGradient,
     cardExchangeDetailsShaderGradient = DarkCardExchangeDetailsShaderGradient,
     divider = WhiteAlpha30,
-    buttonBackground = DarkButtonBackground
+    buttonBackground = DarkButtonBackground,
 )
 
 val LocalCustomColors = compositionLocalOf { LightAppCustomColors }

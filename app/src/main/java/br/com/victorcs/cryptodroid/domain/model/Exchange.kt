@@ -22,7 +22,7 @@ data class Exchange(
     val rank: Int,
     val integrationStatus: String,
     var icons: List<Icon>?,
-    val metricId: List<String>
+    val metricId: List<String>,
 ) : Parcelable
 
 @JsonClass(generateAdapter = true)
@@ -30,5 +30,5 @@ data class Exchange(
 data class Icon(
     val exchangeId: String,
     val assetId: String?,
-    val url: String
+    val url: String,
 ) : Parcelable

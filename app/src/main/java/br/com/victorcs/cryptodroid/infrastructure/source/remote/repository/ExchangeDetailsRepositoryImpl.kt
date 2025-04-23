@@ -10,8 +10,8 @@ import br.com.victorcs.cryptodroid.infrastructure.source.remote.CoinAPI
 
 class ExchangeDetailsRepositoryImpl(
     private val service: CoinAPI,
-    private val mapper: DomainMapper<ExchangeResponse, Exchange>
-): IExchangeDetailsRepository {
+    private val mapper: DomainMapper<ExchangeResponse, Exchange>,
+) : IExchangeDetailsRepository {
     override suspend fun getExchangeDetails(exchangeId: String): Response<List<Exchange>> = safeApiCall {
         val response = service.getExchange(exchangeId)
         mapper.toDomain(response)

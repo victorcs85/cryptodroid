@@ -31,18 +31,17 @@ import br.com.victorcs.cryptodroid.presentation.views.ShowErrorMessage
 fun ExchangesScreen(
     navController: NavController,
     state: ExchangesScreenState,
-    execute: (ExchangesCommand) -> Unit
+    execute: (ExchangesCommand) -> Unit,
 ) {
-
     Scaffold(
         topBar = {
             ExchangeTopAppBar(title = stringResource(R.string.app_name))
         },
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) { contentPadding ->
         ExchangesScreenContent(state, contentPadding, navController, execute) {
             execute(
-                ExchangesCommand.RefreshExchanges
+                ExchangesCommand.RefreshExchanges,
             )
         }
     }
@@ -54,35 +53,38 @@ private fun ExchangesScreenContent(
     contentPadding: PaddingValues,
     navController: NavController,
     execute: (ExchangesCommand) -> Unit,
-    onRefresh: () -> Unit
+    onRefresh: () -> Unit,
 ) {
     val listState = rememberLazyListState()
 
     PullToRefreshWrapper(
         isRefreshing = state.isRefreshing,
         onRefresh = onRefresh,
-        modifier = Modifier.padding(contentPadding)
+        modifier = Modifier.padding(contentPadding),
     ) {
         when {
             state.errorMessage != null -> ShowErrorMessage(
-                state.errorMessage, buttonText = stringResource(R.string.reload), buttonAction =
+                state.errorMessage,
+                buttonText = stringResource(R.string.reload),
+                buttonAction =
                 {
                     execute(
-                        ExchangesCommand.FetchExchanges
+                        ExchangesCommand.FetchExchanges,
                     )
                 },
-                modifier = null
+                modifier = null,
             )
 
             state.isLoading -> LoadingView()
             state.exchanges?.isEmpty().orFalse() -> EmptyListView(
-                buttonText = stringResource(R.string.reload), buttonAction =
+                buttonText = stringResource(R.string.reload),
+                buttonAction =
                 {
                     execute(
-                        ExchangesCommand.RefreshExchanges
+                        ExchangesCommand.RefreshExchanges,
                     )
                 },
-                modifier = null
+                modifier = null,
             )
 
             state.exchanges == null -> Unit

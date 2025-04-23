@@ -14,7 +14,7 @@ import br.com.victorcs.cryptodroid.infrastructure.source.remote.CoinAPI
 class ExchangesRepositoryImpl(
     private val service: CoinAPI,
     private val mapper: DomainMapper<ExchangeResponse, Exchange>,
-    private val iconMapper: DomainMapper<IconResponse, Icon>
+    private val iconMapper: DomainMapper<IconResponse, Icon>,
 ) : IExchangesRepository {
 
     override suspend fun getExchanges(): ExchangesResponse = safeApiCall {

@@ -20,7 +20,7 @@ class CryptoDroidApplication : Application() {
             androidLogger()
             androidContext(this@CryptoDroidApplication)
             modules(
-                CoinInitialization().init()
+                CoinInitialization().init(),
             )
         }
 

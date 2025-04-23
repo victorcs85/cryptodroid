@@ -14,7 +14,7 @@ abstract class BaseViewModel(private val dispatchersProvider: IDispatchersProvid
     protected fun launch(
         coroutineDispatcher: CoroutineDispatcher = dispatchersProvider.io,
         errorBlock: ((Throwable) -> Unit?)? = null,
-        block: suspend CoroutineScope.() -> Unit
+        block: suspend CoroutineScope.() -> Unit,
     ) = viewModelScope.launch(coroutineDispatcher) {
         runCatching {
             block()

@@ -45,7 +45,7 @@ class CoinInitialization : ModuleInitialization() {
     private fun <T> Scope.retrofitConfig(service: Class<T>) = RetrofitConfig.create(
         service,
         API_URL,
-        get()
+        get(),
     )
 
     private val networkModule = module {
@@ -71,7 +71,7 @@ class CoinInitialization : ModuleInitialization() {
 
         single<IExchangeLocalProvider> {
             ExchangeLocalProvider(
-                context = androidContext()
+                context = androidContext(),
             )
         }
     }
@@ -83,13 +83,13 @@ class CoinInitialization : ModuleInitialization() {
             ExchangesRepositoryImpl(
                 service = get(),
                 mapper = get(),
-                iconMapper = get(named(ICON_MAPPER))
+                iconMapper = get(named(ICON_MAPPER)),
             )
         }
         single<IExchangeDetailsRepository>(named(REMOTE_NAMED)) {
             ExchangeDetailsRepositoryImpl(
                 service = get(),
-                mapper = get()
+                mapper = get(),
             )
         }
 
@@ -97,13 +97,13 @@ class CoinInitialization : ModuleInitialization() {
             LocalExchangesRepositoryImpl(
                 provider = get(),
                 mapper = get(),
-                iconMapper = get(named(ICON_MAPPER))
+                iconMapper = get(named(ICON_MAPPER)),
             )
         }
         single<IExchangeDetailsRepository>(named(LOCAL_NAMED)) {
             LocalExchangeDetailsRepositoryImpl(
                 provider = get(),
-                mapper = get()
+                mapper = get(),
             )
         }
     }
@@ -121,14 +121,14 @@ class CoinInitialization : ModuleInitialization() {
         viewModel {
             ExchangesViewModel(
                 repository = get(named(LOCAL_NAMED)),
-                dispatchers = get()
+                dispatchers = get(),
             )
         }
         viewModel { (savedStateHandle: SavedStateHandle) ->
             ExchangeDetailsViewModel(
                 repository = get(named(LOCAL_NAMED)),
                 dispatchers = get(),
-                savedStateHandle = savedStateHandle
+                savedStateHandle = savedStateHandle,
             )
         }
     }
@@ -148,6 +148,6 @@ class CoinInitialization : ModuleInitialization() {
         serviceModule,
         interceptorModule,
         viewModelsModule,
-        providerModule
+        providerModule,
     )
 }

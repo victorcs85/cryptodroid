@@ -17,7 +17,6 @@ import br.com.victorcs.cryptodroid.R
 import br.com.victorcs.cryptodroid.core.constants.ONE
 import br.com.victorcs.cryptodroid.presentation.theme.LocalCustomColors
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ExchangeTopAppBar(title: String, onBackPressed: (() -> Unit)? = null) {
@@ -31,7 +30,7 @@ fun ExchangeTopAppBar(title: String, onBackPressed: (() -> Unit)? = null) {
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = LocalCustomColors.current.appBarBackground
+            containerColor = LocalCustomColors.current.appBarBackground,
         ),
         navigationIcon = {
             onBackPressed?.let {
@@ -39,11 +38,11 @@ fun ExchangeTopAppBar(title: String, onBackPressed: (() -> Unit)? = null) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = stringResource(R.string.back_button),
-                        tint = Color.White
+                        tint = Color.White,
                     )
                 }
             }
-        }
+        },
     )
 }
 

@@ -19,16 +19,17 @@ fun ShowErrorMessage(
     errorMessage: String,
     buttonAction: () -> Unit,
     buttonText: String?,
-    modifier: Modifier?
+    modifier: Modifier?,
 ) {
     Box(modifier = Modifier.fillMaxSize().padding(8.dp), contentAlignment = Alignment.Center) {
         Column {
             Text(
-                text = errorMessage, modifier = Modifier
+                text = errorMessage,
+                modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
                 color = LocalCustomColors.current.exchangeInfo,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
             )
             buttonText?.let {
                 ActionButton(modifier, buttonAction, it)

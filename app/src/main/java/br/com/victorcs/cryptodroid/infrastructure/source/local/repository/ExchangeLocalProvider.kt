@@ -7,13 +7,13 @@ import timber.log.Timber
 import java.io.IOException
 import java.io.InputStream
 
-class ExchangeLocalProvider(private val context: Context): IExchangeLocalProvider {
+class ExchangeLocalProvider(private val context: Context) : IExchangeLocalProvider {
 
     override fun loadJSONFile(file: ExchangeLocalProviderType) = run {
         var json = EMPTY
         try {
             val inputStream: InputStream = context.assets.open(file.fileName)
-            with(inputStream){
+            with(inputStream) {
                 val size = available()
                 val byteArray = ByteArray(size)
                 read(byteArray)
@@ -29,5 +29,5 @@ class ExchangeLocalProvider(private val context: Context): IExchangeLocalProvide
 
 enum class ExchangeLocalProviderType(val fileName: String) {
     EXCHANGES("response_200_exchanges.json"),
-    ICONS("response_200_icons.json")
+    ICONS("response_200_icons.json"),
 }

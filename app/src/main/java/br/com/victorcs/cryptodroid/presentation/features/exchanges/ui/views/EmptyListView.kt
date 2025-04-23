@@ -27,7 +27,7 @@ fun EmptyListView(buttonAction: () -> Unit, buttonText: String?, modifier: Modif
                     .fillMaxWidth()
                     .padding(16.dp),
                 color = LocalCustomColors.current.exchangeInfo,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
             )
             buttonText?.let {
                 ActionButton(modifier, buttonAction, it)

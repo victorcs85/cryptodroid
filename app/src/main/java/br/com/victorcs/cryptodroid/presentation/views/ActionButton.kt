@@ -14,7 +14,7 @@ import br.com.victorcs.cryptodroid.presentation.theme.LocalCustomColors
 fun ActionButton(
     modifier: Modifier?,
     buttonAction: () -> Unit,
-    it: String
+    it: String,
 ) {
     ElevatedButton(
         onClick = buttonAction,
@@ -23,7 +23,7 @@ fun ActionButton(
             pressedElevation = 2.dp,
             focusedElevation = 2.dp,
             hoveredElevation = 2.dp,
-            disabledElevation = 0.dp
+            disabledElevation = 0.dp,
         ),
         colors = ButtonDefaults.elevatedButtonColors(
             containerColor = LocalCustomColors.current.buttonBackground,
@@ -33,7 +33,7 @@ fun ActionButton(
         Text(
             text = it,
             style = MaterialTheme.typography.titleMedium,
-            color = LocalCustomColors.current.appBarInfo
+            color = LocalCustomColors.current.appBarInfo,
         )
     }
 }

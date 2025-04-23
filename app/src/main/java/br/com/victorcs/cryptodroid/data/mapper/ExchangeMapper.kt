@@ -31,10 +31,10 @@ class ExchangeMapper : DomainMapper<ExchangeResponse, Exchange> {
                 Icon(
                     exchangeId = it.exchangeId.orEmpty(),
                     assetId = it.assetId.orEmpty(),
-                    url = it.url.orEmpty()
+                    url = it.url.orEmpty(),
                 )
             },
-            metricId = metricId.orEmpty()
+            metricId = metricId.orEmpty(),
         )
     }
 }

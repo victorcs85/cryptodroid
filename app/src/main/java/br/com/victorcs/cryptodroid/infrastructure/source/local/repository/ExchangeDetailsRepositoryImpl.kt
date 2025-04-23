@@ -9,7 +9,7 @@ import br.com.victorcs.cryptodroid.infrastructure.source.local.utils.toExchanges
 
 class ExchangeDetailsRepositoryImpl(
     private val provider: IExchangeLocalProvider,
-    private val mapper: DomainMapper<ExchangeResponse, Exchange>
+    private val mapper: DomainMapper<ExchangeResponse, Exchange>,
 ) : IExchangeDetailsRepository {
 
     override suspend fun getExchangeDetails(exchangeId: String): Response<List<Exchange>> {

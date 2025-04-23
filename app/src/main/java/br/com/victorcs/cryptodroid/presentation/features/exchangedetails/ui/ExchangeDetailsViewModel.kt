@@ -22,7 +22,7 @@ import kotlinx.coroutines.flow.update
 class ExchangeDetailsViewModel(
     private val repository: IExchangeDetailsRepository,
     private val savedStateHandle: SavedStateHandle,
-    dispatchers: IDispatchersProvider
+    dispatchers: IDispatchersProvider,
 ) : BaseViewModel(dispatchers) {
 
     private val _state = MutableStateFlow(ExchangeDetailsScreenState())
@@ -37,7 +37,7 @@ class ExchangeDetailsViewModel(
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(STOP_TIMER_LIMIT),
-            initialValue = ExchangeDetailsScreenState().copy(isLoading = true)
+            initialValue = ExchangeDetailsScreenState().copy(isLoading = true),
         )
 
     fun execute(command: ExchangeDetailsCommand) = when (command) {
@@ -56,14 +56,14 @@ class ExchangeDetailsViewModel(
                 _state.update { currentState ->
                     currentState.copy(
                         exchange = exchange,
-                        isLoading = false
+                        isLoading = false,
                     )
                 }
                 savedStateHandle[EXCHANGE_ID] = exchangeId
             } else {
                 _state.update { currentState ->
                     currentState.copy(
-                        errorMessage = GENERIC_MESSAGE_ERROR
+                        errorMessage = GENERIC_MESSAGE_ERROR,
                     )
                 }
             }
@@ -75,5 +75,5 @@ class ExchangeDetailsViewModel(
 data class ExchangeDetailsScreenState(
     val exchange: Exchange? = null,
     val isLoading: Boolean = false,
-    val errorMessage: String? = null
+    val errorMessage: String? = null,
 )

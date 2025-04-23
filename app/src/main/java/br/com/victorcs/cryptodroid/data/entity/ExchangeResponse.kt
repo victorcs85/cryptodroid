@@ -19,11 +19,11 @@ data class ExchangeResponse(
     @Json(name = "rank") val rank: Int?,
     @Json(name = "integration_status") val integrationStatus: String?,
     @Json(name = "icons") val icons: List<IconResponse>?,
-    @Json(name = "metric_id") val metricId: List<String>? = null
+    @Json(name = "metric_id") val metricId: List<String>? = null,
 )
 
 data class IconResponse(
     @Json(name = "exchange_id") val exchangeId: String?,
     @Json(name = "asset_id") val assetId: String?,
-    @Json(name = "url") val url: String?
+    @Json(name = "url") val url: String?,
 )

@@ -7,12 +7,12 @@ sealed class Response<out T> {
 
     data class Error(
         val errorMessage: String,
-        val errorType: ErrorType? = null
+        val errorType: ErrorType? = null,
     ) : Response<Nothing>()
 }
 
 enum class ErrorType {
     NETWORK_ERROR,
     RATE_LIMIT_ERROR,
-    GENERIC_ERROR
+    GENERIC_ERROR,
 }

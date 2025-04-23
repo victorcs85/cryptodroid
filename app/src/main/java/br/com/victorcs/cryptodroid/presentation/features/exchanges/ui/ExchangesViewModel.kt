@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.stateIn
 
 class ExchangesViewModel(
     private val repository: IExchangesRepository,
-    dispatchers: IDispatchersProvider
+    dispatchers: IDispatchersProvider,
 ) : BaseViewModel(dispatchers) {
 
     private val _state = MutableStateFlow(ExchangesScreenState())
@@ -30,7 +30,7 @@ class ExchangesViewModel(
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(STOP_TIMER_LIMIT),
-            initialValue = ExchangesScreenState().copy(isLoading = true)
+            initialValue = ExchangesScreenState().copy(isLoading = true),
         )
 
     fun execute(command: ExchangesCommand) = when (command) {
@@ -42,7 +42,7 @@ class ExchangesViewModel(
         launch(
             block = {
                 _state.value = _state.value.copy(
-                    isLoading = true
+                    isLoading = true,
                 )
                 val exchanges = repository.getExchanges()
                 val icons = repository.getIcons()
@@ -57,14 +57,14 @@ class ExchangesViewModel(
                         _state.value = _state.value.copy(
                             isLoading = false,
                             exchanges = exchanges.data,
-                            errorMessage = null
+                            errorMessage = null,
                         )
                     }
 
                     exchanges is Response.Error -> {
                         _state.value = _state.value.copy(
                             isLoading = false,
-                            errorMessage = exchanges.errorMessage
+                            errorMessage = exchanges.errorMessage,
                         )
                     }
 
@@ -78,7 +78,7 @@ class ExchangesViewModel(
                     icons is Response.Error -> {
                         _state.value = _state.value.copy(
                             isLoading = false,
-                            errorMessage = icons.errorMessage
+                            errorMessage = icons.errorMessage,
                         )
                     }
                 }
@@ -86,16 +86,16 @@ class ExchangesViewModel(
             errorBlock = { error ->
                 _state.value = _state.value.copy(
                     isLoading = false,
-                    errorMessage = error.message ?: GENERIC_MESSAGE_ERROR
+                    errorMessage = error.message ?: GENERIC_MESSAGE_ERROR,
                 )
                 Unit
-            }
+            },
         )
     }
 
     private fun refreshExchanges() {
         _state.value = _state.value.copy(
-            isRefreshing = true
+            isRefreshing = true,
         )
         fetchExchanges()
     }
@@ -106,5 +106,5 @@ data class ExchangesScreenState(
     val exchanges: List<Exchange>? = null,
     val isRefreshing: Boolean = false,
     val isLoading: Boolean = false,
-    val errorMessage: String? = null
+    val errorMessage: String? = null,
 )

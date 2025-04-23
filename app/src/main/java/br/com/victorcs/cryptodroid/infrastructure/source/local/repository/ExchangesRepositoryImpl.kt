@@ -15,7 +15,7 @@ import br.com.victorcs.cryptodroid.infrastructure.source.local.utils.toIconRespo
 class ExchangesRepositoryImpl(
     private val provider: IExchangeLocalProvider,
     private val mapper: DomainMapper<ExchangeResponse, Exchange>,
-    private val iconMapper: DomainMapper<IconResponse, Icon>
+    private val iconMapper: DomainMapper<IconResponse, Icon>,
 ) : IExchangesRepository {
 
     override suspend fun getExchanges(): ExchangesResponse {

@@ -24,7 +24,7 @@ object PresentationMockTest {
             rank = 2,
             integrationStatus = "INTEGRATED",
             icons = null,
-            metricId = emptyList()
+            metricId = emptyList(),
         ),
         Exchange(
             exchangeId = "KRAKEN",
@@ -43,8 +43,8 @@ object PresentationMockTest {
             rank = 2,
             integrationStatus = "INTEGRATED",
             icons = null,
-            metricId = emptyList()
-        )
+            metricId = emptyList(),
+        ),
     )
 
     val mockSuccessExchangeResponse: Response<List<Exchange>> = Response.Success(mockExchangeList)
@@ -67,7 +67,7 @@ object PresentationMockTest {
             rank = 2,
             integrationStatus = "INTEGRATED",
             icons = null,
-            metricId = emptyList()
+            metricId = emptyList(),
         ),
         Exchange(
             exchangeId = "BITSTAMP",
@@ -86,32 +86,35 @@ object PresentationMockTest {
             rank = 2,
             integrationStatus = "INTEGRATED",
             icons = null,
-            metricId = emptyList()
-        )
+            metricId = emptyList(),
+        ),
     )
 
     val mockSuccessExchangeRefreshResponse: Response<List<Exchange>> = Response.Success(
-        mockExchangeRefreshList
+        mockExchangeRefreshList,
     )
 
-    val mockSuccessExchangeDetailsResponse: Response<List<Exchange>> = Response.Success(listOf(
-        mockExchangeRefreshList.first()))
+    val mockSuccessExchangeDetailsResponse: Response<List<Exchange>> = Response.Success(
+        listOf(
+            mockExchangeRefreshList.first(),
+        ),
+    )
 
     private val mockExchangeIcons = listOf(
         Icon(
             exchangeId = "LAKEBTC",
             url = "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_32/5503eb9673f9437988702f06cbd7072b.png",
-            assetId = null
+            assetId = null,
         ),
         Icon(
             exchangeId = "APHELION",
             url = "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_32/566775b2321842faac5c156dfe81705a.png",
-            assetId = null
-        )
+            assetId = null,
+        ),
     )
 
     val mockSuccessExchangeIconsResponse: Response<List<Icon>> = Response.Success(
-        mockExchangeIcons
+        mockExchangeIcons,
     )
 
     const val BINANCE = "Binance"

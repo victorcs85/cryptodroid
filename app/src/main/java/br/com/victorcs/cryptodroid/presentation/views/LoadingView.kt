@@ -13,7 +13,7 @@ fun LoadingView() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         CircularProgressIndicator(
             color = LocalCustomColors.current.pullToRefreshBackground,
-            trackColor = LocalCustomColors.current.pullToRefreshArrow
+            trackColor = LocalCustomColors.current.pullToRefreshArrow,
         )
     }
 }

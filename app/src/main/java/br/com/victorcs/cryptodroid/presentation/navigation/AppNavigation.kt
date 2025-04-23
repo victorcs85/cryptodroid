@@ -30,7 +30,7 @@ fun AppNavigation() {
         }
         composable(
             EXCHANGE_DETAILS_SCREEN,
-            arguments = listOf(navArgument(EXCHANGE_ID) { type = NavType.StringType })
+            arguments = listOf(navArgument(EXCHANGE_ID) { type = NavType.StringType }),
         ) {
             val exchangeDetailsViewModel: ExchangeDetailsViewModel = koinViewModel()
             val state = exchangeDetailsViewModel.screenState.collectAsStateWithLifecycle().value
