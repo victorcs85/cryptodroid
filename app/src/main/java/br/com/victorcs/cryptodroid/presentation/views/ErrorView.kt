@@ -25,7 +25,6 @@ fun ShowErrorMessage(
     buttonLabel: String?,
     modifier: Modifier?,
 ) {
-
     Box(modifier = Modifier.fillMaxSize().padding(8.dp), contentAlignment = Alignment.Center) {
         Column {
             Text(
@@ -38,7 +37,7 @@ fun ShowErrorMessage(
             )
             buttonLabel?.let {
                 val contentButtonDescription = stringResource(R.string.semantic_button, buttonLabel)
-                ActionButton(modifier?.semantics { contentDescription =  contentButtonDescription }, buttonAction, it)
+                ActionButton(modifier?.semantics { contentDescription = contentButtonDescription }, buttonAction, it)
             }
         }
     }

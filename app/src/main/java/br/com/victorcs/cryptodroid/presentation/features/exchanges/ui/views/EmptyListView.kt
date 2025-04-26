@@ -33,7 +33,7 @@ fun EmptyListView(buttonAction: () -> Unit, buttonLabel: String?, modifier: Modi
             )
             buttonLabel?.let {
                 val contentButtonDescription = stringResource(R.string.semantic_button, buttonLabel)
-                ActionButton(modifier?.semantics { contentDescription =  contentButtonDescription }, buttonAction, it)
+                ActionButton(modifier?.semantics { contentDescription = contentButtonDescription }, buttonAction, it)
             }
         }
     }
