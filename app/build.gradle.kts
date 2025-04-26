@@ -8,8 +8,8 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
-val localProperties = Properties().apply {
-    load(rootProject.file("local.properties").inputStream())
+val moduleProperties = Properties().apply {
+    load(file("module.properties").inputStream())
 }
 
 android {
@@ -27,8 +27,13 @@ android {
 
         buildConfigField(
             "String",
+            "API_URL",
+            "\"${moduleProperties["API_URL"]}\""
+        )
+        buildConfigField(
+            "String",
             "TOKEN_KEY",
-            "\"${localProperties["TOKEN_KEY"]}\""
+            "\"${moduleProperties["TOKEN_KEY"]}\""
         )
     }
 
@@ -41,7 +46,6 @@ android {
             )
         }
     }
-    android.buildFeatures.buildConfig = true
     java {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -54,6 +58,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.0"
@@ -98,7 +103,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
     implementation(libs.multidex)
     implementation(libs.timber)
     implementation(libs.androidx.annotation)
@@ -134,10 +138,11 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.moshi.kotlin)
     implementation(libs.moshi.adapters)
-    implementation(libs.material3)
     implementation(libs.kotlin.reflect)
     implementation(libs.coil.compose)
     ksp(libs.moshi.kotlin.codegen)
+//    implementation(project(":core"))
+//    implementation(project(":lightning"))
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)

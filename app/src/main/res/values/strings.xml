@@ -16,4 +16,6 @@
     <string name="volume_one_month">Volume (1 mês):</string>
     <string name="rank">Rank:</string>
     <string name="integration_status">Status de integração:</string>
+
+    <string name="semantic_button">Botão %1$s</string>
 </resources>

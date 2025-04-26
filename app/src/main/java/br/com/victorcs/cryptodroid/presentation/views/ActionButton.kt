@@ -7,15 +7,21 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import br.com.victorcs.cryptodroid.presentation.theme.LocalCustomColors
+import br.com.victorcs.cryptodroid.R
+import br.com.victorcs.cryptodroid.core.theme.LocalCustomColors
 
 @Composable
 fun ActionButton(
     modifier: Modifier?,
     buttonAction: () -> Unit,
-    it: String,
+    buttonLabel: String,
 ) {
+    val contentButtonDescription = stringResource(R.string.semantic_button, buttonLabel)
+
     ElevatedButton(
         onClick = buttonAction,
         elevation = ButtonDefaults.buttonElevation(
@@ -28,10 +34,10 @@ fun ActionButton(
         colors = ButtonDefaults.elevatedButtonColors(
             containerColor = LocalCustomColors.current.buttonBackground,
         ),
-        modifier = modifier ?: Modifier.fillMaxWidth(),
+        modifier = modifier?.semantics { contentDescription =  contentButtonDescription } ?: Modifier.fillMaxWidth().semantics { contentDescription =  contentButtonDescription },
     ) {
         Text(
-            text = it,
+            text = buttonLabel,
             style = MaterialTheme.typography.titleMedium,
             color = LocalCustomColors.current.appBarInfo,
         )

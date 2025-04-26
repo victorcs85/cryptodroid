@@ -2,7 +2,7 @@ package br.com.victorcs.cryptodroid.core.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.victorcs.cryptodroid.presentation.utils.IDispatchersProvider
+import br.com.victorcs.cryptodroid.core.utils.IDispatchersProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch

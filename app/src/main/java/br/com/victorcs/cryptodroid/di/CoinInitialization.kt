@@ -1,12 +1,14 @@
 package br.com.victorcs.cryptodroid.di
 
 import androidx.lifecycle.SavedStateHandle
-import br.com.victorcs.cryptodroid.core.constants.API_URL
+import br.com.victorcs.cryptodroid.BuildConfig
 import br.com.victorcs.cryptodroid.core.constants.ICON_MAPPER
 import br.com.victorcs.cryptodroid.core.constants.LOCAL_NAMED
 import br.com.victorcs.cryptodroid.core.constants.REMOTE_NAMED
 import br.com.victorcs.cryptodroid.core.interceptor.ConnectivityInterceptor
 import br.com.victorcs.cryptodroid.core.services.WifiService
+import br.com.victorcs.cryptodroid.core.utils.IDispatchersProvider
+import br.com.victorcs.cryptodroid.core.utils.IDispatchersProviderImpl
 import br.com.victorcs.cryptodroid.data.entity.ExchangeResponse
 import br.com.victorcs.cryptodroid.data.entity.IconResponse
 import br.com.victorcs.cryptodroid.data.mapper.ExchangeIconMapper
@@ -24,8 +26,6 @@ import br.com.victorcs.cryptodroid.infrastructure.source.remote.repository.Excha
 import br.com.victorcs.cryptodroid.infrastructure.source.remote.repository.ExchangesRepositoryImpl
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.ui.ExchangeDetailsViewModel
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.ExchangesViewModel
-import br.com.victorcs.cryptodroid.presentation.utils.IDispatchersProvider
-import br.com.victorcs.cryptodroid.presentation.utils.IDispatchersProviderImpl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
@@ -44,7 +44,7 @@ class CoinInitialization : ModuleInitialization() {
     //region Network
     private fun <T> Scope.retrofitConfig(service: Class<T>) = RetrofitConfig.create(
         service,
-        API_URL,
+        BuildConfig.API_URL,
         get(),
     )
 

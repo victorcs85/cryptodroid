@@ -1,4 +1,4 @@
-package br.com.victorcs.cryptodroid.presentation.theme
+package br.com.victorcs.cryptodroid.core.theme
 
 import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme

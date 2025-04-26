@@ -9,13 +9,17 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.text
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.victorcs.cryptodroid.R
 import br.com.victorcs.cryptodroid.core.constants.ONE
-import br.com.victorcs.cryptodroid.presentation.theme.LocalCustomColors
+import br.com.victorcs.cryptodroid.core.theme.LocalCustomColors
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -27,6 +31,9 @@ fun ExchangeTopAppBar(title: String, onBackPressed: (() -> Unit)? = null) {
                 maxLines = ONE,
                 overflow = TextOverflow.Ellipsis,
                 color = LocalCustomColors.current.appBarInfo,
+                modifier = Modifier.semantics {
+                    text = AnnotatedString(title)
+                },
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(

@@ -6,10 +6,10 @@ import br.com.victorcs.cryptodroid.core.base.BaseViewModel
 import br.com.victorcs.cryptodroid.core.constants.GENERIC_MESSAGE_ERROR
 import br.com.victorcs.cryptodroid.core.constants.STOP_TIMER_LIMIT
 import br.com.victorcs.cryptodroid.core.model.Response
+import br.com.victorcs.cryptodroid.core.utils.IDispatchersProvider
 import br.com.victorcs.cryptodroid.domain.model.Exchange
 import br.com.victorcs.cryptodroid.domain.repository.IExchangesRepository
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.command.ExchangesCommand
-import br.com.victorcs.cryptodroid.presentation.utils.IDispatchersProvider
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

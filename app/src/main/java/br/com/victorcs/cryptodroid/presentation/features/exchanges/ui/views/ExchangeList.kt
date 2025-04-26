@@ -14,8 +14,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import br.com.victorcs.cryptodroid.core.theme.LocalCustomColors
 import br.com.victorcs.cryptodroid.domain.model.Exchange
-import br.com.victorcs.cryptodroid.presentation.theme.LocalCustomColors
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 

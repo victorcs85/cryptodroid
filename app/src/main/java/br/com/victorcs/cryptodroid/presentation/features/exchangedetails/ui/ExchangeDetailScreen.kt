@@ -23,9 +23,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import br.com.victorcs.cryptodroid.R
 import br.com.victorcs.cryptodroid.core.constants.EXCHANGE_ID
+import br.com.victorcs.cryptodroid.core.theme.LocalCustomColors
 import br.com.victorcs.cryptodroid.domain.model.Exchange
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.command.ExchangeDetailsCommand
-import br.com.victorcs.cryptodroid.presentation.theme.LocalCustomColors
 import br.com.victorcs.cryptodroid.presentation.views.ExchangeTopAppBar
 import br.com.victorcs.cryptodroid.presentation.views.LoadingView
 import br.com.victorcs.cryptodroid.presentation.views.ShowErrorMessage
@@ -53,7 +53,7 @@ fun ExchangeDetailScreen(
             state.isLoading -> LoadingView()
             state.errorMessage != null -> ShowErrorMessage(
                 state.errorMessage,
-                buttonText = stringResource(R.string.reload),
+                buttonLabel = stringResource(R.string.reload),
                 buttonAction = {
                     execute(
                         ExchangeDetailsCommand.GetExchangeDetails(

@@ -65,7 +65,7 @@ private fun ExchangesScreenContent(
         when {
             state.errorMessage != null -> ShowErrorMessage(
                 state.errorMessage,
-                buttonText = stringResource(R.string.reload),
+                buttonLabel = stringResource(R.string.reload),
                 buttonAction =
                 {
                     execute(
@@ -77,7 +77,7 @@ private fun ExchangesScreenContent(
 
             state.isLoading -> LoadingView()
             state.exchanges?.isEmpty().orFalse() -> EmptyListView(
-                buttonText = stringResource(R.string.reload),
+                buttonLabel = stringResource(R.string.reload),
                 buttonAction =
                 {
                     execute(

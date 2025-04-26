@@ -1,4 +1,4 @@
-package br.com.victorcs.cryptodroid.presentation.theme
+package br.com.victorcs.cryptodroid.core.theme
 
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color

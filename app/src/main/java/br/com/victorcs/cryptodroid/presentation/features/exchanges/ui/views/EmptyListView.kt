@@ -10,15 +10,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.victorcs.cryptodroid.R
-import br.com.victorcs.cryptodroid.presentation.theme.LocalCustomColors
+import br.com.victorcs.cryptodroid.core.theme.LocalCustomColors
 import br.com.victorcs.cryptodroid.presentation.views.ActionButton
 
 @Composable
-fun EmptyListView(buttonAction: () -> Unit, buttonText: String?, modifier: Modifier?) {
+fun EmptyListView(buttonAction: () -> Unit, buttonLabel: String?, modifier: Modifier?) {
     Box(modifier = Modifier.fillMaxSize().padding(8.dp), contentAlignment = Alignment.Center) {
         Column {
             Text(
@@ -29,8 +31,9 @@ fun EmptyListView(buttonAction: () -> Unit, buttonText: String?, modifier: Modif
                 color = LocalCustomColors.current.exchangeInfo,
                 textAlign = TextAlign.Center,
             )
-            buttonText?.let {
-                ActionButton(modifier, buttonAction, it)
+            buttonLabel?.let {
+                val contentButtonDescription = stringResource(R.string.semantic_button, buttonLabel)
+                ActionButton(modifier?.semantics { contentDescription =  contentButtonDescription }, buttonAction, it)
             }
         }
     }
@@ -39,5 +42,5 @@ fun EmptyListView(buttonAction: () -> Unit, buttonText: String?, modifier: Modif
 @Preview
 @Composable
 fun ShowEmptyListPreview() {
-    EmptyListView(modifier = Modifier.fillMaxWidth(), buttonAction = {}, buttonText = "Retry")
+    EmptyListView(modifier = Modifier.fillMaxWidth(), buttonAction = {}, buttonLabel = "Retry")
 }

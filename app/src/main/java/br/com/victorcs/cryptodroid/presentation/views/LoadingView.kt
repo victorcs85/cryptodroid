@@ -6,7 +6,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import br.com.victorcs.cryptodroid.presentation.theme.LocalCustomColors
+import br.com.victorcs.cryptodroid.core.theme.LocalCustomColors
 
 @Composable
 fun LoadingView() {

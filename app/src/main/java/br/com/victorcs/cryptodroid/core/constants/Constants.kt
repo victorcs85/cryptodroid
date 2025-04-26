@@ -1,7 +1,5 @@
 package br.com.victorcs.cryptodroid.core.constants
 
-const val API_URL = "https://rest.coinapi.io/"
-
 const val EMPTY = ""
 const val GENERIC_MESSAGE_ERROR = "Ocorreu um erro ao buscar os dados!"
 const val NETWORK_MESSAGE_ERROR = "Sem conexão. Verifique e tente novamente."

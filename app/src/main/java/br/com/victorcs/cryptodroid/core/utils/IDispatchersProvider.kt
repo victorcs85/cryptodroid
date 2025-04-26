@@ -1,4 +1,4 @@
-package br.com.victorcs.cryptodroid.presentation.utils
+package br.com.victorcs.cryptodroid.core.utils
 
 import kotlinx.coroutines.CoroutineDispatcher
 
