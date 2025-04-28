@@ -3,7 +3,7 @@ package br.com.victorcs.cryptodroid.di
 import androidx.lifecycle.SavedStateHandle
 import br.com.victorcs.cryptodroid.BuildConfig
 import br.com.victorcs.cryptodroid.core.constants.ICON_MAPPER
-import br.com.victorcs.cryptodroid.core.constants.LOCAL_NAMED
+import br.com.victorcs.cryptodroid.core.constants.LOCAL_JSON_NAMED
 import br.com.victorcs.cryptodroid.core.constants.REMOTE_NAMED
 import br.com.victorcs.cryptodroid.core.interceptor.ConnectivityInterceptor
 import br.com.victorcs.cryptodroid.core.services.WifiService
@@ -46,6 +46,7 @@ class CoinInitialization : ModuleInitialization() {
         service,
         BuildConfig.API_URL,
         get(),
+        androidContext(),
     )
 
     private val networkModule = module {
@@ -93,14 +94,14 @@ class CoinInitialization : ModuleInitialization() {
             )
         }
 
-        single<IExchangesRepository>(named(LOCAL_NAMED)) {
+        single<IExchangesRepository>(named(LOCAL_JSON_NAMED)) {
             LocalExchangesRepositoryImpl(
                 provider = get(),
                 mapper = get(),
                 iconMapper = get(named(ICON_MAPPER)),
             )
         }
-        single<IExchangeDetailsRepository>(named(LOCAL_NAMED)) {
+        single<IExchangeDetailsRepository>(named(LOCAL_JSON_NAMED)) {
             LocalExchangeDetailsRepositoryImpl(
                 provider = get(),
                 mapper = get(),
@@ -120,13 +121,13 @@ class CoinInitialization : ModuleInitialization() {
     private val viewModelsModule = module {
         viewModel {
             ExchangesViewModel(
-                repository = get(named(LOCAL_NAMED)),
+                repository = get(named(REMOTE_NAMED)),
                 dispatchers = get(),
             )
         }
         viewModel { (savedStateHandle: SavedStateHandle) ->
             ExchangeDetailsViewModel(
-                repository = get(named(LOCAL_NAMED)),
+                repository = get(named(REMOTE_NAMED)),
                 dispatchers = get(),
                 savedStateHandle = savedStateHandle,
             )
