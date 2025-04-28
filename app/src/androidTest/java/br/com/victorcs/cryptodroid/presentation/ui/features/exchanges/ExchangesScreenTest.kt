@@ -10,6 +10,8 @@ import androidx.compose.ui.test.swipeDown
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
 import androidx.test.filters.MediumTest
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.UiDevice
 import br.com.victorcs.cryptodroid.core.constants.PULL_TO_REFRESH_TAG
 import br.com.victorcs.cryptodroid.domain.repository.IExchangesRepository
 import br.com.victorcs.cryptodroid.presentation.MainActivity
@@ -23,6 +25,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+
 
 @ExperimentalCoroutinesApi
 @MediumTest
@@ -69,6 +72,20 @@ class ExchangesScreenTest {
             }
 
             onNodeWithText(PresentationMockTest.COINBASE).assertIsDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreen_whenRotated_thenStateIsPreserved() {
+        composeTestRule.run {
+            onNodeWithText(PresentationMockTest.BINANCE).assertIsDisplayed()
+
+            val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+
+            device.setOrientationLeft()
+            device.setOrientationNatural()
+
+            onNodeWithText(PresentationMockTest.BINANCE).assertIsDisplayed()
         }
     }
 }
