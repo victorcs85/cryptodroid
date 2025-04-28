@@ -16,6 +16,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.navigation.NavController
 import br.com.victorcs.cryptodroid.R
 import br.com.victorcs.cryptodroid.core.constants.PULL_TO_REFRESH_TAG
@@ -105,7 +107,7 @@ internal fun PullToRefreshWrapper(
     content: @Composable BoxScope.() -> Unit,
 ) {
     val refreshState = rememberPullToRefreshState()
-
+    val pullToRefreshContentDescription = stringResource(R.string.semantic_pull_to_refresh)
     Box(
         modifier
             .pullToRefresh(
@@ -114,6 +116,9 @@ internal fun PullToRefreshWrapper(
                 onRefresh = onRefresh,
                 enabled = enabled,
             )
+            .semantics() {
+                contentDescription = pullToRefreshContentDescription
+            }
             .testTag(PULL_TO_REFRESH_TAG),
         contentAlignment = contentAlignment,
     ) {

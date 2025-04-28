@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,7 +28,10 @@ fun EmptyListView(buttonAction: () -> Unit, buttonLabel: String?, modifier: Modi
                 text = stringResource(R.string.no_data_available),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(16.dp)
+                    .semantics {
+                        heading()
+                    },
                 color = LocalCustomColors.current.exchangeInfo,
                 textAlign = TextAlign.Center,
             )

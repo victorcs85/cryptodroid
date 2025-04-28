@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.text
 import androidx.compose.ui.text.AnnotatedString
@@ -41,7 +43,9 @@ fun ExchangeTopAppBar(title: String, onBackPressed: (() -> Unit)? = null) {
         ),
         navigationIcon = {
             onBackPressed?.let {
-                IconButton(onClick = it) {
+                IconButton(onClick = it, modifier = Modifier.semantics {
+                    role = Role.Button
+                }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = stringResource(R.string.back_button),

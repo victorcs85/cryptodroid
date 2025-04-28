@@ -18,4 +18,7 @@
     <string name="integration_status">Status de integração:</string>
 
     <string name="semantic_button">Botão %1$s</string>
+    <string name="semantic_loading">Carregando os dados.</string>
+    <string name="semantic_pull_to_refresh">Puxe para baixo para recarregar os dados.</string>
+    <string name="semantic_exchange">%1$s, volume de 1 dia: %1$s dólares. Clique para detalhes.</string>
 </resources>

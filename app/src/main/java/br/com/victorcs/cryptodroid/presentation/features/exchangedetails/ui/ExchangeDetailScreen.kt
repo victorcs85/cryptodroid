@@ -4,12 +4,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -18,6 +18,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -81,12 +84,16 @@ private fun DetailsContent(contentPadding: PaddingValues, exchange: Exchange) {
             modifier = Modifier
                 .verticalScroll(rememberScrollState()),
         ) {
+            val exchangeDetailsLabel = stringResource(R.string.exchange_details)
             Text(
-                text = stringResource(R.string.exchange_details),
+                text = exchangeDetailsLabel,
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Bold,
                 color = LocalCustomColors.current.exchangeDetailsTitle,
-                modifier = Modifier.padding(bottom = 16.dp),
+                modifier = Modifier.padding(bottom = 16.dp).semantics {
+                    heading()
+                    contentDescription = exchangeDetailsLabel
+                },
             )
             Box(
                 modifier = Modifier
@@ -105,20 +112,30 @@ private fun DetailsContent(contentPadding: PaddingValues, exchange: Exchange) {
                         R.string.rank to exchange.rank.toString(),
                         R.string.integration_status to exchange.integrationStatus,
                     ).forEach { (resId, value) ->
-                        Text(
-                            text = stringResource(resId),
-                            fontWeight = FontWeight.Bold,
-                            color = LocalCustomColors.current.exchangeInfo,
-                        )
-                        Text(
-                            text = value,
-                            modifier = Modifier.padding(bottom = 8.dp),
-                            color = LocalCustomColors.current.exchangeInfo,
-                        )
-                        HorizontalDivider(
-                            thickness = 1.dp,
-                            color = LocalCustomColors.current.divider,
-                        )
+                        if (value.isNotEmpty()) {
+                            val detailLabel = stringResource(resId)
+                            Row (
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(vertical = 8.dp)
+                                    .semantics {
+                                        contentDescription = "$detailLabel: $value"
+                                    }
+                            ) {
+                                Column {
+                                    Text(
+                                        text = detailLabel,
+                                        fontWeight = FontWeight.Bold,
+                                        color = LocalCustomColors.current.exchangeInfo,
+                                    )
+                                    Text(
+                                        text = value,
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = LocalCustomColors.current.exchangeVolume,
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
             }
