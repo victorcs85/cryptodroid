@@ -43,9 +43,12 @@ fun ExchangeTopAppBar(title: String, onBackPressed: (() -> Unit)? = null) {
         ),
         navigationIcon = {
             onBackPressed?.let {
-                IconButton(onClick = it, modifier = Modifier.semantics {
-                    role = Role.Button
-                }) {
+                IconButton(
+                    onClick = it,
+                    modifier = Modifier.semantics {
+                        role = Role.Button
+                    },
+                ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = stringResource(R.string.back_button),

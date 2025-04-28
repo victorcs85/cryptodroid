@@ -21,7 +21,7 @@ fun LoadingView() {
             trackColor = LocalCustomColors.current.pullToRefreshArrow,
             modifier = Modifier.semantics {
                 contentDescription = loadingContentDescription
-            }
+            },
         )
     }
 }

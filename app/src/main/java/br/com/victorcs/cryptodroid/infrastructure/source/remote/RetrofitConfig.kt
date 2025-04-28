@@ -33,8 +33,8 @@ object RetrofitConfig {
             .cache(
                 Cache(
                     File(context.cacheDir, HTTP_CACHE),
-                    CACHE_MAX_SIZE
-                )
+                    CACHE_MAX_SIZE,
+                ),
             )
             .addInterceptor(ConnectivityInterceptor(wifiService))
             .addInterceptor(getHttpLogging())
@@ -55,6 +55,8 @@ object RetrofitConfig {
         HttpLoggingInterceptor().setLevel(
             if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor.Level.BODY
-            } else HttpLoggingInterceptor.Level.NONE
+            } else {
+                HttpLoggingInterceptor.Level.NONE
+            },
         )
 }

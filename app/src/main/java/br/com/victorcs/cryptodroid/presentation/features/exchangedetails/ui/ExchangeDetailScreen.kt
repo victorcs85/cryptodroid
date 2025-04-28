@@ -114,13 +114,13 @@ private fun DetailsContent(contentPadding: PaddingValues, exchange: Exchange) {
                     ).forEach { (resId, value) ->
                         if (value.isNotEmpty()) {
                             val detailLabel = stringResource(resId)
-                            Row (
+                            Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(vertical = 8.dp)
                                     .semantics {
                                         contentDescription = "$detailLabel: $value"
-                                    }
+                                    },
                             ) {
                                 Column {
                                     Text(

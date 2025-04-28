@@ -154,7 +154,7 @@ class CoinInitialization : ModuleInitialization() {
         providerModule,
     )
 
-    private fun getSource() : String {
+    private fun getSource(): String {
         if (BuildConfig.DEBUG) {
             return LOCAL_JSON_NAMED
         }
