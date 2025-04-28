@@ -34,7 +34,8 @@ fun ActionButton(
         colors = ButtonDefaults.elevatedButtonColors(
             containerColor = LocalCustomColors.current.buttonBackground,
         ),
-        modifier = modifier?.semantics { contentDescription = contentButtonDescription } ?: Modifier.fillMaxWidth().semantics { contentDescription = contentButtonDescription },
+        modifier = modifier?.semantics { contentDescription = contentButtonDescription }
+            ?: Modifier.fillMaxWidth().semantics { contentDescription = contentButtonDescription },
     ) {
         Text(
             text = buttonLabel,

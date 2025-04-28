@@ -1,3 +1,5 @@
+import io.gitlab.arturbosch.detekt.Detekt
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
@@ -58,10 +60,54 @@ subprojects {
             }
         }
     }
+    tasks.withType(Detekt::class.java).configureEach {
+        val typeResolutionEnabled = !classpath.isEmpty
+        if (typeResolutionEnabled && project.hasProperty("precommit")) {
+            // We must exclude kts files from pre-commit hook to prevent detekt from crashing
+            // This is a workaround for the https://github.com/detekt/detekt/issues/5501
+            exclude("*.gradle.kts")
+        }
+    }
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     kotlinOptions {
         jvmTarget = "11"
+    }
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    if (project.hasProperty("precommit")) {
+        val rootDir = project.rootDir
+        val projectDir = projectDir
+
+        val fileCollection = files()
+
+        setSource(
+            getGitStagedFiles(rootDir)
+                .map { stagedFiles ->
+                    val stagedFilesFromThisProject = stagedFiles
+                        .filter { it.startsWith(projectDir) }
+
+                    fileCollection.setFrom(*stagedFilesFromThisProject.toTypedArray())
+
+                    fileCollection.asFileTree
+                }
+        )
+    }
+}
+// Detekt task to run on pre-commit hook, like this url solution https://detekt.dev/docs/gettingstarted/git-pre-commit-hook/
+fun Project.getGitStagedFiles(rootDir: File): Provider<List<File>> {
+    return providers.provider {
+        val outputStream = java.io.ByteArrayOutputStream()
+        exec {
+            commandLine("git", "--no-pager", "diff", "--name-only", "--cached")
+            standardOutput = outputStream
+        }
+        outputStream.toString()
+            .trim()
+            .split("\n")
+            .filter { it.isNotBlank() }
+            .map { File(rootDir, it) }
     }
 }
