@@ -119,15 +119,17 @@ class CoinInitialization : ModuleInitialization() {
 
     //region ViewModels
     private val viewModelsModule = module {
+        val source = getSource()
+
         viewModel {
             ExchangesViewModel(
-                repository = get(named(REMOTE_NAMED)),
+                repository = get(named(source)),
                 dispatchers = get(),
             )
         }
         viewModel { (savedStateHandle: SavedStateHandle) ->
             ExchangeDetailsViewModel(
-                repository = get(named(REMOTE_NAMED)),
+                repository = get(named(source)),
                 dispatchers = get(),
                 savedStateHandle = savedStateHandle,
             )
@@ -151,4 +153,12 @@ class CoinInitialization : ModuleInitialization() {
         viewModelsModule,
         providerModule,
     )
+
+    private fun getSource() : String {
+        if (BuildConfig.DEBUG) {
+            return LOCAL_JSON_NAMED
+        }
+
+        return REMOTE_NAMED
+    }
 }

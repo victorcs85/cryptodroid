@@ -54,8 +54,7 @@ object RetrofitConfig {
     private fun getHttpLogging(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().setLevel(
             if (BuildConfig.DEBUG) {
-//                HttpLoggingInterceptor.Level.BODY
-                        HttpLoggingInterceptor.Level.HEADERS
+                HttpLoggingInterceptor.Level.BODY
             } else HttpLoggingInterceptor.Level.NONE
         )
 }
