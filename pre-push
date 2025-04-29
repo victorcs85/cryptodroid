@@ -40,7 +40,7 @@ if [ $RESULT_SPOTLESS -ne 0 ]; then
 fi
 
 # Executar Detekt
-./gradlew test
+./gradlew detekt
 RESULT_DETEKT=$?
 
 if [ $RESULT_DETEKT -ne 0 ]; then
@@ -51,40 +51,97 @@ if [ $RESULT_DETEKT -ne 0 ]; then
   exit 1
 fi
 
-# Executar os testes unitários
-#./gradlew test
-#RESULT_UNIT_TEST=$?
-#
-#if [ $RESULT_UNIT_TEST -ne 0 ]; then
-#  echo "*************************************************"
-#  echo "                 Unit tests failed               "
-#  echo " Please fix the above issues before committing   "
-#  echo "*************************************************"
-#  exit 1
-#fi
-#
-## Verificar se há algum dispositivo/emulador ativo
-#DEVICE_COUNT=$(adb devices | grep -w "device" | wc -l)
-#
-#if [ "$DEVICE_COUNT" -eq 0 ]; then
-#  echo "*************************************************************************"
-#  echo "                     UI tests failed                                     "
-#  echo " No active devices/emulators found. Instrumented tests will be ignored   "
-#  echo "*************************************************************************"
-#else
-#  # Executar os testes instrumentados
-#  ./gradlew connectedAndroidTest
-#  RESULT_INSTRUMENTED_TEST=$?
-#
-#  if [ $RESULT_INSTRUMENTED_TEST -ne 0 ]; then
-#    echo "Falha nos testes instrumentados. O push foi abortado."
-#    echo "*************************************************************************"
-#    echo "                       UI tests failed                                   "
-#    echo "           Instrumented tests failed. Push was aborted                   "
-#    echo "*************************************************************************"
-#    exit 1
-#  fi
-#fi
+ Executar os testes unitários
+./gradlew test
+RESULT_UNIT_TEST=$?
+
+if [ $RESULT_UNIT_TEST -ne 0 ]; then
+  echo "*************************************************"
+  echo "                 Unit tests failed               "
+  echo " Please fix the above issues before committing   "
+  echo "*************************************************"
+  exit 1
+fi
+
+# Verificar se há algum dispositivo/emulador ativo
+DEVICE_COUNT=$(adb devices | grep -w "device" | wc -l)
+
+if [ "$DEVICE_COUNT" -eq 0 ]; then
+  echo "*************************************************************************"
+  echo "                     UI tests failed                                     "
+  echo " No active devices/emulators found. Instrumented tests will be ignored   "
+  echo "*************************************************************************"
+else
+  # Executar os testes instrumentados
+  ./gradlew connectedAndroidTest
+  RESULT_INSTRUMENTED_TEST=$?
+
+  if [ $RESULT_INSTRUMENTED_TEST -ne 0 ]; then
+    echo "Falha nos testes instrumentados. O push foi abortado."
+    echo "*************************************************************************"
+    echo "                       UI tests failed                                   "
+    echo "           Instrumented tests failed. Push was aborted                   "
+    echo "*************************************************************************"
+    exit 1
+  fi
+fi
+
+REPORT_DIR="./reports"
+
+# Limpa a pasta de reports
+rm -rf $REPORT_DIR
+mkdir -p $REPORT_DIR
+
+# Copia os relatórios dos testes unitários
+cp -r ./build/reports/tests/testDebugUnitTest $REPORT_DIR/unit_tests || true
+
+# Copia os relatórios dos testes instrumentados
+cp -r ./build/reports/androidTests/connected $REPORT_DIR/instrumented_tests || true
+
+# Copia o relatório do Lint
+cp -r ./build/reports/lint-results-debug.html $REPORT_DIR/lint.html || true
+
+# Copia o relatório do Detekt
+cp -r ./build/reports/detekt/detekt.html $REPORT_DIR/detekt.html || true
+
+# Cria o index.html
+cat <<EOF > $REPORT_DIR/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatórios de Testes</title>
+</head>
+<body>
+    <h1>Relatórios de Testes e Análises</h1>
+    <ul>
+        <li><a href="./unit_tests/index.html" target="_blank">Testes Unitários</a></li>
+        <li><a href="./instrumented_tests/index.html" target="_blank">Testes Instrumentados</a></li>
+        <li><a href="./lint.html" target="_blank">Lint</a></li>
+        <li><a href="./detekt.html" target="_blank">Detekt</a></li>
+    </ul>
+</body>
+</html>
+EOF
+
+# Criar a pasta reports se não existir
+mkdir -p reports
+
+# Gerar Unit Tests
+./gradlew testDebugUnitTest
+
+# Gerar Instrumented Tests (UI Tests)
+./gradlew connectedDebugAndroidTest
+
+# Unificar os relatórios
+{
+  echo "<html><head><title>Relatório de Testes</title></head><body>";
+  echo "<h1>Unit Test Report</h1>";
+  cat app/build/reports/tests/testDebugUnitTest/index.html;
+  echo "<h1>UI Test Report</h1>";
+  cat app/build/reports/androidTests/connected/index.html;
+  echo "</body></html>";
+} > reports/index.html
 
 # Se tudo estiver correto, o push continua
 exit 0

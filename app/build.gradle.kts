@@ -74,6 +74,9 @@ android {
 
     testOptions {
         animationsDisabled = true
+        unitTests.all {
+            it.reports.html.required.set(true)
+        }
     }
 }
 
@@ -93,6 +96,18 @@ allprojects {
         apply(from = "$rootDir/analytic_code/spotless/spotless.gradle")
     }
 
+}
+
+tasks.withType<Test> {
+    reports {
+        html.required.set(true)
+    }
+}
+
+afterEvaluate {
+    tasks.withType<com.android.build.gradle.internal.tasks.DeviceProviderInstrumentTestTask> {
+        reportsDir.set(file("$rootDir/reports/connected-tests"))
+    }
 }
 
 dependencies {
@@ -141,8 +156,8 @@ dependencies {
     implementation(libs.kotlin.reflect)
     implementation(libs.coil.compose)
     ksp(libs.moshi.kotlin.codegen)
-    implementation("com.facebook.stetho:stetho:1.6.0")
-    implementation("com.facebook.stetho:stetho-okhttp3:1.6.0")
+    implementation(libs.stetho)
+    implementation(libs.stetho.okhttp3)
 
 //    implementation(project(":core"))
 //    implementation(project(":lightning"))

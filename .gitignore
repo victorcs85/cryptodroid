@@ -29,5 +29,5 @@ local.properties
 # Keystore files
 *.jks
 
-# APK folder
-app/bed/
+# Report files
+/reports

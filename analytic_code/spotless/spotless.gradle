@@ -18,3 +18,9 @@ spotless {
         endWithNewline()
     }
 }
+
+tasks.named("spotlessCheck").configure {
+    doLast {
+        println("Spotless check finished. See reports in $rootDir/reports/spotless/")
+    }
+}

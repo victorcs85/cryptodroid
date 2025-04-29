@@ -1,4 +1,6 @@
 import io.gitlab.arturbosch.detekt.Detekt
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
