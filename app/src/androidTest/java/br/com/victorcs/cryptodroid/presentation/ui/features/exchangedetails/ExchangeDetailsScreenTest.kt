@@ -8,7 +8,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
 import androidx.test.filters.MediumTest
-import br.com.victorcs.cryptodroid.core.constants.EXCHANGE_ID
+import br.com.victorcs.core.constants.EXCHANGE_ID
 import br.com.victorcs.cryptodroid.domain.repository.IExchangeDetailsRepository
 import br.com.victorcs.cryptodroid.presentation.MainActivity
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.command.ExchangeDetailsCommand

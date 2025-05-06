@@ -1,6 +1,6 @@
 package br.com.victorcs.cryptodroid.infrastructure.source.local.repository
 
-import br.com.victorcs.cryptodroid.core.model.Response
+import br.com.victorcs.core.model.Response
 import br.com.victorcs.cryptodroid.data.entity.ExchangeResponse
 import br.com.victorcs.cryptodroid.domain.mapper.DomainMapper
 import br.com.victorcs.cryptodroid.domain.model.Exchange

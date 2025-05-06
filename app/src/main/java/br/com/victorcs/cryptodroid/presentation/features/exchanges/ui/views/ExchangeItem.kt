@@ -24,8 +24,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.victorcs.core.theme.LocalCustomColors
 import br.com.victorcs.cryptodroid.R
-import br.com.victorcs.cryptodroid.core.theme.LocalCustomColors
 import br.com.victorcs.cryptodroid.domain.model.Exchange
 import coil.compose.rememberAsyncImagePainter
 

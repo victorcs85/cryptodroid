@@ -19,9 +19,9 @@ import androidx.compose.ui.semantics.text
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import br.com.victorcs.core.constants.ONE
+import br.com.victorcs.core.theme.LocalCustomColors
 import br.com.victorcs.cryptodroid.R
-import br.com.victorcs.cryptodroid.core.constants.ONE
-import br.com.victorcs.cryptodroid.core.theme.LocalCustomColors
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

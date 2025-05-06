@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import br.com.victorcs.core.theme.LocalCustomColors
 import br.com.victorcs.cryptodroid.R
-import br.com.victorcs.cryptodroid.core.theme.LocalCustomColors
 
 @Composable
 fun LoadingView() {

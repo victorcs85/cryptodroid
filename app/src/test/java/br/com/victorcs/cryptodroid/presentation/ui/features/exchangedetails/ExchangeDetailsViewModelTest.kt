@@ -4,10 +4,10 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.SavedStateHandle
 import androidx.test.filters.SmallTest
 import app.cash.turbine.test
+import br.com.victorcs.core.constants.EXCHANGE_ID
+import br.com.victorcs.core.model.Response
 import br.com.victorcs.cryptodroid.base.BaseViewModelTest
 import br.com.victorcs.cryptodroid.base.CoroutineTestRule
-import br.com.victorcs.cryptodroid.core.constants.EXCHANGE_ID
-import br.com.victorcs.cryptodroid.core.model.Response
 import br.com.victorcs.cryptodroid.domain.repository.IExchangeDetailsRepository
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.command.ExchangeDetailsCommand
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.ui.ExchangeDetailsViewModel

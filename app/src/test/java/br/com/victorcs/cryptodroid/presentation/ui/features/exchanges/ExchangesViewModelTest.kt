@@ -3,10 +3,10 @@ package br.com.victorcs.cryptodroid.presentation.ui.features.exchanges
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.filters.SmallTest
 import app.cash.turbine.test
+import br.com.victorcs.core.extensions.orFalse
+import br.com.victorcs.core.model.Response
 import br.com.victorcs.cryptodroid.base.BaseViewModelTest
 import br.com.victorcs.cryptodroid.base.CoroutineTestRule
-import br.com.victorcs.cryptodroid.core.extensions.orFalse
-import br.com.victorcs.cryptodroid.core.model.Response
 import br.com.victorcs.cryptodroid.domain.repository.IExchangesRepository
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.command.ExchangesCommand
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.ExchangesViewModel

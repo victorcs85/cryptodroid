@@ -1,8 +1,8 @@
 package br.com.victorcs.cryptodroid.infrastructure.source.local.repository
 
 import android.content.Context
-import br.com.victorcs.cryptodroid.core.constants.EMPTY
-import br.com.victorcs.cryptodroid.core.constants.UTF_8
+import br.com.victorcs.core.constants.EMPTY
+import br.com.victorcs.core.constants.UTF_8
 import timber.log.Timber
 import java.io.IOException
 import java.io.InputStream

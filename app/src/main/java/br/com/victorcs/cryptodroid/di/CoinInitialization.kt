@@ -1,14 +1,14 @@
 package br.com.victorcs.cryptodroid.di
 
 import androidx.lifecycle.SavedStateHandle
+import br.com.victorcs.core.constants.ICON_MAPPER
+import br.com.victorcs.core.constants.LOCAL_JSON_NAMED
+import br.com.victorcs.core.constants.REMOTE_NAMED
+import br.com.victorcs.core.interceptor.ConnectivityInterceptor
+import br.com.victorcs.core.services.WifiService
+import br.com.victorcs.core.utils.IDispatchersProvider
+import br.com.victorcs.core.utils.IDispatchersProviderImpl
 import br.com.victorcs.cryptodroid.BuildConfig
-import br.com.victorcs.cryptodroid.core.constants.ICON_MAPPER
-import br.com.victorcs.cryptodroid.core.constants.LOCAL_JSON_NAMED
-import br.com.victorcs.cryptodroid.core.constants.REMOTE_NAMED
-import br.com.victorcs.cryptodroid.core.interceptor.ConnectivityInterceptor
-import br.com.victorcs.cryptodroid.core.services.WifiService
-import br.com.victorcs.cryptodroid.core.utils.IDispatchersProvider
-import br.com.victorcs.cryptodroid.core.utils.IDispatchersProviderImpl
 import br.com.victorcs.cryptodroid.data.entity.ExchangeResponse
 import br.com.victorcs.cryptodroid.data.entity.IconResponse
 import br.com.victorcs.cryptodroid.data.mapper.ExchangeIconMapper

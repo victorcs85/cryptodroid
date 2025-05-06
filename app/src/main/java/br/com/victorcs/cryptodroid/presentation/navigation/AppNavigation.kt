@@ -14,7 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import br.com.victorcs.cryptodroid.core.constants.EXCHANGE_ID
+import br.com.victorcs.core.constants.EXCHANGE_ID
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.ui.ExchangeDetailScreen
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.ui.ExchangeDetailsViewModel
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.ExchangesScreen

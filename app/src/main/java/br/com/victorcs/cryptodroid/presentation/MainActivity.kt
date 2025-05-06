@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
-import br.com.victorcs.cryptodroid.core.theme.CoinTheme
+import br.com.victorcs.core.theme.CoinTheme
 import br.com.victorcs.cryptodroid.presentation.navigation.AppNavigation
 import org.koin.androidx.compose.KoinAndroidContext
 import org.koin.core.annotation.KoinExperimentalAPI

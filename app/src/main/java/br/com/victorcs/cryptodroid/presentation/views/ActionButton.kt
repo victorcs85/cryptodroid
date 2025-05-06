@@ -13,8 +13,8 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import br.com.victorcs.core.theme.LocalCustomColors
 import br.com.victorcs.cryptodroid.R
-import br.com.victorcs.cryptodroid.core.theme.LocalCustomColors
 
 @Composable
 fun ActionButton(

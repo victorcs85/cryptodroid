@@ -1,9 +1,9 @@
 package br.com.victorcs.cryptodroid.infrastructure.source.remote
 
 import android.content.Context
+import br.com.victorcs.core.interceptor.ConnectivityInterceptor
+import br.com.victorcs.core.services.WifiService
 import br.com.victorcs.cryptodroid.BuildConfig
-import br.com.victorcs.cryptodroid.core.interceptor.ConnectivityInterceptor
-import br.com.victorcs.cryptodroid.core.services.WifiService
 import br.com.victorcs.cryptodroid.infrastructure.source.MoshiBuilder
 import br.com.victorcs.cryptodroid.infrastructure.source.remote.inteceptors.Auth2HeaderInterceptor
 import br.com.victorcs.cryptodroid.infrastructure.source.remote.inteceptors.CacheControlInterceptor

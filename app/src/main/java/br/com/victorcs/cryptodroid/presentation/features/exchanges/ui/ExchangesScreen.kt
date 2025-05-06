@@ -19,9 +19,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.navigation.NavController
+import br.com.victorcs.core.constants.PULL_TO_REFRESH_TAG
+import br.com.victorcs.core.extensions.orFalse
 import br.com.victorcs.cryptodroid.R
-import br.com.victorcs.cryptodroid.core.constants.PULL_TO_REFRESH_TAG
-import br.com.victorcs.cryptodroid.core.extensions.orFalse
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.command.ExchangesCommand
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.views.EmptyListView
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.views.ExchangeList

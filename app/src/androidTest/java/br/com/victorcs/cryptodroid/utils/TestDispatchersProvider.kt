@@ -1,6 +1,6 @@
 package br.com.victorcs.cryptodroid.utils
 
-import br.com.victorcs.cryptodroid.core.utils.IDispatchersProvider
+import br.com.victorcs.core.utils.IDispatchersProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestDispatcher

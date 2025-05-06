@@ -1,6 +1,6 @@
 package br.com.victorcs.cryptodroid.infrastructure.source.remote.repository
 
-import br.com.victorcs.cryptodroid.core.extensions.safeApiCall
+import br.com.victorcs.core.extensions.safeApiCall
 import br.com.victorcs.cryptodroid.data.entity.ExchangeResponse
 import br.com.victorcs.cryptodroid.data.entity.IconResponse
 import br.com.victorcs.cryptodroid.domain.mapper.DomainMapper

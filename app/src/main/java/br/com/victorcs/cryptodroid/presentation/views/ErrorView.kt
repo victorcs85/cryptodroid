@@ -17,8 +17,8 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import br.com.victorcs.core.theme.LocalCustomColors
 import br.com.victorcs.cryptodroid.R
-import br.com.victorcs.cryptodroid.core.theme.LocalCustomColors
 
 @Composable
 fun ShowErrorMessage(

@@ -2,8 +2,8 @@ package br.com.victorcs.cryptodroid.infrastructure.source.local.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.filters.SmallTest
+import br.com.victorcs.core.model.Response
 import br.com.victorcs.cryptodroid.base.CoroutineTestRule
-import br.com.victorcs.cryptodroid.core.model.Response
 import br.com.victorcs.cryptodroid.data.entity.ExchangeResponse
 import br.com.victorcs.cryptodroid.domain.mapper.DomainMapper
 import br.com.victorcs.cryptodroid.domain.model.Exchange

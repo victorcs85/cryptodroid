@@ -4,7 +4,7 @@ import android.content.ContentProvider
 import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
-import br.com.victorcs.cryptodroid.core.constants.ZERO
+import br.com.victorcs.core.constants.ZERO
 import org.koin.core.module.Module
 
 abstract class ModuleInitialization : ContentProvider() {

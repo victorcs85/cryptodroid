@@ -3,11 +3,11 @@ package br.com.victorcs.cryptodroid.presentation.features.exchanges.ui
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.viewModelScope
-import br.com.victorcs.cryptodroid.core.base.BaseViewModel
-import br.com.victorcs.cryptodroid.core.constants.GENERIC_MESSAGE_ERROR
-import br.com.victorcs.cryptodroid.core.constants.STOP_TIMER_LIMIT
-import br.com.victorcs.cryptodroid.core.model.Response
-import br.com.victorcs.cryptodroid.core.utils.IDispatchersProvider
+import br.com.victorcs.core.base.BaseViewModel
+import br.com.victorcs.core.constants.GENERIC_MESSAGE_ERROR
+import br.com.victorcs.core.constants.STOP_TIMER_LIMIT
+import br.com.victorcs.core.model.Response
+import br.com.victorcs.core.utils.IDispatchersProvider
 import br.com.victorcs.cryptodroid.domain.model.Exchange
 import br.com.victorcs.cryptodroid.domain.repository.IExchangesRepository
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.command.ExchangesCommand
