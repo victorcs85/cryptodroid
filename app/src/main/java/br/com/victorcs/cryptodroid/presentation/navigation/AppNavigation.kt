@@ -43,23 +43,23 @@ fun AppNavigation() {
             enterTransition = {
                 fadeIn(
                     animationSpec = tween(
-                        ANIMATION_TIMER, easing = LinearEasing
-                    )
+                        ANIMATION_TIMER, easing = LinearEasing,
+                    ),
                 ) + slideIntoContainer(
                     animationSpec = tween(ANIMATION_TIMER, easing = EaseIn),
-                    towards = AnimatedContentTransitionScope.SlideDirection.Start
+                    towards = AnimatedContentTransitionScope.SlideDirection.Start,
                 )
             },
             exitTransition = {
                 fadeOut(
                     animationSpec = tween(
-                        ANIMATION_TIMER, easing = LinearEasing
-                    )
+                        ANIMATION_TIMER, easing = LinearEasing,
+                    ),
                 ) + slideOutOfContainer(
                     animationSpec = tween(ANIMATION_TIMER, easing = EaseOut),
-                    towards = AnimatedContentTransitionScope.SlideDirection.End
+                    towards = AnimatedContentTransitionScope.SlideDirection.End,
                 )
-            }
+            },
         ) {
             val exchangeDetailsViewModel: ExchangeDetailsViewModel = koinViewModel()
             val state = exchangeDetailsViewModel.screenState.collectAsStateWithLifecycle().value
