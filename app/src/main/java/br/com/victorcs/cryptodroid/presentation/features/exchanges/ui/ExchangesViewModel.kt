@@ -1,6 +1,7 @@
 package br.com.victorcs.cryptodroid.presentation.features.exchanges.ui
 
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.viewModelScope
 import br.com.victorcs.cryptodroid.core.base.BaseViewModel
 import br.com.victorcs.cryptodroid.core.constants.GENERIC_MESSAGE_ERROR
@@ -101,6 +102,7 @@ class ExchangesViewModel(
     }
 }
 
+@Stable
 @Immutable
 data class ExchangesScreenState(
     val exchanges: List<Exchange>? = null,

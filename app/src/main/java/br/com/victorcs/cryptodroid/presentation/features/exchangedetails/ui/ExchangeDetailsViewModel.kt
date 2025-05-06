@@ -1,6 +1,7 @@
 package br.com.victorcs.cryptodroid.presentation.features.exchangedetails.ui
 
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import br.com.victorcs.cryptodroid.core.base.BaseViewModel
@@ -71,6 +72,7 @@ class ExchangeDetailsViewModel(
     }
 }
 
+@Stable
 @Immutable
 data class ExchangeDetailsScreenState(
     val exchange: Exchange? = null,

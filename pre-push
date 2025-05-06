@@ -107,21 +107,39 @@ cp -r ./build/reports/detekt/detekt.html $REPORT_DIR/detekt.html || true
 # Cria o index.html
 cat <<EOF > $REPORT_DIR/index.html
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Relatórios de Testes</title>
-</head>
-<body>
-    <h1>Relatórios de Testes e Análises</h1>
-    <ul>
-        <li><a href="./unit_tests/index.html" target="_blank">Testes Unitários</a></li>
-        <li><a href="./instrumented_tests/index.html" target="_blank">Testes Instrumentados</a></li>
-        <li><a href="./lint.html" target="_blank">Lint</a></li>
-        <li><a href="./detekt.html" target="_blank">Detekt</a></li>
-    </ul>
-</body>
-</html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Relatórios de Qualidade</title>
+        <style>
+            body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 2rem; }
+            h1 { color: #343a40; }
+            ul { list-style: none; padding: 0; }
+            li { margin: 1rem 0; }
+            a {
+                text-decoration: none;
+                color: #007bff;
+                font-size: 1.2rem;
+                padding: 0.5rem 1rem;
+                background-color: #e9ecef;
+                border-radius: 5px;
+                display: inline-block;
+            }
+            a:hover {
+                background-color: #ced4da;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Relatórios de Testes e Análises</h1>
+        <ul>
+            <li><a href="unit_tests/index.html" target="_blank">✅ Testes Unitários</a></li>
+            <li><a href="instrumented_tests/index.html" target="_blank">📱 Testes Instrumentados</a></li>
+            <li><a href="lint.html" target="_blank">🧹 Lint</a></li>
+            <li><a href="detekt.html" target="_blank">🔍 Detekt</a></li>
+        </ul>
+    </body>
+    </html>
 EOF
 
 # Criar a pasta reports se não existir

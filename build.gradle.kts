@@ -1,6 +1,4 @@
 import io.gitlab.arturbosch.detekt.Detekt
-import java.nio.file.Files
-import java.nio.file.StandardCopyOption
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
@@ -78,7 +76,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
     }
 }
 
-tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+tasks.withType<Detekt>().configureEach {
     if (project.hasProperty("precommit")) {
         val rootDir = project.rootDir
         val projectDir = projectDir
