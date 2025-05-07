@@ -1,4 +1,4 @@
-package br.com.victorcs.cryptodroid.infrastructure.source.remote.inteceptors
+package br.com.victorcs.core.remote.inteceptors
 
 import br.com.victorcs.core.services.WifiService
 import okhttp3.CacheControl

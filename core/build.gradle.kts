@@ -45,7 +45,7 @@ android {
 }
 
 dependencies {
-    //region Kotlin e Coroutines
+    //region Kotlin and Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlin.reflect)
     //endregion
@@ -63,18 +63,25 @@ dependencies {
     //region Http
     implementation(libs.okhttp)
     implementation(libs.stetho.okhttp3)
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+    implementation(libs.stetho)
+    debugImplementation(libs.mockwebserver)
+    implementation(libs.logging.interceptor)
     //endregion
     //region Logging
     implementation(libs.timber)
     //endregion
-    //region Moshi para (de)serialization
+    //region Moshi
     implementation(libs.moshi.kotlin)
     implementation(libs.moshi.adapters)
     ksp(libs.moshi.kotlin.codegen)
+    implementation(libs.converter.moshi)
     //endregion
     //region Koin
     implementation(libs.koin.bom)
     implementation(libs.koin.core)
+    implementation(libs.koin.android)
     //endregion
     //region Test
     testImplementation(libs.junit)

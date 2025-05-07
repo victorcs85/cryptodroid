@@ -1,12 +1,11 @@
-package br.com.victorcs.cryptodroid.infrastructure.source.remote
+package br.com.victorcs.core.remote
 
 import android.content.Context
+import br.com.victorcs.core.BuildConfig
 import br.com.victorcs.core.interceptor.ConnectivityInterceptor
+import br.com.victorcs.core.model.RetrofitParams
+import br.com.victorcs.core.remote.inteceptors.CacheControlInterceptor
 import br.com.victorcs.core.services.WifiService
-import br.com.victorcs.cryptodroid.BuildConfig
-import br.com.victorcs.cryptodroid.infrastructure.source.MoshiBuilder
-import br.com.victorcs.cryptodroid.infrastructure.source.remote.inteceptors.Auth2HeaderInterceptor
-import br.com.victorcs.cryptodroid.infrastructure.source.remote.inteceptors.CacheControlInterceptor
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -23,9 +22,13 @@ private const val CACHE_MAX_SIZE = 10L * 1024L * 1024L
 
 object RetrofitConfig {
 
-    fun <T> create(service: Class<T>, baseUrl: String, wifiService: WifiService, context: Context): T {
+    fun createRetrofit(
+        wifiService: WifiService,
+        context: Context,
+        params: RetrofitParams
+    ): Retrofit {
         val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(Auth2HeaderInterceptor())
+            .addInterceptor(params.header)
             .addInterceptor(CacheControlInterceptor(wifiService))
             .connectTimeout(HUNDRED, TimeUnit.SECONDS)
             .readTimeout(HUNDRED, TimeUnit.SECONDS)
@@ -44,11 +47,10 @@ object RetrofitConfig {
         }
 
         return Retrofit.Builder()
-            .baseUrl(baseUrl)
+            .baseUrl(params.baseUrl)
             .client(okHttpClient.build())
             .addConverterFactory(MoshiConverterFactory.create(MoshiBuilder.create()))
             .build()
-            .create(service) as T
     }
 
     private fun getHttpLogging(): HttpLoggingInterceptor =

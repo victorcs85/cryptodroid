@@ -2,7 +2,7 @@ package br.com.victorcs.cryptodroid.infrastructure.source.local.utils
 
 import br.com.victorcs.cryptodroid.data.entity.ExchangeResponse
 import br.com.victorcs.cryptodroid.data.entity.IconResponse
-import br.com.victorcs.cryptodroid.infrastructure.source.MoshiBuilder
+import br.com.victorcs.cryptodroid.infrastructure.source.local.MoshiBuilder
 import com.squareup.moshi.Types
 
 fun String.toExchangesResponse(): List<ExchangeResponse> = run {

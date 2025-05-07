@@ -4,8 +4,10 @@ import androidx.lifecycle.SavedStateHandle
 import br.com.victorcs.core.constants.ICON_MAPPER
 import br.com.victorcs.core.constants.LOCAL_JSON_NAMED
 import br.com.victorcs.core.constants.REMOTE_NAMED
-import br.com.victorcs.core.interceptor.ConnectivityInterceptor
-import br.com.victorcs.core.services.WifiService
+import br.com.victorcs.core.di.coreInterceptorModule
+import br.com.victorcs.core.di.coreNetworkModule
+import br.com.victorcs.core.di.coreServiceModule
+import br.com.victorcs.core.model.RetrofitParams
 import br.com.victorcs.core.utils.IDispatchersProvider
 import br.com.victorcs.core.utils.IDispatchersProviderImpl
 import br.com.victorcs.cryptodroid.BuildConfig
@@ -21,55 +23,46 @@ import br.com.victorcs.cryptodroid.domain.repository.IExchangesRepository
 import br.com.victorcs.cryptodroid.infrastructure.source.local.repository.ExchangeLocalProvider
 import br.com.victorcs.cryptodroid.infrastructure.source.local.repository.IExchangeLocalProvider
 import br.com.victorcs.cryptodroid.infrastructure.source.remote.CoinAPI
-import br.com.victorcs.cryptodroid.infrastructure.source.remote.RetrofitConfig
+import br.com.victorcs.cryptodroid.infrastructure.source.remote.inteceptors.AppCoinAuth2HeaderInterceptor
 import br.com.victorcs.cryptodroid.infrastructure.source.remote.repository.ExchangeDetailsRepositoryImpl
 import br.com.victorcs.cryptodroid.infrastructure.source.remote.repository.ExchangesRepositoryImpl
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.ui.ExchangeDetailsViewModel
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.ExchangesViewModel
 import okhttp3.Interceptor
-import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.viewModel
+import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named
-import org.koin.core.scope.Scope
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 import br.com.victorcs.cryptodroid.infrastructure.source.local.repository.ExchangeDetailsRepositoryImpl as LocalExchangeDetailsRepositoryImpl
 import br.com.victorcs.cryptodroid.infrastructure.source.local.repository.ExchangesRepositoryImpl as LocalExchangesRepositoryImpl
 
 class CoinInitialization : ModuleInitialization() {
 
     //region Network
-    private fun <T> Scope.retrofitConfig(service: Class<T>) = RetrofitConfig.create(
-        service,
-        BuildConfig.API_URL,
-        get(),
-        androidContext(),
-    )
-
+    val appInterceptorModule = module {
+        single<Interceptor> { AppCoinAuth2HeaderInterceptor() }
+    }
     private val networkModule = module {
-        single { OkHttpClient.Builder().addInterceptor(get<Interceptor>()).build() }
         single {
-            Retrofit.Builder().client(get()).addConverterFactory(MoshiConverterFactory.create())
-                .build()
+            RetrofitParams(
+                baseUrl = BuildConfig.API_URL,
+                header = get<Interceptor>()
+            )
         }
-    }
 
-    private val serviceModule = module {
-        single { WifiService(androidContext()) }
-    }
-
-    private val interceptorModule = module {
-        single { ConnectivityInterceptor(get()) }
+        single {
+            val params: RetrofitParams = get()
+            val retrofit: Retrofit = get { parametersOf(params) }
+            retrofit.create(CoinAPI::class.java)
+        }
     }
     //endregion
 
     //region Infrastructure Sources
     private val infrastructureSourceModule = module {
-        single { retrofitConfig(CoinAPI::class.java) }
-
         single<IExchangeLocalProvider> {
             ExchangeLocalProvider(
                 context = androidContext(),
@@ -144,12 +137,14 @@ class CoinInitialization : ModuleInitialization() {
     //endregion
 
     override fun init(): List<Module> = listOf(
+        appInterceptorModule,
         infrastructureSourceModule,
         repositoriesModule,
         mappersModule,
         networkModule,
-        serviceModule,
-        interceptorModule,
+        coreNetworkModule,
+        coreServiceModule,
+        coreInterceptorModule,
         viewModelsModule,
         providerModule,
     )

@@ -8,7 +8,7 @@ private const val HEADER_TOKEN = "X-CoinAPI-Key"
 private const val HEADER_ACCEPT = "Accept"
 private const val JSON_APPLICATION = "application/json"
 
-class Auth2HeaderInterceptor : Interceptor {
+class AppCoinAuth2HeaderInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder = chain.request().newBuilder()
             .header(HEADER_TOKEN, BuildConfig.TOKEN_KEY)
