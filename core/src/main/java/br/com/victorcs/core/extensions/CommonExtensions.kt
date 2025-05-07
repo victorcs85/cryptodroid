@@ -1,6 +1,5 @@
 package br.com.victorcs.core.extensions
 
-
 import br.com.victorcs.core.constants.GENERIC_MESSAGE_ERROR
 import br.com.victorcs.core.exceptions.RateLimitException
 import br.com.victorcs.core.exceptions.WithoutNetworkException

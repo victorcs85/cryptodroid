@@ -101,41 +101,46 @@ private fun DetailsContent(contentPadding: PaddingValues, exchange: Exchange) {
                     .background(Color.White.copy(alpha = 0.7f))
                     .padding(16.dp),
             ) {
-                Column {
-                    listOf(
-                        R.string.website to exchange.website,
-                        R.string.data_quote_start to exchange.dataQuoteStart,
-                        R.string.data_quote_end to exchange.dataQuoteEnd,
-                        R.string.volume_one_hour to "${exchange.volume1HrsUsd} USD",
-                        R.string.volume_one_day to "${exchange.volume1DayUsd} USD",
-                        R.string.volume_one_month to "${exchange.volume1MthUsd} USD",
-                        R.string.rank to exchange.rank.toString(),
-                        R.string.integration_status to exchange.integrationStatus,
-                    ).forEach { (resId, value) ->
-                        if (value.isNotEmpty()) {
-                            val detailLabel = stringResource(resId)
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 8.dp)
-                                    .semantics {
-                                        contentDescription = "$detailLabel: $value"
-                                    },
-                            ) {
-                                Column {
-                                    Text(
-                                        text = detailLabel,
-                                        fontWeight = FontWeight.Bold,
-                                        color = LocalCustomColors.current.exchangeInfo,
-                                    )
-                                    Text(
-                                        text = value,
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = LocalCustomColors.current.exchangeVolume,
-                                    )
-                                }
-                            }
-                        }
+                DynamicDetails(exchange)
+            }
+        }
+    }
+}
+
+private @Composable
+fun DynamicDetails(exchange: Exchange) {
+    Column {
+        listOf(
+            R.string.website to exchange.website,
+            R.string.data_quote_start to exchange.dataQuoteStart,
+            R.string.data_quote_end to exchange.dataQuoteEnd,
+            R.string.volume_one_hour to "${exchange.volume1HrsUsd} USD",
+            R.string.volume_one_day to "${exchange.volume1DayUsd} USD",
+            R.string.volume_one_month to "${exchange.volume1MthUsd} USD",
+            R.string.rank to exchange.rank.toString(),
+            R.string.integration_status to exchange.integrationStatus,
+        ).forEach { (resId, value) ->
+            if (value.isNotEmpty()) {
+                val detailLabel = stringResource(resId)
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp)
+                        .semantics {
+                            contentDescription = "$detailLabel: $value"
+                        },
+                ) {
+                    Column {
+                        Text(
+                            text = detailLabel,
+                            fontWeight = FontWeight.Bold,
+                            color = LocalCustomColors.current.exchangeInfo,
+                        )
+                        Text(
+                            text = value,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = LocalCustomColors.current.exchangeVolume,
+                        )
                     }
                 }
             }

@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 import io.gitlab.arturbosch.detekt.Detekt
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
@@ -15,9 +17,9 @@ buildscript {
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
-    id("com.google.devtools.ksp") version "1.9.0-1.0.13" apply false
-    id("io.gitlab.arturbosch.detekt") version "1.23.1"
-    id("com.diffplug.spotless") version "6.24.0" apply false
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.detekt) apply false
+    alias(libs.plugins.spotless) apply false
     alias(libs.plugins.android.library) apply false
 }
 
@@ -32,6 +34,7 @@ subprojects {
 
             defaultConfig {
                 minSdk = 24
+                //noinspection OldTargetApi
                 targetSdk = 35
             }
 
@@ -55,8 +58,12 @@ subprojects {
                 )
             }
 
+            @Suppress("UnstableApiUsage")
             testOptions {
                 animationsDisabled = true
+                unitTests.all {
+                    it.reports.html.required.set(true)
+                }
             }
         }
     }

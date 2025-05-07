@@ -10,7 +10,6 @@ android {
 
     defaultConfig {
         minSdk = 24
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -24,64 +23,64 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
+    }
+    kotlin {
+        jvmToolchain(11)
+    }
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.0"
     }
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.multidex)
-    implementation(libs.timber)
-    implementation(libs.androidx.annotation)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.extensions)
-    implementation(libs.okhttp)
-    implementation(libs.mockwebserver)
-    implementation(libs.androidx.navigation.fragment)
-    implementation(libs.androidx.navigation.ui)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.lifecycle.runtime.compose)
-    implementation(libs.koin.bom)
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
-    implementation(libs.koin.android.compat)
-    implementation(libs.koin.core.coroutines)
-    implementation(libs.koin.androidx.compose)
-    implementation(libs.koin.androidx.compose.navigation)
-    implementation(libs.koin.compose.viewmodel)
-    implementation(libs.retrofit)
-    implementation(libs.converter.moshi)
-    implementation(libs.logging.interceptor)
+    //region Kotlin e Coroutines
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlin.reflect)
+    //endregion
+    //region AndroidX KTX
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.annotation)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.lifecycle.runtime.compose)
+    implementation(libs.androidx.foundation)
+    //endregion
+    //region Theme
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.material3)
+    //endregion
+    //region Http
+    implementation(libs.okhttp)
+    implementation(libs.stetho.okhttp3)
+    //endregion
+    //region Logging
+    implementation(libs.timber)
+    //endregion
+    //region Moshi para (de)serialization
     implementation(libs.moshi.kotlin)
     implementation(libs.moshi.adapters)
-    implementation(libs.kotlin.reflect)
-    implementation(libs.coil.compose)
     ksp(libs.moshi.kotlin.codegen)
-    implementation(libs.stetho)
-    implementation(libs.stetho.okhttp3)
-
+    //endregion
+    //region Koin
+    implementation(libs.koin.bom)
+    implementation(libs.koin.core)
+    //endregion
+    //region Test
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.kotlin.test.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.koin.test.junit4)
+    //endregion
 }

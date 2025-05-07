@@ -206,6 +206,8 @@ naming:
   FunctionNaming:
     active: true
     functionPattern: '^[a-zA-Z][a-zA-Z0-9]*'
+    excludeClassPattern: '$^'
+    ignoreAnnotated: ['Composable']
   excludes: [
     '**/src/test/kotlin/**',
     '**/src/test/java/**',
