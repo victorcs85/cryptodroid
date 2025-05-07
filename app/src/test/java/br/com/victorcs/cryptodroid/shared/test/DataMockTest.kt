@@ -75,52 +75,52 @@ object DataMockTest {
     const val MOCK_DEFAULT_ERROR = "Ocorreu um erro ao buscar os dados!"
 
     const val MOCK_JSON_EXCHANGES = "[\n" +
-            "  {\n" +
-            "    \"exchange_id\": \"BINANCE\",\n" +
-            "    \"website\": \"https://www.binance.com/\",\n" +
-            "    \"name\": \"Binance\",\n" +
-            "    \"data_quote_start\": \"2017-12-18T00:00:00.0000000Z\",\n" +
-            "    \"data_quote_end\": \"2025-04-15T00:00:00.0000000Z\",\n" +
-            "    \"data_orderbook_start\": \"2017-12-18T00:00:00.0000000Z\",\n" +
-            "    \"data_orderbook_end\": \"2025-04-15T00:00:00.0000000Z\",\n" +
-            "    \"data_trade_start\": \"2017-07-14T00:00:00.0000000Z\",\n" +
-            "    \"data_trade_end\": \"2025-04-15T00:00:00.0000000Z\",\n" +
-            "    \"data_symbols_count\": 2991,\n" +
-            "    \"volume_1hrs_usd\": 0,\n" +
-            "    \"volume_1day_usd\": 0,\n" +
-            "    \"volume_1mth_usd\": 0,\n" +
-            "    \"rank\": 2,\n" +
-            "    \"integration_status\": \"INTEGRATED\"\n" +
-            "  },\n" +
-            "  {\n" +
-            "    \"exchange_id\": \"KRAKEN\",\n" +
-            "    \"website\": \"https://www.kraken.com/\",\n" +
-            "    \"name\": \"Kraken\",\n" +
-            "    \"data_quote_start\": \"2014-07-31T00:00:00.0000000Z\",\n" +
-            "    \"data_quote_end\": \"2025-04-14T00:00:00.0000000Z\",\n" +
-            "    \"data_orderbook_start\": \"2014-07-31T13:05:46.0000000Z\",\n" +
-            "    \"data_orderbook_end\": \"2025-04-15T00:00:00.0000000Z\",\n" +
-            "    \"data_trade_start\": \"2013-10-22T00:00:00.0000000Z\",\n" +
-            "    \"data_trade_end\": \"2025-02-24T00:00:00.0000000Z\",\n" +
-            "    \"data_symbols_count\": 1258,\n" +
-            "    \"volume_1hrs_usd\": 0,\n" +
-            "    \"volume_1day_usd\": 0,\n" +
-            "    \"volume_1mth_usd\": 0,\n" +
-            "    \"rank\": 2,\n" +
-            "    \"integration_status\": \"INTEGRATED\"\n" +
-            "  }" +
-            "]"
+        "  {\n" +
+        "    \"exchange_id\": \"BINANCE\",\n" +
+        "    \"website\": \"https://www.binance.com/\",\n" +
+        "    \"name\": \"Binance\",\n" +
+        "    \"data_quote_start\": \"2017-12-18T00:00:00.0000000Z\",\n" +
+        "    \"data_quote_end\": \"2025-04-15T00:00:00.0000000Z\",\n" +
+        "    \"data_orderbook_start\": \"2017-12-18T00:00:00.0000000Z\",\n" +
+        "    \"data_orderbook_end\": \"2025-04-15T00:00:00.0000000Z\",\n" +
+        "    \"data_trade_start\": \"2017-07-14T00:00:00.0000000Z\",\n" +
+        "    \"data_trade_end\": \"2025-04-15T00:00:00.0000000Z\",\n" +
+        "    \"data_symbols_count\": 2991,\n" +
+        "    \"volume_1hrs_usd\": 0,\n" +
+        "    \"volume_1day_usd\": 0,\n" +
+        "    \"volume_1mth_usd\": 0,\n" +
+        "    \"rank\": 2,\n" +
+        "    \"integration_status\": \"INTEGRATED\"\n" +
+        "  },\n" +
+        "  {\n" +
+        "    \"exchange_id\": \"KRAKEN\",\n" +
+        "    \"website\": \"https://www.kraken.com/\",\n" +
+        "    \"name\": \"Kraken\",\n" +
+        "    \"data_quote_start\": \"2014-07-31T00:00:00.0000000Z\",\n" +
+        "    \"data_quote_end\": \"2025-04-14T00:00:00.0000000Z\",\n" +
+        "    \"data_orderbook_start\": \"2014-07-31T13:05:46.0000000Z\",\n" +
+        "    \"data_orderbook_end\": \"2025-04-15T00:00:00.0000000Z\",\n" +
+        "    \"data_trade_start\": \"2013-10-22T00:00:00.0000000Z\",\n" +
+        "    \"data_trade_end\": \"2025-02-24T00:00:00.0000000Z\",\n" +
+        "    \"data_symbols_count\": 1258,\n" +
+        "    \"volume_1hrs_usd\": 0,\n" +
+        "    \"volume_1day_usd\": 0,\n" +
+        "    \"volume_1mth_usd\": 0,\n" +
+        "    \"rank\": 2,\n" +
+        "    \"integration_status\": \"INTEGRATED\"\n" +
+        "  }" +
+        "]"
 
     const val MOCK_EMPTY_JSON_ARRAY = "[]"
 
     const val MOCK_JSON_ICONS = "[\n" +
-            "  {\n" +
-            "    \"exchange_id\": \"LAKEBTC\",\n" +
-            "    \"url\": \"https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_32/5503eb9673f9437988702f06cbd7072b.png\"\n" +
-            "  },\n" +
-            "  {\n" +
-            "    \"exchange_id\": \"APHELION\",\n" +
-            "    \"url\": \"https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_32/566775b2321842faac5c156dfe81705a.png\"\n" +
-            "  }" +
-            "]"
+        "  {\n" +
+        "    \"exchange_id\": \"LAKEBTC\",\n" +
+        "    \"url\": \"https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_32/5503eb9673f9437988702f06cbd7072b.png\"\n" +
+        "  },\n" +
+        "  {\n" +
+        "    \"exchange_id\": \"APHELION\",\n" +
+        "    \"url\": \"https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_32/566775b2321842faac5c156dfe81705a.png\"\n" +
+        "  }" +
+        "]"
 }

@@ -107,8 +107,7 @@ private fun DetailsContent(contentPadding: PaddingValues, exchange: Exchange) {
     }
 }
 
-private @Composable
-fun DynamicDetails(exchange: Exchange) {
+@Composable private fun DynamicDetails(exchange: Exchange) {
     Column {
         listOf(
             R.string.website to exchange.website,

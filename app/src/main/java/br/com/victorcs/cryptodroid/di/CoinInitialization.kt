@@ -49,7 +49,7 @@ class CoinInitialization : ModuleInitialization() {
         single {
             RetrofitParams(
                 baseUrl = BuildConfig.API_URL,
-                header = get<Interceptor>()
+                header = get<Interceptor>(),
             )
         }
 

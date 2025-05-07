@@ -13,7 +13,7 @@ val coreNetworkModule = module {
         RetrofitConfig.createRetrofit(
             wifiService = get(),
             context = androidContext(),
-            params = params
+            params = params,
         )
     }
 }

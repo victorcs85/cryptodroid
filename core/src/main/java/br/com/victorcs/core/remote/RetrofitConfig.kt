@@ -25,7 +25,7 @@ object RetrofitConfig {
     fun createRetrofit(
         wifiService: WifiService,
         context: Context,
-        params: RetrofitParams
+        params: RetrofitParams,
     ): Retrofit {
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(params.header)
