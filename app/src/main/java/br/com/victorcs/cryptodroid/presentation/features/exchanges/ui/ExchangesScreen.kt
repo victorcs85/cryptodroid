@@ -2,12 +2,9 @@ package br.com.victorcs.cryptodroid.presentation.features.exchanges.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults.Indicator
 import androidx.compose.material3.pulltorefresh.pullToRefresh
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
@@ -25,23 +22,24 @@ import br.com.victorcs.cryptodroid.R
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.command.ExchangesCommand
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.views.EmptyListView
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.views.ExchangeList
-import br.com.victorcs.cryptodroid.presentation.views.ExchangeTopAppBar
+import br.com.victorcs.cryptodroid.presentation.features.main.MainScreenViewModel
 import br.com.victorcs.cryptodroid.presentation.views.LoadingView
 import br.com.victorcs.cryptodroid.presentation.views.ShowErrorMessage
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ExchangesScreen(
     navController: NavController,
     state: ExchangesScreenState,
     execute: (ExchangesCommand) -> Unit,
+    mainScreenViewModel: MainScreenViewModel = koinViewModel(),
 ) {
-    Scaffold(
-        topBar = {
-            ExchangeTopAppBar(title = stringResource(R.string.app_name))
-        },
+    mainScreenViewModel.setTitleAppBar(stringResource(R.string.exchanges_label))
+    Box(
         modifier = Modifier.fillMaxSize(),
-    ) { contentPadding ->
-        ExchangesScreenContent(state, contentPadding, navController, execute) {
+        contentAlignment = Alignment.Center
+    ) {
+        ExchangesScreenContent(state, navController, execute) {
             execute(
                 ExchangesCommand.RefreshExchanges,
             )
@@ -52,7 +50,6 @@ fun ExchangesScreen(
 @Composable
 private fun ExchangesScreenContent(
     state: ExchangesScreenState,
-    contentPadding: PaddingValues,
     navController: NavController,
     execute: (ExchangesCommand) -> Unit,
     onRefresh: () -> Unit,
@@ -62,18 +59,18 @@ private fun ExchangesScreenContent(
     PullToRefreshWrapper(
         isRefreshing = state.isRefreshing,
         onRefresh = onRefresh,
-        modifier = Modifier.padding(contentPadding),
+        modifier = Modifier.fillMaxSize(),
     ) {
         when {
             state.errorMessage != null -> ShowErrorMessage(
                 state.errorMessage,
                 buttonLabel = stringResource(R.string.reload),
                 buttonAction =
-                {
-                    execute(
-                        ExchangesCommand.FetchExchanges,
-                    )
-                },
+                    {
+                        execute(
+                            ExchangesCommand.FetchExchanges,
+                        )
+                    },
                 modifier = null,
             )
 
@@ -81,11 +78,11 @@ private fun ExchangesScreenContent(
             state.exchanges?.isEmpty().orFalse() -> EmptyListView(
                 buttonLabel = stringResource(R.string.reload),
                 buttonAction =
-                {
-                    execute(
-                        ExchangesCommand.RefreshExchanges,
-                    )
-                },
+                    {
+                        execute(
+                            ExchangesCommand.RefreshExchanges,
+                        )
+                    },
                 modifier = null,
             )
 
@@ -110,6 +107,7 @@ internal fun PullToRefreshWrapper(
     val pullToRefreshContentDescription = stringResource(R.string.semantic_pull_to_refresh)
     Box(
         modifier
+            .fillMaxSize()
             .pullToRefresh(
                 state = refreshState,
                 isRefreshing = isRefreshing,

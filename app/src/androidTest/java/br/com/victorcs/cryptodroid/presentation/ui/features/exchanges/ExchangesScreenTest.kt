@@ -46,7 +46,11 @@ class ExchangesScreenTest {
         composeTestRule.activity.setContent {
             val state = viewModel.screenState.collectAsStateWithLifecycle().value
 
-            ExchangesScreen(navController = rememberNavController(), state, execute = viewModel::execute)
+            ExchangesScreen(
+                navController = rememberNavController(),
+                state,
+                execute = viewModel::execute
+            )
         }
     }
 

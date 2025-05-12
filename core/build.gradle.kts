@@ -32,13 +32,16 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
     kotlin {
         jvmToolchain(11)
     }
+
     buildFeatures {
         compose = true
         buildConfig = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.0"
     }

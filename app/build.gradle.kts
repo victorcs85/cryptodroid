@@ -114,6 +114,7 @@ afterEvaluate {
 dependencies {
     //region submodules
     implementation(project(":core"))
+    implementation(project(":lightning"))
     //endregion
     //region App
     implementation(libs.androidx.core.ktx)
@@ -138,6 +139,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.material)
+
     implementation(libs.lifecycle.runtime.compose)
     implementation(libs.koin.bom)
     implementation(libs.koin.core)
