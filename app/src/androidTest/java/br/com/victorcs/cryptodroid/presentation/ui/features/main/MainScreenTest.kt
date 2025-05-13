@@ -8,6 +8,7 @@ import androidx.test.filters.MediumTest
 import br.com.victorcs.cryptodroid.presentation.MainActivity
 import br.com.victorcs.cryptodroid.presentation.features.main.MainScreen
 import br.com.victorcs.cryptodroid.presentation.features.main.MainViewModel
+import br.com.victorcs.cryptodroid.shared.test.PresentationMockTest
 import br.com.victorcs.cryptodroid.utils.TestDispatchersProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
@@ -28,7 +29,7 @@ class MainScreenTest {
         MainViewModel(TestDispatchersProvider).apply {
             viewModel = this
         }
-        viewModel.setTitleAppBar("Main Screen Title")
+        viewModel.setTitleAppBar(PresentationMockTest.MAIN_SCREEN_TITLE)
 
         composeTestRule.activity.setContent {
             MainScreen(mainViewModel = viewModel)
@@ -37,6 +38,6 @@ class MainScreenTest {
 
     @Test
     fun testTitleIsDisplayed() {
-        composeTestRule.onNodeWithText("Main Screen Title").assertIsDisplayed()
+        composeTestRule.onNodeWithText(PresentationMockTest.MAIN_SCREEN_TITLE).assertIsDisplayed()
     }
 }

@@ -120,4 +120,6 @@ object PresentationMockTest {
     const val BINANCE = "Binance"
     const val COINBASE_URL = "https://pro.coinbase.com/"
     const val COINBASE = "Coinbase Pro (GDAX)"
+
+    const val MAIN_SCREEN_TITLE = "Main Screen Title"
 }
