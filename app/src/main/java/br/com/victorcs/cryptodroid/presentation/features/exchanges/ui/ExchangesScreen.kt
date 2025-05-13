@@ -22,7 +22,7 @@ import br.com.victorcs.cryptodroid.R
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.command.ExchangesCommand
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.views.EmptyListView
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.views.ExchangeList
-import br.com.victorcs.cryptodroid.presentation.features.main.MainScreenViewModel
+import br.com.victorcs.cryptodroid.presentation.features.main.MainViewModel
 import br.com.victorcs.cryptodroid.presentation.views.LoadingView
 import br.com.victorcs.cryptodroid.presentation.views.ShowErrorMessage
 import org.koin.androidx.compose.koinViewModel
@@ -32,9 +32,9 @@ fun ExchangesScreen(
     navController: NavController,
     state: ExchangesScreenState,
     execute: (ExchangesCommand) -> Unit,
-    mainScreenViewModel: MainScreenViewModel = koinViewModel(),
+    mainViewModel: MainViewModel = koinViewModel(),
 ) {
-    mainScreenViewModel.setTitleAppBar(stringResource(R.string.exchanges_label))
+    mainViewModel.setTitleAppBar(stringResource(R.string.exchanges_label))
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center

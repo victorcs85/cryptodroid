@@ -13,11 +13,11 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MainScreen(
-    mainScreenViewModel: MainScreenViewModel = koinViewModel(),
+    mainViewModel: MainViewModel = koinViewModel(),
 ) {
 
     val navController = rememberNavController()
-    val title = mainScreenViewModel.titleAppBar.collectAsStateWithLifecycle().value
+    val title = mainViewModel.titleAppBar.collectAsStateWithLifecycle().value
 
     Scaffold(
         modifier = Modifier

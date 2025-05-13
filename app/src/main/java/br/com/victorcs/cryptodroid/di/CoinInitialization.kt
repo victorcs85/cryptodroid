@@ -28,7 +28,7 @@ import br.com.victorcs.cryptodroid.infrastructure.source.remote.repository.Excha
 import br.com.victorcs.cryptodroid.infrastructure.source.remote.repository.ExchangesRepositoryImpl
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.ui.ExchangeDetailsViewModel
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.ExchangesViewModel
-import br.com.victorcs.cryptodroid.presentation.features.main.MainScreenViewModel
+import br.com.victorcs.cryptodroid.presentation.features.main.MainViewModel
 import okhttp3.Interceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.Module
@@ -129,7 +129,7 @@ class CoinInitialization : ModuleInitialization() {
             )
         }
         single {
-            MainScreenViewModel(
+            MainViewModel(
                 dispatchers = get(),
             )
         }

@@ -123,4 +123,6 @@ object DataMockTest {
         "    \"url\": \"https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_32/566775b2321842faac5c156dfe81705a.png\"\n" +
         "  }" +
         "]"
+
+    const val TEST_TITLE = "Test Title"
 }

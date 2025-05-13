@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class MainScreenViewModel(dispatchers: IDispatchersProvider,
+class MainViewModel(dispatchers: IDispatchersProvider,
 ) : BaseViewModel(dispatchers) {
     private val _titleAppBar = MutableStateFlow<String>(EMPTY)
     val titleAppBar: StateFlow<String> = _titleAppBar.asStateFlow()

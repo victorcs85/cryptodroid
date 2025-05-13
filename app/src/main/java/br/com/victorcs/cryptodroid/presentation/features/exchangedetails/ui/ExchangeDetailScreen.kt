@@ -29,7 +29,7 @@ import br.com.victorcs.core.theme.LocalCustomColors
 import br.com.victorcs.cryptodroid.R
 import br.com.victorcs.cryptodroid.domain.model.Exchange
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.command.ExchangeDetailsCommand
-import br.com.victorcs.cryptodroid.presentation.features.main.MainScreenViewModel
+import br.com.victorcs.cryptodroid.presentation.features.main.MainViewModel
 import br.com.victorcs.cryptodroid.presentation.views.LoadingView
 import br.com.victorcs.cryptodroid.presentation.views.ShowErrorMessage
 import org.koin.androidx.compose.koinViewModel
@@ -39,7 +39,7 @@ fun ExchangeDetailScreen(
     navController: NavController,
     state: ExchangeDetailsScreenState,
     execute: (ExchangeDetailsCommand) -> Unit,
-    mainScreenViewModel: MainScreenViewModel = koinViewModel(),
+    mainViewModel: MainViewModel = koinViewModel(),
 ) {
 
     val exchange = state.exchange
@@ -47,7 +47,7 @@ fun ExchangeDetailScreen(
         navController.previousBackStackEntry?.arguments?.getString(EXCHANGE_ID).orEmpty()
     }
 
-    mainScreenViewModel.setTitleAppBar(
+    mainViewModel.setTitleAppBar(
         exchange?.name ?: stringResource(R.string.exchange_details_title)
     )
 
