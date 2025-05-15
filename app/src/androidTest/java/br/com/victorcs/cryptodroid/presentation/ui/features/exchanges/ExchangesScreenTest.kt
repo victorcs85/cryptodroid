@@ -83,10 +83,10 @@ class ExchangesScreenTest {
         composeTestRule.run {
             onNodeWithText(PresentationMockTest.BINANCE).assertIsDisplayed()
 
-            val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-
-            device.setOrientationLeft()
-            device.setOrientationNatural()
+            UiDevice.getInstance(InstrumentationRegistry.getInstrumentation()).also { device ->
+                device.setOrientationLeft()
+                device.setOrientationNatural()
+            }
 
             onNodeWithText(PresentationMockTest.BINANCE).assertIsDisplayed()
         }
