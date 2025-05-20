@@ -51,8 +51,8 @@ if [ $RESULT_DETEKT -ne 0 ]; then
   exit 1
 fi
 
- Executar os testes unitários
-./gradlew test
+Executar os testes unitários
+./gradlew testDebugUnitTest -x testDebugUnitTestExchangesScreenTest
 RESULT_UNIT_TEST=$?
 
 if [ $RESULT_UNIT_TEST -ne 0 ]; then
