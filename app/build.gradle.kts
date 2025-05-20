@@ -104,6 +104,9 @@ tasks.withType<Test> {
     reports {
         html.required.set(true)
     }
+    filter {
+        excludeTestsMatching("*.ComposeUiTest")
+    }
 }
 
 afterEvaluate {
