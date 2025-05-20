@@ -43,16 +43,16 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 
     kotlin {
-        jvmToolchain(11)
+        jvmToolchain(17)
     }
 
     buildFeatures {
@@ -88,7 +88,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material)
-    implementation(libs.koin.bom)
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.koin.android.compat)
@@ -101,6 +100,12 @@ dependencies {
     ksp(libs.moshi.kotlin.codegen)
 
     testImplementation(libs.junit)
+    testImplementation(libs.roboletric)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.androidx.ui.test.junit4)
+    testImplementation(libs.koin.test.junit4)
+    testImplementation(libs.koin.android.test)
 }

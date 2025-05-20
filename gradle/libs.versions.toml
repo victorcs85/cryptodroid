@@ -1,5 +1,5 @@
 [versions]
-agp = "8.1.0"
+agp = "8.3.0"
 coilCompose = "2.4.0"
 composeBom = "2025.03.01"
 converterMoshi = "2.9.0"
@@ -12,11 +12,16 @@ foundation = "1.8.0"
 fragmentTesting = "1.8.1"
 hamcrest = "2.2"
 hamcrestLibrary = "2.2"
-koinAndroidxCompose = "3.5.0"
-koinAndroidxComposeNavigation = "3.5.0"
-koinBom = "3.5.6"
+koinAndroid = "3.5.6"
+koinAndroidCompat = "3.5.6"
+koinAndroidTest = "3.5.6"
+koinAndroidxCompose = "3.5.6"
+koinAndroidxComposeNavigation = "3.5.6"
 koinComposeViewmodel = "4.0.0"
+koinCore = "3.5.6"
+koinCoreCoroutines = "3.5.6"
 koinTest = "3.5.6"
+koinTestJunit4 = "3.5.6"
 kotlin = "1.9.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -64,6 +69,7 @@ mockk = "1.13.13"
 ksp = "1.9.0-1.0.12"
 detekt = "1.23.1"
 spotless = "6.24.0"
+robolectricVersion = "4.14"
 
 [libraries]
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
@@ -102,17 +108,16 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
-koin-android = { module = "io.insert-koin:koin-android" }
-koin-android-compat = { module = "io.insert-koin:koin-android-compat" }
-koin-android-test = { module = "io.insert-koin:koin-android-test" }
-koin-androidx-compose-navigation = { module = "io.insert-koin:koin-androidx-compose-navigation", version.ref = "koinAndroidxComposeNavigation" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
+koin-android-compat = { module = "io.insert-koin:koin-android-compat", version.ref = "koinAndroidCompat" }
+koin-android-test = { module = "io.insert-koin:koin-android-test", version.ref = "koinAndroidTest" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinAndroidxCompose" }
-koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom" }
+koin-androidx-compose-navigation = { module = "io.insert-koin:koin-androidx-compose-navigation", version.ref = "koinAndroidxComposeNavigation" }
 koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koinComposeViewmodel" }
-koin-core = { module = "io.insert-koin:koin-core" }
-koin-core-coroutines = { module = "io.insert-koin:koin-core-coroutines" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinCore" }
+koin-core-coroutines = { module = "io.insert-koin:koin-core-coroutines", version.ref = "koinCoreCoroutines" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koinTest" }
-koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4" }
+koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koinTestJunit4" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlinReflect" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlinTestJunit" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
@@ -140,6 +145,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+roboletric = { module = "org.robolectric:robolectric", version.ref = "robolectricVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

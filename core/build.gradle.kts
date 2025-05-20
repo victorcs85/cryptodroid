@@ -25,16 +25,16 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 
     kotlin {
-        jvmToolchain(11)
+        jvmToolchain(17)
     }
 
     buildFeatures {
@@ -82,15 +82,18 @@ dependencies {
     implementation(libs.converter.moshi)
     //endregion
     //region Koin
-    implementation(libs.koin.bom)
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     //endregion
     //region Test
+    debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.androidx.ui.test.junit4)
     testImplementation(libs.junit)
     testImplementation(libs.kotlin.test.junit)
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.roboletric)
     testImplementation(libs.koin.test.junit4)
+    testImplementation(libs.koin.android.test)
     //endregion
 }

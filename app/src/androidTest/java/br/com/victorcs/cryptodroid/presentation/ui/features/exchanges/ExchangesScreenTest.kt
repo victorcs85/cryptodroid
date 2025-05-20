@@ -62,7 +62,7 @@ class ExchangesScreenTest {
     }
 
     @Test
-    fun whenPullToRefresh_thenDataIsUpdated() {
+    fun givenAction_whenPullToRefresh_thenDataIsUpdated() {
         coEvery { repository.getExchanges() } returns PresentationMockTest.mockSuccessExchangeResponse
 
         composeTestRule.run {

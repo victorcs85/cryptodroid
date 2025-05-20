@@ -37,7 +37,7 @@ class MainScreenTest {
     }
 
     @Test
-    fun testTitleIsDisplayed() {
+    fun givenATextTitle_whenLoadScreen_thenShowTitleCorrectly() {
         composeTestRule.onNodeWithText(PresentationMockTest.MAIN_SCREEN_TITLE).assertIsDisplayed()
     }
 }

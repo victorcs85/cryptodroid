@@ -7,7 +7,7 @@ import br.com.victorcs.core.model.ErrorType
 import br.com.victorcs.core.model.Response
 import timber.log.Timber
 
-fun Boolean?.orFalse() = this ?: false
+fun Boolean?.orFalse() = this == true
 
 suspend fun <T> safeApiCall(apiCall: suspend () -> T): Response<T> {
     return try {
