@@ -1,6 +1,5 @@
 package br.com.victorcs.cryptodroid.presentation.ui.features.main
 
-
 import android.app.Application
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -73,7 +72,7 @@ class MainScreenTest {
                     single<IDispatchersProvider> { TestDispatchersProvider }
                     viewModel { MainViewModel(get()) }
                     viewModel { ExchangesViewModel(get(), get()) }
-                }
+                },
             )
         }
     }
