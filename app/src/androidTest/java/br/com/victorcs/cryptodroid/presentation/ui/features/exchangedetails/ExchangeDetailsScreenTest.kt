@@ -11,7 +11,6 @@ import androidx.test.filters.MediumTest
 import br.com.victorcs.core.constants.EXCHANGE_ID
 import br.com.victorcs.cryptodroid.domain.repository.IExchangeDetailsRepository
 import br.com.victorcs.cryptodroid.presentation.MainActivity
-import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.command.ExchangeDetailsCommand
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.ui.ExchangeDetailScreen
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.ui.ExchangeDetailsViewModel
 import br.com.victorcs.cryptodroid.shared.test.PresentationMockTest
@@ -54,10 +53,8 @@ class ExchangeDetailsScreenTest : KoinTest {
 
     @Test
     fun givenScreen_whenLoadedData_thenSuccessfullyData() = runTest {
-        viewModel.execute(ExchangeDetailsCommand.GetExchangeDetails(testExchangeId))
-
         composeTestRule.run {
-            onNodeWithText(PresentationMockTest.COINBASE).assertIsDisplayed()
+            onNodeWithText(PresentationMockTest.COINBASE_URL).assertIsDisplayed()
         }
     }
 }

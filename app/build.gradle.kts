@@ -48,14 +48,14 @@ android {
         }
     }
     java {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     kotlin {
-        jvmToolchain(11)
+        jvmToolchain(17)
     }
     buildFeatures {
         compose = true
@@ -78,6 +78,7 @@ android {
         unitTests.all {
             it.reports.html.required.set(true)
         }
+        unitTests.isIncludeAndroidResources = true
     }
 }
 
@@ -114,6 +115,7 @@ afterEvaluate {
 dependencies {
     //region submodules
     implementation(project(":core"))
+    implementation(project(":lightning"))
     //endregion
     //region App
     implementation(libs.androidx.core.ktx)
@@ -138,8 +140,9 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.material)
+
     implementation(libs.lifecycle.runtime.compose)
-    implementation(libs.koin.bom)
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.koin.android.compat)
@@ -163,8 +166,6 @@ dependencies {
     //endregion
     //region Unit Tests
     testImplementation(libs.junit)
-    testImplementation(libs.koin.test.junit4)
-    testImplementation(libs.koin.android.test)
     testImplementation(libs.kotlin.test.junit)
     testImplementation(libs.mockk) { exclude(module = "org.objenesis") }
     testImplementation(libs.mockito.core)
@@ -174,6 +175,10 @@ dependencies {
     testImplementation(libs.androidx.runner)
     testImplementation(libs.androidx.core.testing)
     testImplementation(libs.turbine)
+    testImplementation(libs.roboletric)
+    testImplementation(libs.androidx.ui.test.junit4)
+    testImplementation(libs.koin.test.junit4)
+    testImplementation(libs.koin.android.test)
     //endregion
     //region Instrumented Tests
     androidTestImplementation(libs.androidx.junit)

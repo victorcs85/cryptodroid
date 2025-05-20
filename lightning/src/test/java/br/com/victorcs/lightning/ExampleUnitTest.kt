@@ -1,4 +1,4 @@
-package br.com.victorcs.cryptodroid
+package br.com.victorcs.lightning
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

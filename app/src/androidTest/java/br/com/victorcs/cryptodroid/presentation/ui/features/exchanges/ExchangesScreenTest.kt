@@ -46,7 +46,11 @@ class ExchangesScreenTest {
         composeTestRule.activity.setContent {
             val state = viewModel.screenState.collectAsStateWithLifecycle().value
 
-            ExchangesScreen(navController = rememberNavController(), state, execute = viewModel::execute)
+            ExchangesScreen(
+                navController = rememberNavController(),
+                state,
+                execute = viewModel::execute
+            )
         }
     }
 
@@ -58,7 +62,7 @@ class ExchangesScreenTest {
     }
 
     @Test
-    fun whenPullToRefresh_thenDataIsUpdated() {
+    fun givenAction_whenPullToRefresh_thenDataIsUpdated() {
         coEvery { repository.getExchanges() } returns PresentationMockTest.mockSuccessExchangeResponse
 
         composeTestRule.run {
@@ -79,10 +83,10 @@ class ExchangesScreenTest {
         composeTestRule.run {
             onNodeWithText(PresentationMockTest.BINANCE).assertIsDisplayed()
 
-            val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-
-            device.setOrientationLeft()
-            device.setOrientationNatural()
+            UiDevice.getInstance(InstrumentationRegistry.getInstrumentation()).also { device ->
+                device.setOrientationLeft()
+                device.setOrientationNatural()
+            }
 
             onNodeWithText(PresentationMockTest.BINANCE).assertIsDisplayed()
         }

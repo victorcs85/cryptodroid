@@ -21,4 +21,9 @@
     <string name="semantic_loading">Carregando os dados.</string>
     <string name="semantic_pull_to_refresh">Puxe para baixo para recarregar os dados.</string>
     <string name="semantic_exchange">%1$s, volume de 1 dia: %1$s dólares. Clique para detalhes.</string>
+
+    <string name="exchanges_label">Cripto Exchanges</string>
+    <string name="exchanges_content_description">Ir para Cripto Exchanges</string>
+    <string name="lightning_label">Lightning Exchanges</string>
+    <string name="lightning_content_description">Ir para Lightning Exchanges</string>
 </resources>

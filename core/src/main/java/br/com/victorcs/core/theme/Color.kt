@@ -11,6 +11,7 @@ private const val YELLOW_GOLD = 0xFF5E531B
 private const val WHITE = 0xFFFFFFFF
 private const val GRAY_30_ALPHA = 0x4D989898
 private const val WHITE_30_ALPHA = 0x4DFFFFFF
+private const val YELLOW_COLOR = 0xFFFFD700
 
 internal val MercadoBitcoinOrange = Color(MERCADO_BITCOIN_ORANGE)
 internal val MercadoBitcoinOrangeAlpha30 = MercadoBitcoinOrange.copy(alpha = ALPHA_30_PERCENTAGE)
@@ -18,6 +19,8 @@ internal val MercadoBitcoinOrangeAlpha80 = MercadoBitcoinOrange.copy(alpha = ALP
 internal val Black = Color(BLACK)
 internal val Transparent = Color(TRANSPARENT)
 internal val YellowGold = Color(YELLOW_GOLD)
+
+internal val Yellow = Color(YELLOW_COLOR)
 internal val White = Color(WHITE)
 internal val GrayAlpha30 = Color(GRAY_30_ALPHA)
 internal val WhiteAlpha30 = Color(WHITE_30_ALPHA)

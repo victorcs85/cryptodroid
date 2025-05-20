@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "cryptodroid"
 include(":app")
 include(":core")
+include(":lightning")
