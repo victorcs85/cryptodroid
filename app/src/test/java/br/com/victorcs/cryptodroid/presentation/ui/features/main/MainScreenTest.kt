@@ -5,7 +5,6 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import br.com.victorcs.core.utils.IDispatchersProvider
-import br.com.victorcs.cryptodroid.base.ComposeUiTest
 import br.com.victorcs.cryptodroid.base.INSTRUMENTED_PACKAGE
 import br.com.victorcs.cryptodroid.base.SCREEN_SIZE
 import br.com.victorcs.cryptodroid.base.SDK
@@ -30,7 +29,6 @@ import org.robolectric.annotation.Config
 import org.robolectric.shadows.ShadowLog
 import kotlin.test.Test
 
-@ComposeUiTest
 @Config(
     sdk = [SDK],
     application = Application::class,

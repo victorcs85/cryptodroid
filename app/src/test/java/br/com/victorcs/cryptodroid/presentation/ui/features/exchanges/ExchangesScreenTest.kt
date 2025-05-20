@@ -11,7 +11,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
 import br.com.victorcs.core.constants.PULL_TO_REFRESH_TAG
 import br.com.victorcs.core.utils.IDispatchersProvider
-import br.com.victorcs.cryptodroid.base.ComposeUiTest
 import br.com.victorcs.cryptodroid.base.INSTRUMENTED_PACKAGE
 import br.com.victorcs.cryptodroid.base.SCREEN_SIZE
 import br.com.victorcs.cryptodroid.base.SDK
@@ -37,7 +36,6 @@ import org.robolectric.annotation.Config
 import org.robolectric.shadows.ShadowLog
 import kotlin.test.Test
 
-@ComposeUiTest
 @Config(
     sdk = [SDK],
     application = Application::class,
