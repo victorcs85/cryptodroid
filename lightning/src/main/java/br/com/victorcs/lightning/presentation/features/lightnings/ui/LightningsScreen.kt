@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 fun LightningsScreen() {
     Box(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         Text("Lightning Screen", style = MaterialTheme.typography.bodyLarge)
     }

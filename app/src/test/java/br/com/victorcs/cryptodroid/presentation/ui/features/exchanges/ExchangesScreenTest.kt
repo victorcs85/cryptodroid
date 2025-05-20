@@ -39,7 +39,7 @@ import kotlin.test.Test
     sdk = [SDK],
     application = Application::class,
     instrumentedPackages = [INSTRUMENTED_PACKAGE],
-    qualifiers = SCREEN_SIZE
+    qualifiers = SCREEN_SIZE,
 )
 @RunWith(RobolectricTestRunner::class)
 @ExperimentalCoroutinesApi
@@ -69,7 +69,7 @@ class ExchangesScreenTest {
             ExchangesScreen(
                 navController = rememberNavController(),
                 state,
-                execute = viewModel::execute
+                execute = viewModel::execute,
             )
         }
     }
@@ -84,7 +84,7 @@ class ExchangesScreenTest {
                     single<IDispatchersProvider> { TestDispatchersProvider }
                     viewModel { MainViewModel(get()) }
                     viewModel { ExchangesViewModel(get(), get()) }
-                }
+                },
             )
         }
     }

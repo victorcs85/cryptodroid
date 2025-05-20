@@ -49,7 +49,7 @@ class ExchangesScreenTest {
             ExchangesScreen(
                 navController = rememberNavController(),
                 state,
-                execute = viewModel::execute
+                execute = viewModel::execute,
             )
         }
     }

@@ -37,7 +37,7 @@ fun ExchangesScreen(
     mainViewModel.setTitleAppBar(stringResource(R.string.exchanges_label))
     Box(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         ExchangesScreenContent(state, navController, execute) {
             execute(
@@ -66,11 +66,11 @@ private fun ExchangesScreenContent(
                 state.errorMessage,
                 buttonLabel = stringResource(R.string.reload),
                 buttonAction =
-                    {
-                        execute(
-                            ExchangesCommand.FetchExchanges,
-                        )
-                    },
+                {
+                    execute(
+                        ExchangesCommand.FetchExchanges,
+                    )
+                },
                 modifier = null,
             )
 
@@ -78,11 +78,11 @@ private fun ExchangesScreenContent(
             state.exchanges?.isEmpty().orFalse() -> EmptyListView(
                 buttonLabel = stringResource(R.string.reload),
                 buttonAction =
-                    {
-                        execute(
-                            ExchangesCommand.RefreshExchanges,
-                        )
-                    },
+                {
+                    execute(
+                        ExchangesCommand.RefreshExchanges,
+                    )
+                },
                 modifier = null,
             )
 

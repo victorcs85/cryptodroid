@@ -15,7 +15,6 @@ import org.koin.androidx.compose.koinViewModel
 fun MainScreen(
     mainViewModel: MainViewModel = koinViewModel(),
 ) {
-
     val navController = rememberNavController()
     val title = mainViewModel.titleAppBar.collectAsStateWithLifecycle().value
 
@@ -30,6 +29,6 @@ fun MainScreen(
         },
         bottomBar = {
             BottomNavigationBar(navController)
-        }
+        },
     )
 }

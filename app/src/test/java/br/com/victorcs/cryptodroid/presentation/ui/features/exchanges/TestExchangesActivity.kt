@@ -22,7 +22,7 @@ class TestExchangesActivity : ComponentActivity() {
             ExchangesScreen(
                 navController = rememberNavController(),
                 state = state,
-                execute = viewModel::execute
+                execute = viewModel::execute,
             )
         }
     }

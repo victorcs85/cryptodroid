@@ -24,9 +24,8 @@ import br.com.victorcs.cryptodroid.presentation.navigation.ScreenRouter
 
 @Composable
 fun BottomNavigationBar(
-    navController: NavHostController
+    navController: NavHostController,
 ) {
-
     val selectedNavigationIndex = rememberSaveable {
         mutableIntStateOf(ZERO)
     }
@@ -36,44 +35,58 @@ fun BottomNavigationBar(
             route = ScreenRouter.Exchanges.route,
             icon = painterResource(R.drawable.ic_bitcoin),
             iconContentDescription = stringResource(R.string.exchanges_content_description),
-            label = stringResource(R.string.exchanges_label)
-        ), NavigationItem(
+            label = stringResource(R.string.exchanges_label),
+        ),
+        NavigationItem(
             route = ScreenRouter.Lightning.route,
             icon = painterResource(R.drawable.ic_lightning),
             iconContentDescription = stringResource(R.string.lightning_content_description),
-            label = stringResource(R.string.lightning_label)
-        )
+            label = stringResource(R.string.lightning_label),
+        ),
     )
 
     NavigationBar(containerColor = LocalCustomColors.current.appBarBackground) {
         bottomNavigationItems.forEachIndexed { index, item ->
             NavigationBarItem(
-                selected = selectedNavigationIndex.intValue == index, onClick = {
-                selectedNavigationIndex.intValue = index
-                navController.navigate(item.route)
-            }, icon = {
-                Icon(
-                    painter = item.icon,
-                    contentDescription = item.iconContentDescription,
-                    modifier = Modifier.padding(ZERO.dp),
-                    tint = if (selectedNavigationIndex.intValue == index) LocalCustomColors.current.selection
-                    else LocalCustomColors.current.appBarInfo
-                )
-            }, label = {
-                Text(
-                    text = item.label,
-                    color = if (selectedNavigationIndex.intValue == index) LocalCustomColors.current.selection
-                    else Color.White
-                )
-            }, colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = MaterialTheme.colorScheme.surface,
-                indicatorColor = MaterialTheme.colorScheme.primary
-            )
+                selected = selectedNavigationIndex.intValue == index,
+                onClick = {
+                    selectedNavigationIndex.intValue = index
+                    navController.navigate(item.route)
+                },
+                icon = {
+                    Icon(
+                        painter = item.icon,
+                        contentDescription = item.iconContentDescription,
+                        modifier = Modifier.padding(ZERO.dp),
+                        tint = if (selectedNavigationIndex.intValue == index) {
+                            LocalCustomColors.current.selection
+                        } else {
+                            LocalCustomColors.current.appBarInfo
+                        },
+                    )
+                },
+                label = {
+                    Text(
+                        text = item.label,
+                        color = if (selectedNavigationIndex.intValue == index) {
+                            LocalCustomColors.current.selection
+                        } else {
+                            Color.White
+                        },
+                    )
+                },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = MaterialTheme.colorScheme.surface,
+                    indicatorColor = MaterialTheme.colorScheme.primary,
+                ),
             )
         }
     }
 }
 
 data class NavigationItem(
-    val route: String, val icon: Painter, val iconContentDescription: String, val label: String
+    val route: String,
+    val icon: Painter,
+    val iconContentDescription: String,
+    val label: String,
 )

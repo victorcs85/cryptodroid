@@ -126,7 +126,6 @@ object DataMockTest {
 
     const val TEST_TITLE = "Test Title"
 
-
     //region Robolectric
     private val mockExchangeRefreshList = listOf(
         Exchange(

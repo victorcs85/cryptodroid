@@ -41,19 +41,18 @@ fun ExchangeDetailScreen(
     execute: (ExchangeDetailsCommand) -> Unit,
     mainViewModel: MainViewModel = koinViewModel(),
 ) {
-
     val exchange = state.exchange
     val exchangeId = rememberSaveable() {
         navController.previousBackStackEntry?.arguments?.getString(EXCHANGE_ID).orEmpty()
     }
 
     mainViewModel.setTitleAppBar(
-        exchange?.name ?: stringResource(R.string.exchange_details_title)
+        exchange?.name ?: stringResource(R.string.exchange_details_title),
     )
 
     Box(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         when {
             state.isLoading -> LoadingView()

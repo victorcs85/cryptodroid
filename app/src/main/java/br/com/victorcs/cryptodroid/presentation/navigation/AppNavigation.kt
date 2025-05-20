@@ -25,16 +25,14 @@ import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.ExchangesV
 import br.com.victorcs.lightning.presentation.features.lightnings.ui.LightningsScreen
 import org.koin.androidx.compose.koinViewModel
 
-
 private const val ANIMATION_TIMER = 300
 
 @Composable
 fun AppNavigation(innerPadding: PaddingValues, navController: NavHostController) {
-
     NavHost(
         navController = navController,
         startDestination = ScreenRouter.Exchanges.route,
-        modifier = Modifier.padding(innerPadding)
+        modifier = Modifier.padding(innerPadding),
     ) {
         composable(ScreenRouter.Exchanges.route) {
             val viewModel: ExchangesViewModel = koinViewModel()

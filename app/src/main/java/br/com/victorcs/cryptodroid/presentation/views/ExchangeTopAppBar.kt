@@ -26,7 +26,6 @@ import br.com.victorcs.cryptodroid.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ExchangeTopAppBar(title: String, onBackPressed: (() -> Unit)? = null) {
-
     TopAppBar(
         title = {
             Text(
