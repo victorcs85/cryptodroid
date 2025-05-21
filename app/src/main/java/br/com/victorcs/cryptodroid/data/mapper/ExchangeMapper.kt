@@ -3,8 +3,8 @@ package br.com.victorcs.cryptodroid.data.mapper
 import br.com.victorcs.core.constants.ZERO
 import br.com.victorcs.core.constants.ZERO_POINT_ZERO
 import br.com.victorcs.core.extensions.toFormatedDate
+import br.com.victorcs.core.mapper.DomainMapper
 import br.com.victorcs.cryptodroid.data.entity.ExchangeResponse
-import br.com.victorcs.cryptodroid.domain.mapper.DomainMapper
 import br.com.victorcs.cryptodroid.domain.model.Exchange
 import br.com.victorcs.cryptodroid.domain.model.Icon
 

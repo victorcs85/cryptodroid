@@ -1,4 +1,4 @@
-package br.com.victorcs.cryptodroid.domain.mapper
+package br.com.victorcs.core.mapper
 
 interface DomainMapper<in T, out Model> {
     fun toDomain(from: T): Model

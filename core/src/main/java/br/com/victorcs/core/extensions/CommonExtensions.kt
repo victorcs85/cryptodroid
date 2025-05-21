@@ -8,6 +8,8 @@ import br.com.victorcs.core.model.Response
 import timber.log.Timber
 
 fun Boolean?.orFalse() = this == true
+fun Int?.orZero() = this ?: 0
+fun Long?.orZero() = this ?: 0L
 
 suspend fun <T> safeApiCall(apiCall: suspend () -> T): Response<T> {
     return try {

@@ -69,6 +69,7 @@ dependencies {
     //region submodules
     implementation(project(":core"))
     //endregion
+    //region App
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -79,7 +80,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.lifecycle.runtime.compose)
+    implementation(libs.okhttp)
+    debugImplementation(libs.mockwebserver)
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
@@ -88,6 +93,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material)
+
+    implementation(libs.lifecycle.runtime.compose)
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.koin.android.compat)
@@ -95,17 +102,58 @@ dependencies {
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.androidx.compose.navigation)
     implementation(libs.koin.compose.viewmodel)
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+    implementation(libs.logging.interceptor)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.moshi.kotlin)
+    implementation(libs.moshi.adapters)
+    implementation(libs.kotlin.reflect)
     implementation(libs.coil.compose)
     ksp(libs.moshi.kotlin.codegen)
-
-    testImplementation(libs.junit)
-    testImplementation(libs.roboletric)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-
+    implementation(libs.stetho)
+    implementation(libs.stetho.okhttp3)
+    debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    //endregion
+    //region Unit Tests
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlin.test.junit)
+    testImplementation(libs.mockk) { exclude(module = "org.objenesis") }
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.androidx.rules)
+    testImplementation(libs.androidx.runner)
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.turbine)
+    testImplementation(libs.roboletric)
     testImplementation(libs.androidx.ui.test.junit4)
     testImplementation(libs.koin.test.junit4)
     testImplementation(libs.koin.android.test)
+    //endregion
+    //region Instrumented Tests
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.core)
+    androidTestImplementation(libs.mockito.android)
+    androidTestImplementation(libs.androidx.navigation.testing)
+    androidTestImplementation(libs.androidx.espresso.intents)
+    androidTestImplementation(libs.koin.test)
+    androidTestImplementation(libs.androidx.espresso.contrib) {
+        exclude(module = "protobuf-lite")
+    }
+    androidTestImplementation(libs.androidx.fragment.testing)
+    androidTestImplementation(libs.mockk.android) { exclude(module = "org.objenesis") }
+    androidTestImplementation(libs.androidx.uiautomator)
+    androidTestImplementation(libs.kotlinx.coroutines.test) {
+        exclude(module = "kotlinx-coroutines-debug")
+    }
+    androidTestImplementation(libs.androidx.core.testing)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.hamcrest.library)
+    androidTestImplementation(libs.hamcrest) {
+        exclude(group = "junit")
+    }
+    //endregion
 }

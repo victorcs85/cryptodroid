@@ -7,6 +7,7 @@ import br.com.victorcs.core.constants.REMOTE_NAMED
 import br.com.victorcs.core.di.coreInterceptorModule
 import br.com.victorcs.core.di.coreNetworkModule
 import br.com.victorcs.core.di.coreServiceModule
+import br.com.victorcs.core.mapper.DomainMapper
 import br.com.victorcs.core.model.RetrofitParams
 import br.com.victorcs.core.utils.IDispatchersProvider
 import br.com.victorcs.core.utils.IDispatchersProviderImpl
@@ -15,7 +16,6 @@ import br.com.victorcs.cryptodroid.data.entity.ExchangeResponse
 import br.com.victorcs.cryptodroid.data.entity.IconResponse
 import br.com.victorcs.cryptodroid.data.mapper.ExchangeIconMapper
 import br.com.victorcs.cryptodroid.data.mapper.ExchangeMapper
-import br.com.victorcs.cryptodroid.domain.mapper.DomainMapper
 import br.com.victorcs.cryptodroid.domain.model.Exchange
 import br.com.victorcs.cryptodroid.domain.model.Icon
 import br.com.victorcs.cryptodroid.domain.repository.IExchangeDetailsRepository

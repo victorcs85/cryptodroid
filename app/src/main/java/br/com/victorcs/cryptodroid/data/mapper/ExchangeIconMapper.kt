@@ -1,7 +1,7 @@
 package br.com.victorcs.cryptodroid.data.mapper
 
+import br.com.victorcs.core.mapper.DomainMapper
 import br.com.victorcs.cryptodroid.data.entity.IconResponse
-import br.com.victorcs.cryptodroid.domain.mapper.DomainMapper
 import br.com.victorcs.cryptodroid.domain.model.Icon
 
 class ExchangeIconMapper : DomainMapper<IconResponse, Icon> {
