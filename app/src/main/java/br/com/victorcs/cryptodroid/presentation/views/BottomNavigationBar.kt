@@ -35,7 +35,7 @@ fun BottomNavigationBar(
             route = ScreenRouter.Exchanges.route,
             icon = painterResource(R.drawable.ic_bitcoin),
             iconContentDescription = stringResource(R.string.exchanges_content_description),
-            label = stringResource(R.string.exchanges_label),
+            label = stringResource(R.string.exchanges_item),
         ),
         NavigationItem(
             route = ScreenRouter.Lightning.route,

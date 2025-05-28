@@ -26,13 +26,14 @@ import androidx.navigation.NavController
 import br.com.victorcs.core.constants.EXCHANGE_ID
 import br.com.victorcs.core.constants.ZERO
 import br.com.victorcs.core.theme.LocalCustomColors
+import br.com.victorcs.core.views.LoadingView
+import br.com.victorcs.core.views.ShowErrorMessage
 import br.com.victorcs.cryptodroid.R
 import br.com.victorcs.cryptodroid.domain.model.Exchange
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.command.ExchangeDetailsCommand
 import br.com.victorcs.cryptodroid.presentation.features.main.MainViewModel
-import br.com.victorcs.cryptodroid.presentation.views.LoadingView
-import br.com.victorcs.cryptodroid.presentation.views.ShowErrorMessage
 import org.koin.androidx.compose.koinViewModel
+import br.com.victorcs.core.R as coreR
 
 @Composable
 fun ExchangeDetailScreen(
@@ -58,7 +59,7 @@ fun ExchangeDetailScreen(
             state.isLoading -> LoadingView()
             state.errorMessage != null -> ShowErrorMessage(
                 state.errorMessage,
-                buttonLabel = stringResource(R.string.reload),
+                buttonLabel = stringResource(coreR.string.reload),
                 buttonAction = {
                     execute(
                         ExchangeDetailsCommand.GetExchangeDetails(

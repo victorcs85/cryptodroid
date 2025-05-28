@@ -9,7 +9,7 @@ import org.koin.dsl.module
 
 //region Network
 val coreNetworkModule = module {
-    single { (params: RetrofitParams) ->
+    factory { (params: RetrofitParams) ->
         RetrofitConfig.createRetrofit(
             wifiService = get(),
             context = androidContext(),

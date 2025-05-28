@@ -5,8 +5,6 @@
     <string name="back_button">Voltar</string>
     <string name="exchange_details_title">Detalhes</string>
     <string name="exchange_details">Detalhes do câmbio</string>
-    <string name="no_data_available">Não foram localizados dados para amostragem.</string>
-    <string name="reload">Recarregar</string>
 
     <string name="website">Website:</string>
     <string name="data_quote_start">Início da cotação de dados:</string>
@@ -17,12 +15,11 @@
     <string name="rank">Rank:</string>
     <string name="integration_status">Status de integração:</string>
 
-    <string name="semantic_button">Botão %1$s</string>
-    <string name="semantic_loading">Carregando os dados.</string>
     <string name="semantic_pull_to_refresh">Puxe para baixo para recarregar os dados.</string>
     <string name="semantic_exchange">%1$s, volume de 1 dia: %1$s dólares. Clique para detalhes.</string>
 
-    <string name="exchanges_label">Cripto Exchanges</string>
+    <string name="exchanges_label">CriptoDroid</string>
+    <string name="exchanges_item">Cripto Exchanges</string>
     <string name="exchanges_content_description">Ir para Cripto Exchanges</string>
     <string name="lightning_label">Lightning Exchanges</string>
     <string name="lightning_content_description">Ir para Lightning Exchanges</string>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="channels">Canais: %1$d</string>
+    <string name="capacity_sats">Capacidade: %1$s BTC</string>
+    <string name="localization">Localização: %1$s</string>
+    <string name="updated_at">Atualizado em: %1$s</string>
+</resources>

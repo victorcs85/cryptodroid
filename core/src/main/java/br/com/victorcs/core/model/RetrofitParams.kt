@@ -4,5 +4,5 @@ import okhttp3.Interceptor
 
 data class RetrofitParams(
     val baseUrl: String,
-    val header: Interceptor,
+    val header: Interceptor?,
 )

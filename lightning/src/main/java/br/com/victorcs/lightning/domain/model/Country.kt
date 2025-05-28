@@ -9,4 +9,8 @@ data class Country(
     val ptBR: String?,
     val ru: String?,
     val zhCN: String?
-)
+) {
+    fun getLocalizedName(): String {
+        return ptBR?.takeIf { it.isNotBlank() } ?: en.orEmpty()
+    }
+}

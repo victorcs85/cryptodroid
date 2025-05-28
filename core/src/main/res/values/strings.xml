@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="semantic_button">Botão %1$s</string>
+    <string name="semantic_loading">Carregando os dados.</string>
+    <string name="no_data_available">Não foram localizados dados para amostragem.</string>
+    <string name="reload">Recarregar</string>
+</resources>

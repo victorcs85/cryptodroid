@@ -27,20 +27,23 @@ object RetrofitConfig {
         context: Context,
         params: RetrofitParams,
     ): Retrofit {
-        val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(params.header)
-            .addInterceptor(CacheControlInterceptor(wifiService))
-            .connectTimeout(HUNDRED, TimeUnit.SECONDS)
-            .readTimeout(HUNDRED, TimeUnit.SECONDS)
-            .writeTimeout(ONE_HUNDRED_AND_TWENTY, TimeUnit.SECONDS)
-            .cache(
-                Cache(
-                    File(context.cacheDir, HTTP_CACHE),
-                    CACHE_MAX_SIZE,
-                ),
-            )
-            .addInterceptor(ConnectivityInterceptor(wifiService))
-            .addInterceptor(getHttpLogging())
+        val okHttpClient = OkHttpClient.Builder().also { builder ->
+            params.header?.let {
+                builder.addInterceptor(it)
+            }
+                builder.addInterceptor(CacheControlInterceptor(wifiService))
+                .connectTimeout(HUNDRED, TimeUnit.SECONDS)
+                .readTimeout(HUNDRED, TimeUnit.SECONDS)
+                .writeTimeout(ONE_HUNDRED_AND_TWENTY, TimeUnit.SECONDS)
+                .cache(
+                    Cache(
+                        File(context.cacheDir, HTTP_CACHE),
+                        CACHE_MAX_SIZE,
+                    ),
+                )
+                .addInterceptor(ConnectivityInterceptor(wifiService))
+                .addInterceptor(getHttpLogging())
+        }
 
         if (BuildConfig.DEBUG) {
             okHttpClient.addNetworkInterceptor(StethoInterceptor())

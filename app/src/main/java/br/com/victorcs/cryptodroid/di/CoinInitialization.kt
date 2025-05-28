@@ -29,6 +29,9 @@ import br.com.victorcs.cryptodroid.infrastructure.source.remote.repository.Excha
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.ui.ExchangeDetailsViewModel
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.ExchangesViewModel
 import br.com.victorcs.cryptodroid.presentation.features.main.MainViewModel
+import br.com.victorcs.lightning.di.lightningPresentationModule
+import br.com.victorcs.lightning.di.lightningRemoteModule
+import br.com.victorcs.lightning.di.networkLightningModule
 import okhttp3.Interceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.Module
@@ -40,31 +43,38 @@ import retrofit2.Retrofit
 import br.com.victorcs.cryptodroid.infrastructure.source.local.repository.ExchangeDetailsRepositoryImpl as LocalExchangeDetailsRepositoryImpl
 import br.com.victorcs.cryptodroid.infrastructure.source.local.repository.ExchangesRepositoryImpl as LocalExchangesRepositoryImpl
 
+private const val APP_COIN_API_HEADERS = "AppCoinAPIHeaders"
+private const val APP_COIN_RETROFIT_PARAMS = "AppCoinRetrofitParams"
+private const val APP_RETROFIT = "AppRetrofit"
+private const val LOCAL_PROVIDER = "LocalExchangeProvider"
+private const val EXCHANGE_MAPPER = "ExchangeMapper"
+
 class CoinInitialization : ModuleInitialization() {
 
     //region Network
     val appInterceptorModule = module {
-        single<Interceptor> { AppCoinAuth2HeaderInterceptor() }
+        single<Interceptor>((named(APP_COIN_API_HEADERS))) { AppCoinAuth2HeaderInterceptor() }
     }
     private val networkModule = module {
-        single {
+        single(named(APP_COIN_RETROFIT_PARAMS)) {
             RetrofitParams(
                 baseUrl = BuildConfig.API_URL,
-                header = get<Interceptor>(),
+                header = get<Interceptor>(named(APP_COIN_API_HEADERS)),
             )
         }
 
-        single {
-            val params: RetrofitParams = get()
-            val retrofit: Retrofit = get { parametersOf(params) }
-            retrofit.create(CoinAPI::class.java)
+        single<Retrofit>(named(APP_RETROFIT)) {
+            val params: RetrofitParams = get(named(APP_COIN_RETROFIT_PARAMS))
+            get<Retrofit>(parameters = { parametersOf(params) } )
         }
+
+        single<CoinAPI> { get<Retrofit>(named(APP_RETROFIT)).create(CoinAPI::class.java) }
     }
     //endregion
 
     //region Infrastructure Sources
     private val infrastructureSourceModule = module {
-        single<IExchangeLocalProvider> {
+        single<IExchangeLocalProvider>(named(LOCAL_PROVIDER)) {
             ExchangeLocalProvider(
                 context = androidContext(),
             )
@@ -76,29 +86,29 @@ class CoinInitialization : ModuleInitialization() {
     private val repositoriesModule = module {
         single<IExchangesRepository>(named(REMOTE_NAMED)) {
             ExchangesRepositoryImpl(
-                service = get(),
-                mapper = get(),
+                service = get(named(APP_RETROFIT)),
+                mapper = get(named(EXCHANGE_MAPPER)),
                 iconMapper = get(named(ICON_MAPPER)),
             )
         }
         single<IExchangeDetailsRepository>(named(REMOTE_NAMED)) {
             ExchangeDetailsRepositoryImpl(
-                service = get(),
-                mapper = get(),
+                service = get(named(APP_RETROFIT)),
+                mapper = get(named(EXCHANGE_MAPPER)),
             )
         }
 
         single<IExchangesRepository>(named(LOCAL_JSON_NAMED)) {
             LocalExchangesRepositoryImpl(
-                provider = get(),
-                mapper = get(),
+                provider = get(named(LOCAL_PROVIDER)),
+                mapper = get(named(EXCHANGE_MAPPER)),
                 iconMapper = get(named(ICON_MAPPER)),
             )
         }
         single<IExchangeDetailsRepository>(named(LOCAL_JSON_NAMED)) {
             LocalExchangeDetailsRepositoryImpl(
-                provider = get(),
-                mapper = get(),
+                provider = get(named(LOCAL_PROVIDER)),
+                mapper = get(named(EXCHANGE_MAPPER)),
             )
         }
     }
@@ -106,7 +116,7 @@ class CoinInitialization : ModuleInitialization() {
 
     //region Mappers
     private val mappersModule = module {
-        single<DomainMapper<ExchangeResponse, Exchange>> { ExchangeMapper() }
+        single<DomainMapper<ExchangeResponse, Exchange>>(named(EXCHANGE_MAPPER)) { ExchangeMapper() }
         single<DomainMapper<IconResponse, Icon>>(named(ICON_MAPPER)) { ExchangeIconMapper() }
     }
     //endregion
@@ -153,6 +163,9 @@ class CoinInitialization : ModuleInitialization() {
         coreInterceptorModule,
         viewModelsModule,
         providerModule,
+        lightningRemoteModule,
+        lightningPresentationModule,
+        networkLightningModule
     )
 
     private fun getSource(): String {

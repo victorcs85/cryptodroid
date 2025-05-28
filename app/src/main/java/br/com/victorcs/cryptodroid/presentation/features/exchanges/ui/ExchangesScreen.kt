@@ -18,14 +18,15 @@ import androidx.compose.ui.semantics.semantics
 import androidx.navigation.NavController
 import br.com.victorcs.core.constants.PULL_TO_REFRESH_TAG
 import br.com.victorcs.core.extensions.orFalse
+import br.com.victorcs.core.views.EmptyListView
+import br.com.victorcs.core.views.LoadingView
+import br.com.victorcs.core.views.ShowErrorMessage
 import br.com.victorcs.cryptodroid.R
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.command.ExchangesCommand
-import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.views.EmptyListView
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.views.ExchangeList
 import br.com.victorcs.cryptodroid.presentation.features.main.MainViewModel
-import br.com.victorcs.cryptodroid.presentation.views.LoadingView
-import br.com.victorcs.cryptodroid.presentation.views.ShowErrorMessage
 import org.koin.androidx.compose.koinViewModel
+import br.com.victorcs.core.R as coreR
 
 @Composable
 fun ExchangesScreen(
@@ -64,7 +65,7 @@ private fun ExchangesScreenContent(
         when {
             state.errorMessage != null -> ShowErrorMessage(
                 state.errorMessage,
-                buttonLabel = stringResource(R.string.reload),
+                buttonLabel = stringResource(coreR.string.reload),
                 buttonAction =
                 {
                     execute(
@@ -76,7 +77,7 @@ private fun ExchangesScreenContent(
 
             state.isLoading -> LoadingView()
             state.exchanges?.isEmpty().orFalse() -> EmptyListView(
-                buttonLabel = stringResource(R.string.reload),
+                buttonLabel = stringResource(coreR.string.reload),
                 buttonAction =
                 {
                     execute(
