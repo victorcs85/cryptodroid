@@ -63,6 +63,28 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.0"
     }
+
+    @Suppress("UnstableApiUsage")
+    testOptions {
+        animationsDisabled = true
+        unitTests.all {
+            it.reports.html.required.set(true)
+        }
+        unitTests.isIncludeAndroidResources = true
+    }
+    sourceSets {
+        getByName("androidTest") {
+            manifest.srcFile("src/androidTest/AndroidManifest.xml")
+        }
+    }
+}
+
+configurations.all {
+    exclude(group = "com.google.guava", module = "listenablefuture")
+}
+
+configurations.all {
+    exclude(group = "org.hamcrest", module = "hamcrest-core")
 }
 
 dependencies {

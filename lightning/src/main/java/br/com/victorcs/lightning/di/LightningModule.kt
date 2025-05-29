@@ -9,7 +9,7 @@ import br.com.victorcs.lightning.domain.model.Node
 import br.com.victorcs.lightning.domain.repository.IRankingsConnectivityRepository
 import br.com.victorcs.lightning.infrastructure.source.remote.LightningAPI
 import br.com.victorcs.lightning.infrastructure.source.remote.repository.RankingsConnectivityRepositoryImpl
-import br.com.victorcs.lightning.presentation.features.lightnings.features.ratings.ui.LightningRatingsViewModel
+import br.com.victorcs.lightning.presentation.features.ratings.ui.LightningRatingsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named

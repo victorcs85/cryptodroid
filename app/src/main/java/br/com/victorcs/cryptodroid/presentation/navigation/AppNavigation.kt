@@ -22,8 +22,8 @@ import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.ui.Exch
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.ui.ExchangeDetailsViewModel
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.ExchangesScreen
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.ExchangesViewModel
-import br.com.victorcs.lightning.presentation.features.lightnings.features.ratings.ui.LightningRatingsViewModel
-import br.com.victorcs.lightning.presentation.features.lightnings.features.ratings.ui.LightningsScreen
+import br.com.victorcs.lightning.presentation.features.ratings.ui.LightningRatingsViewModel
+import br.com.victorcs.lightning.presentation.features.ratings.ui.LightningsScreen
 import org.koin.androidx.compose.koinViewModel
 
 private const val ANIMATION_TIMER = 300

@@ -1,4 +1,4 @@
-package br.com.victorcs.lightning.presentation.features.lightnings.features.ratings.ui.view
+package br.com.victorcs.lightning.presentation.features.ratings.ui.view
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize

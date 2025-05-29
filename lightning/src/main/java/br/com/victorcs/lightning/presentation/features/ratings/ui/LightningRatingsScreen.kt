@@ -1,4 +1,4 @@
-package br.com.victorcs.lightning.presentation.features.lightnings.features.ratings.ui
+package br.com.victorcs.lightning.presentation.features.ratings.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,8 +12,8 @@ import br.com.victorcs.core.extensions.orFalse
 import br.com.victorcs.core.views.EmptyListView
 import br.com.victorcs.core.views.LoadingView
 import br.com.victorcs.core.views.ShowErrorMessage
-import br.com.victorcs.lightning.presentation.features.lightnings.features.ratings.command.LightningRatingsCommand
-import br.com.victorcs.lightning.presentation.features.lightnings.features.ratings.ui.view.LightningRatingsList
+import br.com.victorcs.lightning.presentation.features.ratings.command.LightningRatingsCommand
+import br.com.victorcs.lightning.presentation.features.ratings.ui.view.LightningRatingsList
 
 @Composable
 fun LightningsScreen(

@@ -73,7 +73,7 @@ fun BottomNavigationBar(
             val scale = remember { Animatable(SCALE_NORMAL) }
             val shakeOffset = remember { Animatable(INITIAL_ANIMATION_VALUE) }
 
-            setUpAnimation(isSelected, scale, shakeOffset)
+            SetUpAnimation(isSelected, scale, shakeOffset)
 
             NavigationBarItem(
                 selected = isSelected,
@@ -124,7 +124,7 @@ fun BottomNavigationBar(
 }
 
 @Composable
-private fun setUpAnimation(
+private fun SetUpAnimation(
     isSelected: Boolean,
     scale: Animatable<Float, AnimationVector1D>,
     shakeOffset: Animatable<Float, AnimationVector1D>

@@ -1,4 +1,4 @@
-package br.com.victorcs.lightning.presentation.features.lightnings.features.ratings.ui
+package br.com.victorcs.lightning.presentation.features.ratings.ui
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
@@ -10,7 +10,7 @@ import br.com.victorcs.core.model.Response
 import br.com.victorcs.core.utils.IDispatchersProvider
 import br.com.victorcs.lightning.domain.model.Node
 import br.com.victorcs.lightning.domain.repository.IRankingsConnectivityRepository
-import br.com.victorcs.lightning.presentation.features.lightnings.features.ratings.command.LightningRatingsCommand
+import br.com.victorcs.lightning.presentation.features.ratings.command.LightningRatingsCommand
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
