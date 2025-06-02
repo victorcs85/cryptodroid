@@ -20,7 +20,7 @@ class NodeMapper : DomainMapper<NodeResponse, Node> {
             city = from.city?.let { CityMapper().toDomain(it) },
             country = from.country?.let { CountryMapper().toDomain(it) },
             isoCode = from.isoCode.orEmpty(),
-            subdivision = from.subdivision.orEmpty()
+            subdivision = from.subdivision.orEmpty(),
         )
     }
 }

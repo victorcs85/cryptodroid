@@ -25,7 +25,7 @@ class ExchangeDetailsViewModel(
     private val repository: IExchangeDetailsRepository,
     private val savedStateHandle: SavedStateHandle,
     dispatchers: IDispatchersProvider,
-    private val dataSourceType: DataSourceType
+    private val dataSourceType: DataSourceType,
 ) : BaseViewModel(dispatchers) {
 
     private val _state = MutableStateFlow(ExchangeDetailsScreenState())
@@ -55,10 +55,11 @@ class ExchangeDetailsViewModel(
             val exchangeResponse = repository.getExchangeDetails(exchangeId)
 
             if (exchangeResponse is Response.Success && exchangeResponse.data.isNotEmpty()) {
-                val exchange = if(dataSourceType == DataSourceType.REMOTE_SOURCE)
+                val exchange = if (dataSourceType == DataSourceType.REMOTE_SOURCE) {
                     exchangeResponse.data.first()
-                else
+                } else {
                     exchangeResponse.data.firstOrNull { it.exchangeId == exchangeId }
+                }
 
                 _state.update { currentState ->
                     currentState.copy(

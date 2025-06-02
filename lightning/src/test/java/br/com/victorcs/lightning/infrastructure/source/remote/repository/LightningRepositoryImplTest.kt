@@ -1,6 +1,5 @@
 package br.com.victorcs.lightning.infrastructure.source.remote.repository
 
-
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.filters.SmallTest
 import br.com.victorcs.core.model.Response

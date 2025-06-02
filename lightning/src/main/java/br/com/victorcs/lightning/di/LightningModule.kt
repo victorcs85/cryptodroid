@@ -25,7 +25,7 @@ val lightningRemoteModule = module {
     single<IRankingsConnectivityRepository> {
         RankingsConnectivityRepositoryImpl(
             lightningAPI = get(named(LIGHTNING_API)),
-            mapper = get(named(NODE_MAPPER))
+            mapper = get(named(NODE_MAPPER)),
         )
     }
 
@@ -38,7 +38,7 @@ val lightningPresentationModule = module {
     viewModel {
         LightningRatingsViewModel(
             repository = get(),
-            dispatchers = get()
+            dispatchers = get(),
         )
     }
 }

@@ -28,7 +28,7 @@ import java.text.NumberFormat
 fun LightningRatingsItem(node: Node, modifier: Modifier = Modifier) {
     val location = listOfNotNull(
         node.city?.getLocalizedName(),
-        node.country?.getLocalizedName()
+        node.country?.getLocalizedName(),
     ).joinToString(", ")
 
     val formattedCapacity = NumberFormat.getNumberInstance().format(node.capacity ?: 0.0)
@@ -37,43 +37,42 @@ fun LightningRatingsItem(node: Node, modifier: Modifier = Modifier) {
         shape = RoundedCornerShape(16.dp),
         modifier = modifier
             .fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = LightBackground)
+        colors = CardDefaults.cardColors(containerColor = LightBackground),
     ) {
-
         val channelString = stringResource(R.string.channels, node.channels.orZero())
         val capacityString = stringResource(R.string.capacity_sats, formattedCapacity)
         val localizationString = stringResource(R.string.localization, location)
         val updatedAtString = stringResource(R.string.updated_at, node.updatedAt.orEmpty())
-        
+
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
                 text = node.alias.orEmpty(),
-                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             )
             Text(
                 text = node.publicKey,
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.primary,
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = channelString,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyMedium,
             )
             Text(
                 text = capacityString,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyMedium,
             )
             if (location.isNotBlank()) {
                 Text(
                     text = localizationString,
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.bodyMedium,
                 )
             }
             Text(
                 text = updatedAtString,
                 style = MaterialTheme.typography.bodySmall,
-                color = Color.Gray
+                color = Color.Gray,
             )
         }
     }
@@ -93,7 +92,7 @@ fun LightningRatingsItemPreview() {
             city = null,
             country = Country(null, "United States", null, null, null, "EUA", null, null),
             isoCode = null,
-            subdivision = null
-        )
+            subdivision = null,
+        ),
     )
 }

@@ -21,7 +21,7 @@ object DataMockTest {
             city = null,
             country = Country(null, "United States", null, null, null, "EUA", null, null),
             isoCode = null,
-            subdivision = null
+            subdivision = null,
         ),
         Node(
             publicKey = "035e4ff418fc8b5554c5d9eea66396c227bd429a3251c8cbc711002ba215bfc226",
@@ -33,8 +33,8 @@ object DataMockTest {
             city = City(null, "Vancouver", null, null, null, "Vancôver", null, null),
             country = Country(null, "Canada", null, null, null, "Canadá", null, null),
             isoCode = null,
-            subdivision = null
-        )
+            subdivision = null,
+        ),
     )
 
     val mockSuccessLightning: Response<List<Node>> = Response.Success(mockLightning)
@@ -56,10 +56,10 @@ object DataMockTest {
                 ja = "アメリカ",
                 ptBR = "EUA",
                 ru = "США",
-                zhCN = "美国"
+                zhCN = "美国",
             ),
             isoCode = "US",
-            subdivision = null
+            subdivision = null,
         ),
         NodeResponse(
             publicKey = "035e4ff418fc8b5554c5d9eea66396c227bd429a3251c8cbc711002ba215bfc226",
@@ -77,10 +77,10 @@ object DataMockTest {
                 ja = "カナダ",
                 ptBR = "Canadá",
                 ru = "Канада",
-                zhCN = "加拿大"
+                zhCN = "加拿大",
             ),
             isoCode = "CA",
-            subdivision = null
-        )
+            subdivision = null,
+        ),
     )
 }

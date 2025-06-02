@@ -14,6 +14,6 @@ class CityMapper : DomainMapper<CityResponse, City> {
         ja = from.ja.orEmpty(),
         ptBR = from.ptBR.orEmpty(),
         ru = from.ru.orEmpty(),
-        zhCN = from.zhCN.orEmpty()
+        zhCN = from.zhCN.orEmpty(),
     )
 }

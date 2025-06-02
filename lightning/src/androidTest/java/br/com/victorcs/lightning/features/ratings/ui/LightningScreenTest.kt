@@ -40,7 +40,7 @@ class LightningScreenTest {
 
             LightningsScreen(
                 state = state,
-                execute = viewModel::execute
+                execute = viewModel::execute,
             )
         }
     }

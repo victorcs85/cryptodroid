@@ -12,5 +12,5 @@ data class NodeResponse(
     @Json(name = "city") val city: CityResponse?,
     @Json(name = "country") val country: CountryResponse?,
     @Json(name = "iso_code") val isoCode: String?,
-    @Json(name = "subdivision") val subdivision: String?
+    @Json(name = "subdivision") val subdivision: String?,
 )

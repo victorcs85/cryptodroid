@@ -65,7 +65,7 @@ class CoinInitialization : ModuleInitialization() {
 
         single<Retrofit>(named(APP_RETROFIT)) {
             val params: RetrofitParams = get(named(APP_COIN_RETROFIT_PARAMS))
-            get<Retrofit>(parameters = { parametersOf(params) } )
+            get<Retrofit>(parameters = { parametersOf(params) })
         }
 
         single<CoinAPI> { get<Retrofit>(named(APP_RETROFIT)).create(CoinAPI::class.java) }
@@ -139,7 +139,7 @@ class CoinInitialization : ModuleInitialization() {
                 repository = get(named(source)),
                 dispatchers = get(),
                 savedStateHandle = savedStateHandle,
-                dataSourceType = get(named(source))
+                dataSourceType = get(named(source)),
             )
         }
         single {
@@ -169,7 +169,7 @@ class CoinInitialization : ModuleInitialization() {
         providerModule,
         lightningRemoteModule,
         lightningPresentationModule,
-        networkLightningModule
+        networkLightningModule,
     )
 
     private fun getSource(): String {

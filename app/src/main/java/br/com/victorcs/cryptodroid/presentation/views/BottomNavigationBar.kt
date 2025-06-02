@@ -46,7 +46,6 @@ private const val NEGATIVE_FLOAT_TWO = -2f
 fun BottomNavigationBar(
     navController: NavHostController,
 ) {
-
     val navBackStackEntry = navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry.value?.destination?.route
 
@@ -72,7 +71,7 @@ fun BottomNavigationBar(
 private fun CustomNavigationBar(
     bottomNavigationItems: List<NavigationItem>,
     currentRoute: String?,
-    navController: NavHostController
+    navController: NavHostController,
 ) {
     NavigationBar(containerColor = LocalCustomColors.current.appBarBackground) {
         bottomNavigationItems.forEachIndexed { index, item ->
@@ -142,7 +141,7 @@ private fun CustomNavigationBar(
 private fun SetUpAnimation(
     isSelected: Boolean,
     scale: Animatable<Float, AnimationVector1D>,
-    shakeOffset: Animatable<Float, AnimationVector1D>
+    shakeOffset: Animatable<Float, AnimationVector1D>,
 ) {
     val shakeSequence = listOf(
         INITIAL_ANIMATION_VALUE,
@@ -150,7 +149,7 @@ private fun SetUpAnimation(
         FLOAT_FOUR,
         NEGATIVE_FLOAT_TWO,
         FLOAT_TWO,
-        INITIAL_ANIMATION_VALUE
+        INITIAL_ANIMATION_VALUE,
     )
 
     if (isSelected) {
@@ -159,8 +158,8 @@ private fun SetUpAnimation(
                 targetValue = SCALE_UP,
                 animationSpec = tween(
                     durationMillis = SCALE_DURATION,
-                    easing = LinearOutSlowInEasing
-                )
+                    easing = LinearOutSlowInEasing,
+                ),
             )
             launch {
                 for (offset in shakeSequence) {
@@ -172,8 +171,8 @@ private fun SetUpAnimation(
                 targetValue = SCALE_NORMAL,
                 animationSpec = tween(
                     durationMillis = SCALE_DURATION,
-                    easing = FastOutLinearInEasing
-                )
+                    easing = FastOutLinearInEasing,
+                ),
             )
         }
     }

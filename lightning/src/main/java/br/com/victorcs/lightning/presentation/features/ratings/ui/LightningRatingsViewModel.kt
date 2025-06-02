@@ -46,14 +46,14 @@ class LightningRatingsViewModel(
                     is Response.Success -> {
                         _state.value = _state.value.copy(
                             isLoading = false,
-                            ratings = ratings.data
+                            ratings = ratings.data,
                         )
                     }
 
                     is Response.Error -> {
                         _state.value = _state.value.copy(
                             isLoading = false,
-                            errorMessage = ratings.errorMessage
+                            errorMessage = ratings.errorMessage,
                         )
                     }
                 }
@@ -61,10 +61,10 @@ class LightningRatingsViewModel(
             errorBlock = { error ->
                 _state.value = _state.value.copy(
                     isLoading = false,
-                    errorMessage = error.message ?: GENERIC_MESSAGE_ERROR
+                    errorMessage = error.message ?: GENERIC_MESSAGE_ERROR,
                 )
                 Unit
-            }
+            },
         )
     }
 }

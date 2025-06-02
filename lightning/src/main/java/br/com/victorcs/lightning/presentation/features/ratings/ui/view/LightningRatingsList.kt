@@ -34,7 +34,7 @@ fun LightningRatingsList(
                 if (index < nodes.lastIndex) {
                     HorizontalDivider(color = LocalCustomColors.current.divider, thickness = 1.dp)
                 }
-            }
+            },
         )
     }
 }
@@ -53,7 +53,7 @@ fun LightningRatingsListPreview() {
             city = null,
             country = Country(null, "United States", null, null, null, "EUA", null, null),
             isoCode = null,
-            subdivision = null
+            subdivision = null,
         ),
         Node(
             publicKey = "035e4ff418fc8b5554c5d9eea66396c227bd429a3251c8cbc711002ba215bfc226",
@@ -65,14 +65,14 @@ fun LightningRatingsListPreview() {
             city = City(null, "Vancouver", null, null, null, "Vancôver", null, null),
             country = Country(null, "Canada", null, null, null, "Canadá", null, null),
             isoCode = null,
-            subdivision = null
-        )
+            subdivision = null,
+        ),
     )
 
     val listState = rememberLazyListState()
 
     LightningRatingsList(
         nodes = mockList,
-        listState = listState
+        listState = listState,
     )
 }

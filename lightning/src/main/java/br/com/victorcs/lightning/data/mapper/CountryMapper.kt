@@ -16,5 +16,4 @@ class CountryMapper : DomainMapper<CountryResponse, Country> {
         ru = from.ru.orEmpty(),
         zhCN = from.zhCN.orEmpty(),
     )
-
 }

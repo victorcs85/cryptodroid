@@ -31,7 +31,7 @@ object RetrofitConfig {
             params.header?.let {
                 builder.addInterceptor(it)
             }
-                builder.addInterceptor(CacheControlInterceptor(wifiService))
+            builder.addInterceptor(CacheControlInterceptor(wifiService))
                 .connectTimeout(HUNDRED, TimeUnit.SECONDS)
                 .readTimeout(HUNDRED, TimeUnit.SECONDS)
                 .writeTimeout(ONE_HUNDRED_AND_TWENTY, TimeUnit.SECONDS)

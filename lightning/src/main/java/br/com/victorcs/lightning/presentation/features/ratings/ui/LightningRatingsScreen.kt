@@ -36,7 +36,7 @@ fun LightningsScreen(
 @Composable
 private fun LightningRatingsScreenContent(
     state: LightningRatingsScreenState,
-    execute: (LightningRatingsCommand) -> Unit
+    execute: (LightningRatingsCommand) -> Unit,
 ) {
     val listState = rememberLazyListState()
 
@@ -45,11 +45,11 @@ private fun LightningRatingsScreenContent(
             state.errorMessage,
             buttonLabel = stringResource(R.string.reload),
             buttonAction =
-                {
-                    execute(
-                        LightningRatingsCommand.GetRatings,
-                    )
-                },
+            {
+                execute(
+                    LightningRatingsCommand.GetRatings,
+                )
+            },
             modifier = null,
         )
 
@@ -57,11 +57,11 @@ private fun LightningRatingsScreenContent(
         state.ratings.isEmpty().orFalse() -> EmptyListView(
             buttonLabel = stringResource(R.string.reload),
             buttonAction =
-                {
-                    execute(
-                        LightningRatingsCommand.GetRatings,
-                    )
-                },
+            {
+                execute(
+                    LightningRatingsCommand.GetRatings,
+                )
+            },
             modifier = null,
         )
 

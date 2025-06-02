@@ -10,7 +10,7 @@ import br.com.victorcs.lightning.infrastructure.source.remote.LightningAPI
 
 class RankingsConnectivityRepositoryImpl(
     private val lightningAPI: LightningAPI,
-    private val mapper: DomainMapper<NodeResponse, Node>
+    private val mapper: DomainMapper<NodeResponse, Node>,
 ) : IRankingsConnectivityRepository {
     override suspend fun getRankingsConnectivity(): Response<List<Node>> =
         safeApiCall {

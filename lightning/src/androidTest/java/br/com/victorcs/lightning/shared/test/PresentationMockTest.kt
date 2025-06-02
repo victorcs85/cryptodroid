@@ -18,7 +18,7 @@ object PresentationMockTest {
             city = null,
             country = Country(null, "United States", null, null, null, "EUA", null, null),
             isoCode = null,
-            subdivision = null
+            subdivision = null,
         ),
         Node(
             publicKey = "035e4ff418fc8b5554c5d9eea66396c227bd429a3251c8cbc711002ba215bfc226",
@@ -30,12 +30,12 @@ object PresentationMockTest {
             city = City(null, "Vancouver", null, null, null, "Vancôver", null, null),
             country = Country(null, "Canada", null, null, null, "Canadá", null, null),
             isoCode = null,
-            subdivision = null
-        )
+            subdivision = null,
+        ),
     )
 
     val mockSuccessLightningResponse = Response.Success(
-        mockNodes
+        mockNodes,
     )
 
     val lightningPublicKey = mockNodes.first().publicKey

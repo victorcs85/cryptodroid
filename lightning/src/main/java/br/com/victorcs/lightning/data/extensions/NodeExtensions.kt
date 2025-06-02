@@ -9,8 +9,8 @@ private const val DATE_FORMAT = "dd/MM/yyyy HH:mm"
 const val HYPHEN = "-"
 private const val BITCOIN_TRANSFORM = 100_000_000.0
 private const val ONE_THOUSAND = 1000
-private const val ERROR_CONVERTER_DATE =  "Error formatting date from timestamp:"
-private const val ERROR_CONVERTER_BITCOIN =  "Error converting to Bitcoin from value:"
+private const val ERROR_CONVERTER_DATE = "Error formatting date from timestamp:"
+private const val ERROR_CONVERTER_BITCOIN = "Error converting to Bitcoin from value:"
 
 fun Long.toFormattedDate(): String {
     return try {

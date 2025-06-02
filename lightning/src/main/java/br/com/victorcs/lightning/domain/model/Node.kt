@@ -10,5 +10,5 @@ data class Node(
     val city: City?,
     val country: Country?,
     val isoCode: String?,
-    val subdivision: String?
+    val subdivision: String?,
 )

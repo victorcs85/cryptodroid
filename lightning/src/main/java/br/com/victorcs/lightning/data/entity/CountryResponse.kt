@@ -10,5 +10,5 @@ data class CountryResponse(
     @Json(name = "ja") val ja: String?,
     @Json(name = "pt-BR") val ptBR: String?,
     @Json(name = "ru") val ru: String?,
-    @Json(name = "zh-CN") val zhCN: String?
+    @Json(name = "zh-CN") val zhCN: String?,
 )

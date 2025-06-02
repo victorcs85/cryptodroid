@@ -40,8 +40,10 @@ class ExchangeDetailsScreenTest : KoinTest {
     fun setUp() {
         val savedState = mockk<SavedStateHandle>(relaxed = true)
         every { savedState.get<String>(EXCHANGE_ID) } returns testExchangeId
-        viewModel = ExchangeDetailsViewModel(repository, savedState, TestDispatchersProvider,
-            DataSourceType.REMOTE_SOURCE)
+        viewModel = ExchangeDetailsViewModel(
+            repository, savedState, TestDispatchersProvider,
+            DataSourceType.REMOTE_SOURCE,
+        )
         coEvery { repository.getExchangeDetails(any<String>()) } returns
             PresentationMockTest.mockSuccessExchangeDetailsResponse
 
