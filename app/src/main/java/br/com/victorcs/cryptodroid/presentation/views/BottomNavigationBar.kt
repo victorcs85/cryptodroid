@@ -14,9 +14,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
@@ -24,8 +22,9 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import br.com.victorcs.core.constants.ZERO
+import androidx.navigation.compose.currentBackStackEntryAsState
 import br.com.victorcs.core.theme.LocalCustomColors
 import br.com.victorcs.cryptodroid.R
 import br.com.victorcs.cryptodroid.presentation.navigation.ScreenRouter
@@ -47,9 +46,9 @@ private const val NEGATIVE_FLOAT_TWO = -2f
 fun BottomNavigationBar(
     navController: NavHostController,
 ) {
-    val selectedNavigationIndex = rememberSaveable {
-        mutableIntStateOf(ZERO)
-    }
+
+    val navBackStackEntry = navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry.value?.destination?.route
 
     val bottomNavigationItems = listOf(
         NavigationItem(
@@ -66,9 +65,18 @@ fun BottomNavigationBar(
         ),
     )
 
+    CustomNavigationBar(bottomNavigationItems, currentRoute, navController)
+}
+
+@Composable
+private fun CustomNavigationBar(
+    bottomNavigationItems: List<NavigationItem>,
+    currentRoute: String?,
+    navController: NavHostController
+) {
     NavigationBar(containerColor = LocalCustomColors.current.appBarBackground) {
         bottomNavigationItems.forEachIndexed { index, item ->
-            val isSelected = selectedNavigationIndex.intValue == index
+            val isSelected = currentRoute == item.route
 
             val scale = remember { Animatable(SCALE_NORMAL) }
             val shakeOffset = remember { Animatable(INITIAL_ANIMATION_VALUE) }
@@ -78,8 +86,15 @@ fun BottomNavigationBar(
             NavigationBarItem(
                 selected = isSelected,
                 onClick = {
-                    selectedNavigationIndex.intValue = index
-                    navController.navigate(item.route)
+                    if (currentRoute != item.route) {
+                        navController.navigate(item.route) {
+                            launchSingleTop = true
+                            restoreState = true
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                        }
+                    }
                 },
                 icon = {
                     Icon(

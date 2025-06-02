@@ -86,15 +86,21 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     //endregion
-    //region Test
-    debugImplementation(libs.androidx.ui.test.manifest)
-    testImplementation(libs.androidx.ui.test.junit4)
+    //region Unit Tests
     testImplementation(libs.junit)
     testImplementation(libs.kotlin.test.junit)
-    testImplementation(libs.mockk)
+    testImplementation(libs.mockk) { exclude(module = "org.objenesis") }
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.androidx.rules)
+    testImplementation(libs.androidx.runner)
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.turbine)
     testImplementation(libs.roboletric)
+    testImplementation(libs.androidx.ui.test.junit4)
     testImplementation(libs.koin.test.junit4)
     testImplementation(libs.koin.android.test)
+    debugImplementation(libs.androidx.ui.test.manifest)
     //endregion
 }

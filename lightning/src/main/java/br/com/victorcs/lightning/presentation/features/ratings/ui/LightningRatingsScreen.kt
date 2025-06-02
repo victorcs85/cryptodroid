@@ -8,18 +8,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import br.com.victorcs.core.R
+import br.com.victorcs.core.base.MainViewModel
 import br.com.victorcs.core.extensions.orFalse
 import br.com.victorcs.core.views.EmptyListView
 import br.com.victorcs.core.views.LoadingView
 import br.com.victorcs.core.views.ShowErrorMessage
 import br.com.victorcs.lightning.presentation.features.ratings.command.LightningRatingsCommand
 import br.com.victorcs.lightning.presentation.features.ratings.ui.view.LightningRatingsList
+import org.koin.androidx.compose.koinViewModel
+import br.com.victorcs.core.R as coreR
 
 @Composable
 fun LightningsScreen(
     state: LightningRatingsScreenState,
-    execute: (LightningRatingsCommand) -> Unit
+    execute: (LightningRatingsCommand) -> Unit,
+    mainViewModel: MainViewModel = koinViewModel(),
 ) {
+    mainViewModel.setTitleAppBar(stringResource(coreR.string.exchanges_label))
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,

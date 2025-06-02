@@ -10,6 +10,7 @@ import br.com.victorcs.core.constants.GENERIC_MESSAGE_ERROR
 import br.com.victorcs.core.constants.STOP_TIMER_LIMIT
 import br.com.victorcs.core.model.Response
 import br.com.victorcs.core.utils.IDispatchersProvider
+import br.com.victorcs.cryptodroid.di.DataSourceType
 import br.com.victorcs.cryptodroid.domain.model.Exchange
 import br.com.victorcs.cryptodroid.domain.repository.IExchangeDetailsRepository
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.command.ExchangeDetailsCommand
@@ -24,6 +25,7 @@ class ExchangeDetailsViewModel(
     private val repository: IExchangeDetailsRepository,
     private val savedStateHandle: SavedStateHandle,
     dispatchers: IDispatchersProvider,
+    private val dataSourceType: DataSourceType
 ) : BaseViewModel(dispatchers) {
 
     private val _state = MutableStateFlow(ExchangeDetailsScreenState())
@@ -53,7 +55,11 @@ class ExchangeDetailsViewModel(
             val exchangeResponse = repository.getExchangeDetails(exchangeId)
 
             if (exchangeResponse is Response.Success && exchangeResponse.data.isNotEmpty()) {
-                val exchange = exchangeResponse.data.first()
+                val exchange = if(dataSourceType == DataSourceType.REMOTE_SOURCE)
+                    exchangeResponse.data.first()
+                else
+                    exchangeResponse.data.firstOrNull { it.exchangeId == exchangeId }
+
                 _state.update { currentState ->
                     currentState.copy(
                         exchange = exchange,

@@ -9,6 +9,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
 import androidx.test.filters.MediumTest
 import br.com.victorcs.core.constants.EXCHANGE_ID
+import br.com.victorcs.cryptodroid.di.DataSourceType
 import br.com.victorcs.cryptodroid.domain.repository.IExchangeDetailsRepository
 import br.com.victorcs.cryptodroid.presentation.MainActivity
 import br.com.victorcs.cryptodroid.shared.test.PresentationMockTest
@@ -39,7 +40,8 @@ class ExchangeDetailsScreenTest : KoinTest {
     fun setUp() {
         val savedState = mockk<SavedStateHandle>(relaxed = true)
         every { savedState.get<String>(EXCHANGE_ID) } returns testExchangeId
-        viewModel = ExchangeDetailsViewModel(repository, savedState, TestDispatchersProvider)
+        viewModel = ExchangeDetailsViewModel(repository, savedState, TestDispatchersProvider,
+            DataSourceType.REMOTE_SOURCE)
         coEvery { repository.getExchangeDetails(any<String>()) } returns
             PresentationMockTest.mockSuccessExchangeDetailsResponse
 

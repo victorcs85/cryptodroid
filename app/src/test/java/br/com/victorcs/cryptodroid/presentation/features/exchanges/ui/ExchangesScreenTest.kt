@@ -9,13 +9,13 @@ import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.swipeDown
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
+import br.com.victorcs.core.base.MainViewModel
 import br.com.victorcs.core.constants.PULL_TO_REFRESH_TAG
 import br.com.victorcs.core.utils.IDispatchersProvider
 import br.com.victorcs.cryptodroid.base.INSTRUMENTED_PACKAGE
 import br.com.victorcs.cryptodroid.base.SCREEN_SIZE
 import br.com.victorcs.cryptodroid.base.SDK
 import br.com.victorcs.cryptodroid.domain.repository.IExchangesRepository
-import br.com.victorcs.cryptodroid.presentation.features.main.MainViewModel
 import br.com.victorcs.cryptodroid.shared.test.DataMockTest
 import br.com.victorcs.cryptodroid.utils.TestDispatchersProvider
 import io.mockk.coEvery

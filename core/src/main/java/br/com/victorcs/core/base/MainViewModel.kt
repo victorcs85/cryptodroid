@@ -1,6 +1,5 @@
-package br.com.victorcs.cryptodroid.presentation.features.main
+package br.com.victorcs.core.base
 
-import br.com.victorcs.core.base.BaseViewModel
 import br.com.victorcs.core.constants.EMPTY
 import br.com.victorcs.core.utils.IDispatchersProvider
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import br.com.victorcs.core.base.MainViewModel
 import br.com.victorcs.core.utils.IDispatchersProvider
 import br.com.victorcs.cryptodroid.base.INSTRUMENTED_PACKAGE
 import br.com.victorcs.cryptodroid.base.SCREEN_SIZE
@@ -11,7 +12,6 @@ import br.com.victorcs.cryptodroid.base.SDK
 import br.com.victorcs.cryptodroid.domain.repository.IExchangesRepository
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.ExchangesViewModel
 import br.com.victorcs.cryptodroid.presentation.features.main.MainScreen
-import br.com.victorcs.cryptodroid.presentation.features.main.MainViewModel
 import br.com.victorcs.cryptodroid.shared.test.DataMockTest
 import br.com.victorcs.cryptodroid.utils.TestDispatchersProvider
 import io.mockk.mockk

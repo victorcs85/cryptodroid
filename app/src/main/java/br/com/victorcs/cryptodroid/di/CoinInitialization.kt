@@ -1,6 +1,7 @@
 package br.com.victorcs.cryptodroid.di
 
 import androidx.lifecycle.SavedStateHandle
+import br.com.victorcs.core.base.MainViewModel
 import br.com.victorcs.core.constants.ICON_MAPPER
 import br.com.victorcs.core.constants.LOCAL_JSON_NAMED
 import br.com.victorcs.core.constants.REMOTE_NAMED
@@ -28,7 +29,6 @@ import br.com.victorcs.cryptodroid.infrastructure.source.remote.repository.Excha
 import br.com.victorcs.cryptodroid.infrastructure.source.remote.repository.ExchangesRepositoryImpl
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.ui.ExchangeDetailsViewModel
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.ExchangesViewModel
-import br.com.victorcs.cryptodroid.presentation.features.main.MainViewModel
 import br.com.victorcs.lightning.di.lightningPresentationModule
 import br.com.victorcs.lightning.di.lightningRemoteModule
 import br.com.victorcs.lightning.di.networkLightningModule
@@ -111,6 +111,9 @@ class CoinInitialization : ModuleInitialization() {
                 mapper = get(named(EXCHANGE_MAPPER)),
             )
         }
+
+        single(named(REMOTE_NAMED)) { DataSourceType.REMOTE_SOURCE }
+        single(named(LOCAL_JSON_NAMED)) { DataSourceType.LOCAL_JSON_SOURCE }
     }
     //endregion
 
@@ -136,6 +139,7 @@ class CoinInitialization : ModuleInitialization() {
                 repository = get(named(source)),
                 dispatchers = get(),
                 savedStateHandle = savedStateHandle,
+                dataSourceType = get(named(source))
             )
         }
         single {

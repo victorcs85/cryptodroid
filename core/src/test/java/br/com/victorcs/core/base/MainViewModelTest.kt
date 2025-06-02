@@ -1,11 +1,8 @@
-package br.com.victorcs.cryptodroid.presentation.features.main.ui
+package br.com.victorcs.core.base
 
 import androidx.test.filters.SmallTest
 import app.cash.turbine.test
-import br.com.victorcs.cryptodroid.base.BaseViewModelTest
-import br.com.victorcs.cryptodroid.base.CoroutineTestRule
-import br.com.victorcs.cryptodroid.presentation.features.main.MainViewModel
-import br.com.victorcs.cryptodroid.shared.test.DataMockTest
+import br.com.victorcs.core.shared.test.DataMockTest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.resetMain
@@ -39,7 +36,7 @@ class MainViewModelTest : BaseViewModelTest() {
 
     @Test
     fun givenTitle_whenSetTitleAppBar_thenUpdateData() = runTest {
-        val expectedTitle = DataMockTest.TEST_TITLE
+        val expectedTitle = DataMockTest.MAIN_SCREEN_TITLE
         viewModel.setTitleAppBar(expectedTitle)
 
         viewModel.titleAppBar.test {

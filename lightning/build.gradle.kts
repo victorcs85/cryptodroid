@@ -79,14 +79,6 @@ android {
     }
 }
 
-configurations.all {
-    exclude(group = "com.google.guava", module = "listenablefuture")
-}
-
-configurations.all {
-    exclude(group = "org.hamcrest", module = "hamcrest-core")
-}
-
 dependencies {
     //region submodules
     implementation(project(":core"))

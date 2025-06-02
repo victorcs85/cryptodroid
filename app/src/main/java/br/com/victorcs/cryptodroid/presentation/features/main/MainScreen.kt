@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
+import br.com.victorcs.core.base.MainViewModel
 import br.com.victorcs.cryptodroid.presentation.navigation.AppNavigation
 import br.com.victorcs.cryptodroid.presentation.views.BottomNavigationBar
 import br.com.victorcs.cryptodroid.presentation.views.ExchangeTopAppBar

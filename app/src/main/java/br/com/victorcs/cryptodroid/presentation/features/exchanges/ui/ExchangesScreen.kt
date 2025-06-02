@@ -16,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.navigation.NavController
+import br.com.victorcs.core.base.MainViewModel
 import br.com.victorcs.core.constants.PULL_TO_REFRESH_TAG
 import br.com.victorcs.core.extensions.orFalse
 import br.com.victorcs.core.views.EmptyListView
@@ -24,7 +25,6 @@ import br.com.victorcs.core.views.ShowErrorMessage
 import br.com.victorcs.cryptodroid.R
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.command.ExchangesCommand
 import br.com.victorcs.cryptodroid.presentation.features.exchanges.ui.views.ExchangeList
-import br.com.victorcs.cryptodroid.presentation.features.main.MainViewModel
 import org.koin.androidx.compose.koinViewModel
 import br.com.victorcs.core.R as coreR
 
@@ -35,7 +35,7 @@ fun ExchangesScreen(
     execute: (ExchangesCommand) -> Unit,
     mainViewModel: MainViewModel = koinViewModel(),
 ) {
-    mainViewModel.setTitleAppBar(stringResource(R.string.exchanges_label))
+    mainViewModel.setTitleAppBar(stringResource(coreR.string.exchanges_label))
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,

@@ -5,9 +5,9 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.test.filters.MediumTest
+import br.com.victorcs.core.base.MainViewModel
 import br.com.victorcs.cryptodroid.presentation.MainActivity
 import br.com.victorcs.cryptodroid.presentation.features.main.MainScreen
-import br.com.victorcs.cryptodroid.presentation.features.main.MainViewModel
 import br.com.victorcs.cryptodroid.shared.test.PresentationMockTest
 import br.com.victorcs.cryptodroid.utils.TestDispatchersProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi

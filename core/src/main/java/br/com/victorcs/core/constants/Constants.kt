@@ -10,8 +10,7 @@ const val ICON_MAPPER = "ICON_MAPPER"
 const val UTF_8 = "UTF-8"
 
 const val REMOTE_NAMED = "remote_source"
-const val LOCAL_NAMED = "local_source"
-const val LOCAL_JSON_NAMED = "local_json_source"
+const val LOCAL_JSON_NAMED = "local_source"
 
 const val ZERO = 0
 const val ONE = 1

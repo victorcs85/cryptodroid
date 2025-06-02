@@ -8,6 +8,7 @@ import br.com.victorcs.core.constants.EXCHANGE_ID
 import br.com.victorcs.core.model.Response
 import br.com.victorcs.cryptodroid.base.BaseViewModelTest
 import br.com.victorcs.cryptodroid.base.CoroutineTestRule
+import br.com.victorcs.cryptodroid.di.DataSourceType
 import br.com.victorcs.cryptodroid.domain.repository.IExchangeDetailsRepository
 import br.com.victorcs.cryptodroid.presentation.features.exchangedetails.command.ExchangeDetailsCommand
 import br.com.victorcs.cryptodroid.shared.test.DataMockTest
@@ -55,7 +56,7 @@ class ExchangeDetailsViewModelTest : BaseViewModelTest() {
 
     @Test
     fun givenExchangeId_whenGetDetails_thenReturnSuccessfully() = runTest {
-        viewModel = ExchangeDetailsViewModel(repository, savedState, testDispatcherProvider)
+        viewModel = ExchangeDetailsViewModel(repository, savedState, testDispatcherProvider, DataSourceType.REMOTE_SOURCE)
         val mockResponse = DataMockTest.mockSuccessExchangeDetailsResponse
 
         coEvery { repository.getExchangeDetails(any<String>()) } returns mockResponse
@@ -79,7 +80,8 @@ class ExchangeDetailsViewModelTest : BaseViewModelTest() {
     @Test
     fun givenWrongExchangeId_whenGetDetails_thenReturnFail() = runTest {
         val expected = Response.Error(DataMockTest.MOCK_DEFAULT_ERROR)
-        viewModel = ExchangeDetailsViewModel(repository, savedState, testDispatcherProvider)
+        viewModel = ExchangeDetailsViewModel(repository, savedState, testDispatcherProvider,
+            DataSourceType.REMOTE_SOURCE)
         coEvery { repository.getExchangeDetails(any<String>()) } returns expected
 
         viewModel.execute(
