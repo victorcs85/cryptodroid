@@ -1,5 +1,9 @@
 # CryptoDroid
 
+![Screenshot_1.png](screenshots/Screenshot_1.png)
+![Screenshot_2.png](screenshots/Screenshot_2.png)
+![Screenshot_3.png](screenshots/Screenshot_3.png)
+
 Consuming the [coinapi.io](https://docs.coinapi.io/?shell#list-all-exchanges-get) 🪙 API and bringing the exchanges in the form of a list and detail data for the selected item. Using Jetpack Compose to build the UI with submodules in the project to hit a second [mempool.space](https://mempool.space) API to display ⚡ lightning data.
 Using static analysis with spotless and detect, unit and UI tests with JUnit4 and ComposeTestRule.
 Error handling with the use of Result and State, in addition to an MVI architecture, Kotlin Flow with Clean Architecture.
